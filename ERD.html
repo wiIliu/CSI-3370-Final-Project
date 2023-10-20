@@ -29,9 +29,9 @@
     <!-- 
     Mermaid documentation:
     https://mermaid.js.org/syntax/entityRelationshipDiagram.html
--->
+    -->
 
-    --EXAMPLE CODE
+    ---------------EXAMPLE CODE-------------------
     <div class="mermaid" style="text-align: center">
       ---
       title: EXAMPLE DIAGRAM
@@ -41,18 +41,16 @@
       EMPLOYEE{
       int EMP_CODE PK
       string EMP_LNAME
-      int JOB_CODE
+      int JOB_CODE FK
       }
       BENEFIT{
       int EMP_CODE PK, FK
-      int PLAN_CODE PK
+      int PLAN_CODE PK, FK
       }
-
       JOB {
       int JOB_CODE PK
       string JOB_DESCRIPTION
       }
-
       PLAN {
       int PLAN_CODE PK
       string PLAN_DESCRIPTION
@@ -61,6 +59,7 @@
       EMPLOYEE }|--|| JOB : holds
       EMPLOYEE ||--O{ BENEFIT : participate
       PLAN ||--O{ BENEFIT : assigned
+      
     </div>
 
     <br>
