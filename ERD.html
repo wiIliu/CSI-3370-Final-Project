@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>MyDegree.com ERD</title>
+  <!-- Load Mermaid CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.css">
+  <link rel="stylesheet" href="css/diag.css">
+</head>
+
+<body>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs' 
+  </script>
+  <!-- Initialize Mermaid -->
+  <script>
+    // Use the 'mermaid' global object to initialize the diagram
+    mermaid.initialize({
+      startOnLoad: true,
+      sequence: { showSequenceNumbers: true },
+    });
+  </script>
+
+  <section>
+
+    <h1 style="text-align: center;">MyDegree.com ERD</h1>
+
+    <!-- 
+    Mermaid documentation:
+    https://mermaid.js.org/syntax/entityRelationshipDiagram.html
+-->
+
+    --EXAMPLE CODE
+    <div class="mermaid" style="text-align: center">
+      ---
+      title: EXAMPLE DIAGRAM
+      ---
+      erDiagram
+
+      EMPLOYEE{
+      int EMP_CODE PK
+      string EMP_LNAME
+      int JOB_CODE
+      }
+      BENEFIT{
+      int EMP_CODE PK, FK
+      int PLAN_CODE PK
+      }
+
+      JOB {
+      int JOB_CODE PK
+      string JOB_DESCRIPTION
+      }
+
+      PLAN {
+      int PLAN_CODE PK
+      string PLAN_DESCRIPTION
+      }
+
+      EMPLOYEE }|--|| JOB : holds
+      EMPLOYEE ||--O{ BENEFIT : participate
+      PLAN ||--O{ BENEFIT : assigned
+    </div>
+
+    <br>
+    
+    <div class="mermaid" style="text-align: center">
+      sequenceDiagram
+    </div>
+  </section>
+</body>
+</html>
