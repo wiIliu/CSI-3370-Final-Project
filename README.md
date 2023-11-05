@@ -1,3 +1,7 @@
+# NEED TO RUN ENTIRE PROJECT IN XAMPP/HTDOCS
+
+---
+
 # MyDegree.com
 
 --- 
