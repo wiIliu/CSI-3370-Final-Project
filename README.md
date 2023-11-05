@@ -1,3 +1,7 @@
+# NEED TO RUN ENTIRE PROJECT IN XAMPP/HTDOCS
+
+---
+
 # MyDegree.com
 
 --- 
@@ -8,7 +12,6 @@ https://www.w3schools.com/git/default.asp - git and github tutorial that helped 
 https://getbootstrap.com/docs/5.3/getting-started/introduction/ - Bootstrap documentation<br>
 https://www.w3schools.com/bootstrap/bootstrap_ver.asp - bootstrap basic tutorial<br>
 https://www.codecademy.com/catalog/language/php - php tutorial<br>
-https://www.w3schools.com/django/index.php - django tutorial<br>
 
 
 ---
