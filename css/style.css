@@ -4,7 +4,7 @@ body {
   background: #0d0b0b;
   background-color: papayawhip;
   font-family: "Raleway", sans-serif;
-  color: #fff;
+  /* color: #fff; */
 }
 .banner {
   height: 100vh;
@@ -19,7 +19,7 @@ body {
   margin-top: 4%;
 }
 .banner .navbar-brand {
-  color: rgb(12, 11, 11);
+  /* color: rgb(12, 11, 11); */
   font-size: 1.8em;
   font-weight: 700;
   margin-left: 10%;
@@ -28,7 +28,7 @@ body {
   margin-right: 10%;
 }
 .banner .nav li a {
-  color: #aaa;
+  color: #f5efef;
   font-size: 1.2em;
 }
 .banner .info {
@@ -50,7 +50,7 @@ body {
 .banner .info a {
   margin-left: 50%;
   transform: translateX(-50%);
-  color: #fff;
+  /* color: #fff; */
   background: #53545a;
   padding: 10px 20px;
   font-size: 2em;
