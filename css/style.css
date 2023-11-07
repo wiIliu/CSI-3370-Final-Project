@@ -2,9 +2,9 @@ body {
   margin: 0;
   padding: 0;
   background: #0d0b0b;
-  background-color: papayawhip;
-  font-family: "Raleway", sans-serif;
-  color: #fff;
+  background-color: rgb(82, 74, 63);
+  font-family: "Times New Roman", Times, serif;
+  color: rgb(66, 53, 53);
 }
 .banner {
   height: 100vh;
@@ -19,7 +19,7 @@ body {
   margin-top: 4%;
 }
 .banner .navbar-brand {
-  color: rgb(12, 11, 11);
+  color: slategray;
   font-size: 1.8em;
   font-weight: 700;
   margin-left: 10%;
@@ -28,7 +28,7 @@ body {
   margin-right: 10%;
 }
 .banner .nav li a {
-  color: #090808;
+  color: #aaa;
   font-size: 1.2em;
 }
 .banner .info {
@@ -38,7 +38,7 @@ body {
 .banner .info h1 {
   font-size: 2.5em;
   font-weight: 700;
-  color: rgb(17, 15, 15);
+  color: #aaa;
   letter-spacing: 2px;
 }
 .banner .info p {
@@ -50,12 +50,27 @@ body {
 .banner .info a {
   margin-left: 50%;
   transform: translateX(-50%);
-  color: #fff;
-  background: #53545a;
+  color: black;
+  background: #aaa;
   padding: 10px 20px;
   font-size: 2em;
   font-weight: 600;
 }
 .banner .info a:hover {
-  background: #4b494a;
+  background: beige;
+}
+
+.contact {
+  display: flex;
+  justify-content: space-between;
+
+  /* margin-right: 30px; */
+  font-size: 2em;
+  background-color: beige;
+}
+
+.description {
+  /* text-align: center; */
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: black;
 }
