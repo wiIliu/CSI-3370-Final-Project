@@ -9,14 +9,15 @@ CREATE TABLE ADVISOR(
     ADVISOR_OFFICE_NUM INTEGER,
     ADVISOR_PHONE CHAR(12) NOT NULL,
     ADVISOR_EMAIL VARCHAR(50) NOT NULL,
-    ADVISOR_BACKGROUND VARCHAR(250)
+    ADVISOR_BACKGROUND VARCHAR(255)
 );
 
 CREATE TABLE MAJOR(
     MJR_ID  INTEGER PRIMARY KEY,
     MJR_NAME VARCHAR(50) NOT NULL,
-    MJR_DESC    VARCHAR(250),
-    ADMIN_REQ   VARCHAR(250) NOT NULL,
+    MJR_DESC    VARCHAR(255),
+    ADMIN_REQ   VARCHAR(255) NOT NULL,
+    MJR_PIC varchar(255),
     ADVISOR_ID  INTEGER NOT NULL,
     CONSTRAINT MAJOR_ADVISOR_ID_FK FOREIGN KEY (ADVISOR_ID) REFERENCES ADVISOR(ADVISOR_ID)
 );
@@ -27,7 +28,7 @@ CREATE TABLE APPOINTMENT(
     APPT_DATE_TIME DATETIME NOT NULL,
     APPT_CONFIRMATION_FLG CHAR(1) DEFAULT 'N' NOT NULL,
     APPT_RESCHEDULE_FLG CHAR(1) DEFAULT 'N' NOT NULL,
-    APPT_REASON VARCHAR(250) NOT NULL,
+    APPT_REASON VARCHAR(255) NOT NULL,
     STUDENT_GID VARCHAR(9) NOT NULL,
     STUDENT_FNAME VARCHAR(20) NOT NULL,
     STUDENT_LNAME VARCHAR(20) NOT NULL,
@@ -39,8 +40,8 @@ CREATE TABLE APPOINTMENT(
 CREATE TABLE CLASS(
     CLASS_ID INTEGER PRIMARY KEY,
     CLASS_NAME VARCHAR(25) NOT NULL,
-    CLASS_DESC VARCHAR(250),
-    TEXTBK_LINK VARCHAR(250),
+    CLASS_DESC VARCHAR(255),
+    TEXTBK_LINK VARCHAR(255),
     ELECTIVE_FLG CHAR(1) DEFAULT 'N',
     CORE_CLASS_FLG CHAR(1) DEFAULT 'N',
     CLASS_PREREQ_FLG CHAR(1) DEFAULT 'N',
@@ -62,9 +63,9 @@ CREATE TABLE PROFESSOR(
     PROF_OFFICE_NUM INTEGER,
     PROF_PHONE CHAR(12) NOT NULL,
     PROF_EMAIL VARCHAR(50) NOT NULL,
-    PROF_BACKGROUND VARCHAR(250),
+    PROF_BACKGROUND VARCHAR(255),
     PROF_RATING NUMERIC(1,1), 
-    PROF_RATING_LINK VARCHAR(250)
+    PROF_RATING_LINK VARCHAR(255)
 );
 
 CREATE TABLE SECTION(
@@ -76,9 +77,38 @@ CREATE TABLE SECTION(
     FOREIGN KEY (PROF_ID) REFERENCES PROFESSOR(PROF_ID)
 );
 
-INSERT INTO ADVISOR VALUES(1, "Smith", "Kate", 203, "248-543-2354", "katesmith@gmail.com", NULL);
-INSERT INTO ADVISOR VALUES(2, "Woodz", "Will", 143, "248-543-9008", "willwoodz@gmail.com", NULL);
 
-INSERT INTO MAJOR VALUES(1,"Computer Science", NULL, "major standing", 2);
+-- ADVISOR values --
+INSERT INTO ADVISOR VALUES(1, "Smith", "Kate", 203, "248-543-2354", "katesmith@school.edu", NULL);
+INSERT INTO ADVISOR VALUES(2, "Woodz", "Will", 143, "248-543-9008", "willwoodz@school.edu", NULL);
+INSERT INTO ADVISOR VALUES(4, "Kim", "Michael", 654, "248-655-9876", "kimmichael@school.edu",NUll);
+INSERT INTO ADVISOR VALUES(3, "Harry", "Charles", 980, "586-112-2467", "charlesharry@school.edu", NULL);
+INSERT INTO ADVISOR VALUES(5, "Farmer", "Jasmine", 434, "313-676-2282", "jasminefarmer@school.edu", NULL);
 
-select * from major;
+-- MAJOR values --
+INSERT INTO MAJOR VALUES(1,"Computer Science", NULL, "major standing", "pictures\\csMajor.png", 3);
+INSERT INTO MAJOR VALUES(2,"Computer Engineering", NULL, "major standing", "pictures\\ceMajor.png", 5);
+INSERT INTO MAJOR VALUES(3,"Cybersecurity", NULL, "major standing", "pictures\\cybersecurityMajor.png", 4);
+INSERT INTO MAJOR VALUES(4,"Artificial Intelligence", NULL, "major standing", "pictures\\aiMajor.png", 1);
+INSERT INTO MAJOR VALUES(5,"Information Technology", NULL, "major standing", "pictures\\itMajor.png", 2);
+
+-- CLASS values --
+INSERT INTO CLASS VALUES(3450, "Database Design and Implementation", NULL, "https://www.cengage.com/c/database-systems-13e-coronel-morris/9781337627900/",'N','Y','N',NULL);
+INSERT INTO CLASS VALUES(3610, "Design and Analysis of Algorithms", NULL, "https://dahlan.unimal.ac.id/files/ebooks/2009%20Introduction%20to%20Algorithms%20Third%20Ed.pdf",'N','Y','N',NULL);
+INSERT INTO CLASS VALUES(3370, "Software Engineering and Practice", NULL, "https://moodle.oakland.edu/pluginfile.php/8885924/mod_resource/content/0/book.pdf",'N','Y','N',NULL);
+INSERT INTO CLASS VALUES(3430, "Theory of Computation", NULL, "https://drive.uqu.edu.sa/_/mskhayat/files/MySubjects/20189FS%20ComputationTheory/Introduction%20to%20the%20theory%20of%20computation_third%20edition%20-%20Michael%20Sipser.pdf",'N','Y','N',NULL);
+
+
+-- BRIDGE --
+INSERT INTO BRIDGE VALUES(1,3450);
+INSERT INTO BRIDGE VALUES(1,3610);
+INSERT INTO BRIDGE VALUES(1,3370);
+INSERT INTO BRIDGE VALUES(2,3370);
+INSERT INTO BRIDGE VALUES(1,3430);
+
+-- PROFESSOR values --
+INSERT INTO PROFESSOR VALUES(11,"Angel","Bravo",129,"248-654-4321","angelbravo@school.edu",NULL,NULL,NULL);
+
+
+-- SECTION values --
+INSERT INTO SECTION VALUES(43025,3450,11,'2023-09-07 01:00:00');
