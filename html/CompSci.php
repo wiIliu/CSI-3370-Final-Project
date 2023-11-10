@@ -1,3 +1,8 @@
+<?php 
+  include("../classQuery.php");
+  $classes = getMajorData(1);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +19,7 @@
   <link rel="shortcut icon" href="../pictures/mydegreeFavicon.png" type="image/x-icon" />
 </head>
 
-<body>
+<body class="">
   <div class="container-fluid banner">
     <div class="row">
       <div class="col-md-12">
@@ -51,6 +56,31 @@
         </nav>
       </div>
     </div> <!--end of row div-->
+
+
+    <div class="row justify-content-left mt-5 ms-5 ps-4">
+      <?php while($row = mysqli_fetch_array($classes)):?>
+        <div class="mb-3">
+          <input class="form-check-input" type="checkbox" id="class_<?php echo $row[0];?>" value="">
+          <span class="text-dark"></span>
+            <a class="fs-6 text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $row[0];?>" aria-expanded="false" aria-controls="collapseExample">
+              &nbsp;&nbsp;&nbsp;<?php echo $row[1]." ".$row[0];?>&nbsp;&nbsp;<code>&#8212;</code>&nbsp;&nbsp;<span class="text-decoration-underline"><strong><?php echo $row[2]; ?></strong></span><br>
+            </a>
+          </span>
+          <div class="ms-4 collapse" id="collapseExample<?php echo $row[0];?>">
+            <div class="mt-3 card card-body bg-secondary text-light" style="width: 600px">
+              <?php echo $row[3] ?>
+            </div>
+            <br>
+          </div>
+
+        </div>
+      <?php endwhile; ?>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
 
 
   </div>
