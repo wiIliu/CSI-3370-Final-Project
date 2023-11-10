@@ -51,7 +51,7 @@ body {
   margin-left: 50%;
   transform: translateX(-50%);
   color: black;
-  background: #aaa;
+  background: #584a4a;
   padding: 10px 20px;
   font-size: 2em;
   font-weight: 600;
@@ -73,4 +73,20 @@ body {
   /* text-align: center; */
   font-family: Georgia, "Times New Roman", Times, serif;
   color: black;
+}
+.container {
+  margin-top: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.col-sm-4 {
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
