@@ -23,7 +23,7 @@ li {
 }
 
 .dropdown {
-  background-color: gray;
+  background-color: rgb(200, 187, 187);
   padding: 1em 0;
   position: absolute;
   display: none;
