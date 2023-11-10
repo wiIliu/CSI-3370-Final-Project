@@ -39,7 +39,8 @@ CREATE TABLE APPOINTMENT(
 
 CREATE TABLE CLASS(
     CLASS_ID INTEGER PRIMARY KEY,
-    CLASS_NAME VARCHAR(25) NOT NULL,
+    CLASS_GROUP CHAR(3) NOT NULL,
+    CLASS_NAME VARCHAR(255) NOT NULL,
     CLASS_DESC VARCHAR(255),
     TEXTBK_LINK VARCHAR(255),
     ELECTIVE_FLG CHAR(1) DEFAULT 'N',
@@ -93,10 +94,10 @@ INSERT INTO MAJOR VALUES(4,"Artificial Intelligence", NULL, "major standing", "p
 INSERT INTO MAJOR VALUES(5,"Information Technology", NULL, "major standing", "pictures\\itMajor.png", 2);
 
 -- CLASS values --
-INSERT INTO CLASS VALUES(3450, "Database Design and Implementation", NULL, "https://www.cengage.com/c/database-systems-13e-coronel-morris/9781337627900/",'N','Y','N',NULL);
-INSERT INTO CLASS VALUES(3610, "Design and Analysis of Algorithms", NULL, "https://dahlan.unimal.ac.id/files/ebooks/2009%20Introduction%20to%20Algorithms%20Third%20Ed.pdf",'N','Y','N',NULL);
-INSERT INTO CLASS VALUES(3370, "Software Engineering and Practice", NULL, "https://moodle.oakland.edu/pluginfile.php/8885924/mod_resource/content/0/book.pdf",'N','Y','N',NULL);
-INSERT INTO CLASS VALUES(3430, "Theory of Computation", NULL, "https://drive.uqu.edu.sa/_/mskhayat/files/MySubjects/20189FS%20ComputationTheory/Introduction%20to%20the%20theory%20of%20computation_third%20edition%20-%20Michael%20Sipser.pdf",'N','Y','N',NULL);
+INSERT INTO CLASS VALUES(3450,"CSI", "Database Design and Implementation", "Introduction to the design, implementation and management of database systems. Topics include planning, designing, and implementing a practical database using a relational database server for an application utilizing entity relationship diagrams, normal forms, and understanding relational database schemas. Advanced topics include concurrency control, query optimization, and introduction to database systems administration", "https://www.cengage.com/c/database-systems-13e-coronel-morris/9781337627900/",'N','Y','N',NULL);
+INSERT INTO CLASS VALUES(3610, "CSI", "Design and Analysis of Algorithms", "Computer algorithms, their design and analysis. Strategies constructing algorithmic solutions, including divide-and-conquer, dynamic programming and greedy algorithms. Computational complexity as it pertains to time and space is used to evaluate the algorithms. A general overview of complexity classes is given.", "https://dahlan.unimal.ac.id/files/ebooks/2009%20Introduction%20to%20Algorithms%20Third%20Ed.pdf",'N','Y','N',NULL);
+INSERT INTO CLASS VALUES(3370, "CSI", "Software Engineering and Practice", "Introduction to software engineering and practice. Topics include software process models, project and software management, requirements analysis, architecture modeling, implementation and system integration, quality assurance, and testing.", "https://moodle.oakland.edu/pluginfile.php/8885924/mod_resource/content/0/book.pdf",'N','Y','N',NULL);
+INSERT INTO CLASS VALUES(3430, "APM", "Theory of Computation", "Formal models of computation, ranging from finite state automata to Turing machines. Computational models are used to discuss the languages recognized by these machines and address issues of computability.", "https://drive.uqu.edu.sa/_/mskhayat/files/MySubjects/20189FS%20ComputationTheory/Introduction%20to%20the%20theory%20of%20computation_third%20edition%20-%20Michael%20Sipser.pdf",'N','Y','N',NULL);
 
 
 -- BRIDGE --
