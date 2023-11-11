@@ -10,12 +10,6 @@ body {
 
 }
 
-/* Style the navigation link */
-nav a {
-    color: #ffffff;
-    text-decoration: none;
-    margin: 0 10px;
-}
 /* Style the jumbotron */
 .jumbotron {
     background: #968989;
@@ -23,27 +17,11 @@ nav a {
     padding: 50px;
 }
 
-/* Style the course sections */
-.container {
-    margin-top: 20px;
-}
-
-.col-sm-4 {
-    background-color: #ffffff;
-    border: 1px solid #dee2e6;
-    border-radius: 10px;
-    padding: 20px;
-
-
-    margin-bottom: 20px;
-}
-
 /* Style the program overview buttons */
 .btn-md {
     display: block;
     margin-top: 15px;
     background: #584a4a;
-
     color: #ffffff;
     text-decoration: none;
     padding: 10px;

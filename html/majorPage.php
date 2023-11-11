@@ -24,11 +24,11 @@ include("../majorQuery.php");
 
   <div class="banner">
 
-    <nav class="navbar navbar-expand-md sticky-top" style="background: #584a4a;">
+    <nav class="navbar navbar-expand-md sticky-top" style="background-color: rgb(82, 74, 63);">
       <!-- SITE LOGO -->
       <div id="logoContainer my-auto py-auto position-absolute top-0 start-0">
-        <a class="navbar-brand" href="../index.html">
-          <img src="../pictures/mydegreeLogo.png" width="150" height="60" alt="mydegree logo" class="d-inline-block">
+        <a class="ms-3 navbar-brand" href="../index.html">
+          <img src="../pictures/mydegreeLogo.png" width="150" height="55" alt="mydegree logo" class="d-inline-block">
         </a>
       </div>
       <!-- Collapsed navbar toggler button -->
@@ -38,14 +38,14 @@ include("../majorQuery.php");
       <!-- NAVBAR LINKS -->
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav nav">
-          <li class="nav-item"><a class="nav-link fw-medium" href="../index.html">HOME</a></li>
-          <li class="nav-item"><a class="nav-link fw-medium" href="../major.php">MAJOR</a>
+          <li class="nav-item"><a class="nav-link fw-medium" href="#">HOME</a></li>
+          <li class="nav-item"><a class="nav-link fw-medium" href="./html/majorPage.php">MAJOR</a>
             <ul class="dropdown">
-              <li><a class="mx-0" href="AI.html">Artificial Intelligence</a></li>
-              <li><a class="mx-0" href="CompSci.html">Computer Science</a></li>
-              <li><a class="mx-0" href="ComputerEngineering.html">Computer Engineering</a></li>
-              <li><a class="mx-0" href="IT.html">Information Technology</a></li>
-              <li><a class="mx-0" href="Cybersecurity.html">Cybersecurity</a></li>
+              <li><a class="mx-0" href="./html/AI.html">Artificial Intelligence</a></li>
+              <li><a class="mx-0" href="./htmlCompSci.html">Computer Science</a></li>
+              <li><a class="mx-0" href="./htmlComputerEngineering.html">Computer Engineering</a></li>
+              <li><a class="mx-0" href="./htmlIT.html">Information Technology</a></li>
+              <li><a class="mx-0" href="./htmlCybersecurity.html">Cybersecurity</a></li>
             </ul>
           </li>
           <li class="nav-item"><a class="nav-link" href="career.html">CAREER</a></li>

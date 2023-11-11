@@ -3,14 +3,13 @@ body {
   padding: 0;
   background: #0d0b0b;
   background-color: rgb(82, 74, 63);
-  font-family: "Times New Roman", Times, serif;
+  /* font-family: "Times New Roman", Times, serif; */
   color: rgb(66, 53, 53);
 }
 .banner {
   height: 100vh;
   width: 100%;
 }
-
 
 .banner .nav {
   margin-right: 10%;
@@ -61,19 +60,17 @@ body {
   font-family: Georgia, "Times New Roman", Times, serif;
   color: black;
 }
-.container {
-  margin-top: 20px;
-}
 
-.row {
-  display: flex;
-  justify-content: space-between;
-}
-
-.col-sm-4 {
+/* .col-sm-4 {
   background-color: #ffffff;
   border: 1px solid #dee2e6;
   border-radius: 5px;
   padding: 20px;
   margin-bottom: 20px;
+} */
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 10px;
 }
