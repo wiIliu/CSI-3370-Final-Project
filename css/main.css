@@ -1,0 +1,34 @@
+/* Reset some default browser styles */
+body, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set a background color for the body */
+body {
+    background: #584a4a;
+
+}
+
+/* Style the jumbotron */
+.jumbotron {
+    background: #968989;
+    color: #ffffff;
+    padding: 50px;
+}
+
+/* Style the program overview buttons */
+.btn-md {
+    display: block;
+    margin-top: 15px;
+    background: #584a4a;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.btn-md:hover {
+    background-color: #8a8f94;
+}
+
