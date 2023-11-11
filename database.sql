@@ -15,7 +15,7 @@ CREATE TABLE ADVISOR(
 CREATE TABLE MAJOR(
     MJR_ID  INTEGER PRIMARY KEY,
     MJR_NAME VARCHAR(50) NOT NULL,
-    MJR_DESC    VARCHAR(255),
+    MJR_DESC    VARCHAR(700),
     ADMIN_REQ   VARCHAR(255) NOT NULL,
     MJR_PIC varchar(255),
     ADVISOR_ID  INTEGER NOT NULL,
@@ -36,6 +36,7 @@ CREATE TABLE APPOINTMENT(
     STUDENT_EMAIL VARCHAR(50) NOT NULL,
     CONSTRAINT APPOINTMENT_ADVISOR_ID_FK FOREIGN KEY (ADVISOR_ID) REFERENCES ADVISOR(ADVISOR_ID)
 );
+
 
 CREATE TABLE CLASS(
     CLASS_ID INTEGER PRIMARY KEY,
@@ -87,11 +88,11 @@ INSERT INTO ADVISOR VALUES(3, "Harry", "Charles", 980, "586-112-2467", "charlesh
 INSERT INTO ADVISOR VALUES(5, "Farmer", "Jasmine", 434, "313-676-2282", "jasminefarmer@school.edu", NULL);
 
 -- MAJOR values --
-INSERT INTO MAJOR VALUES(1,"Computer Science", NULL, "major standing", "pictures\\csMajor.png", 3);
-INSERT INTO MAJOR VALUES(2,"Computer Engineering", NULL, "major standing", "pictures\\ceMajor.png", 5);
-INSERT INTO MAJOR VALUES(3,"Cybersecurity", NULL, "major standing", "pictures\\cybersecurityMajor.png", 4);
-INSERT INTO MAJOR VALUES(4,"Artificial Intelligence", NULL, "major standing", "pictures\\aiMajor.png", 1);
-INSERT INTO MAJOR VALUES(5,"Information Technology", NULL, "major standing", "pictures\\itMajor.png", 2);
+INSERT INTO MAJOR VALUES(1,"Computer Science", "A Computer Science major equips students with a comprehensive understanding of foundational principles in computing. Focused on algorithmic problem-solving, software development, and system design, the curriculum covers programming languages, data structures, and computer architecture. Students delve into areas such as artificial intelligence, machine learning, and cybersecurity, gaining versatile skills applicable across industries", "major standing", "pictures\\csMajor.png", 3);
+INSERT INTO MAJOR VALUES(2,"Computer Engineering", "A major in Computer Engineering is designed to provide students with a comprehensive understanding of the principles and practices underlying the design and development of computer systems and networks. It combines elements of both electrical engineering and computer science to prepare students for careers at the intersection of hardware and software.", "major standing", "pictures\\ceMajor.png", 5);
+INSERT INTO MAJOR VALUES(3,"Cybersecurity", "A cybersecurity major equips students with vital skills to defend digital systems against evolving cyber threats. Covering network security, threat analysis, and attack prevention, the program delves into crafting and implementing information security policies. Students learn cryptography, incident response, and ethical hacking techniques. The curriculum emphasizes risk management, compliance, and security awareness. Culminating in capstone projects and often incorporating internships, the major readies graduates for roles such as cybersecurity analysts and ethical hackers in our dynamic digital landscape.", "major standing", "pictures\\cybersecurityMajor.png", 4);
+INSERT INTO MAJOR VALUES(4,"Artificial Intelligence", "Artificial Intelligence (AI) typically focuses on providing students with a deep understanding of the theories, methodologies, and practical applications of AI technologies. This interdisciplinary field integrates principles from computer science, mathematics, cognitive science, and engineering to create intelligent systems that can analyze data, learn from it, and make informed decisions.", "major standing", "pictures\\aiMajor.png", 1);
+INSERT INTO MAJOR VALUES(5,"Information Technology", "An Information Technology (IT) major provides students with a versatile skill set for navigating the rapidly evolving tech landscape. Focused on the practical application of technology in various domains, the curriculum covers areas such as computer systems, networks, databases, and programming. Students learn to analyze and solve complex problems, manage IT projects, and implement innovative solutions. Emphasis is placed on acquiring proficiency in programming languages, understanding system architectures, and developing skills in network administration.", "major standing", "pictures\\itMajor.png", 2);
 
 -- CLASS values --
 INSERT INTO CLASS VALUES(3450,"CSI", "Database Design and Implementation", "Introduction to the design, implementation and management of database systems. Topics include planning, designing, and implementing a practical database using a relational database server for an application utilizing entity relationship diagrams, normal forms, and understanding relational database schemas. Advanced topics include concurrency control, query optimization, and introduction to database systems administration", "https://www.cengage.com/c/database-systems-13e-coronel-morris/9781337627900/",'N','Y','N',NULL);
@@ -113,3 +114,6 @@ INSERT INTO PROFESSOR VALUES(11,"Angel","Bravo",129,"248-654-4321","angelbravo@s
 
 -- SECTION values --
 INSERT INTO SECTION VALUES(43025,3450,11,'2023-09-07 01:00:00');
+
+
+

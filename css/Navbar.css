@@ -18,12 +18,8 @@ li {
   transition: 0.3s ease;
 }
 
-.nav li :hover {
-  padding: 5px 14px;
-}
-
 .dropdown {
-  background-color: gray;
+  background-color: rgb(87, 82, 82);
   padding: 1em 0;
   position: absolute;
   display: none;
@@ -35,15 +31,14 @@ li {
   margin-top: 10px;
 }
 
-.dropdown li {
-  padding: 0.5em 1em;
+.dropdown li{
   width: 8em;
   text-align: center;
 }
 
 .nav-item {
   position: relative;
-}
+} 
 
 .nav-item:hover .dropdown {
   display: block;

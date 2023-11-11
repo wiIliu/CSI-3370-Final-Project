@@ -1,21 +1,28 @@
+<?php
+include("../majorQuery.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MyDegree.com</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="./css/style.css" />
-  <link rel="stylesheet" href="./css/Navbar.css">
+  <link rel="stylesheet" type="text/css" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/Navbar.css">
+  <link rel="stylesheet" type="text/css" href="../css/main.css" />
 
-  <link rel="shortcut icon" href="./pictures/mydegreeFavicon.png" type="image/x-icon" />
+  <link rel="shortcut icon" href="../pictures/mydegreeFavicon.png" type="image/x-icon" />
+
 </head>
 
+
 <body>
-  <div class=" banner">
+
+  <div class="banner">
 
     <nav class="navbar navbar-expand-md sticky-top" style="background-color: rgb(82, 74, 63);">
       <!-- SITE LOGO -->
@@ -48,19 +55,36 @@
 
     </nav>
 
+
     <div class="container-fluid">
 
-      <div class="col-md-8 offset-md-2 info">
-        <h1 class="text-center">MyDegree</h1>
-        <p class="text-center">Oakland University Engineering Department</p>
-        <a href="./html/majorPage.php" class="btn btn-md text-center">GET STARTED</a>
+      <div class="row jumbotron text-center">
+        <h1>Mydegree</h1>
+        <p>Oakland University Engineering Program</p>
       </div>
-    </div>
-    
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-    crossorigin="anonymous"></script>
+
+      <!--description of each major-->
+      <div class="row justify-content-center mt-3">
+
+        <?php while ($row = mysqli_fetch_array($filterResult)) : ?>
+          <div class="col-11 col-lg-4 col-md-6 my-1">
+
+            <div class="card text-evenly bg-light h-100">
+              <img src="<?php echo "../" . $row[2]; ?>" class="card-img-top img-fluid" alt="...">
+              <div class="card-body d-flex text-center align-items-bottom flex-column mb-3">
+                <h4 class="card-title fw-medium"><?php echo $row[1]; ?></h4>
+                <p class="card-text my-auto"><?php echo $row[3]; ?></p>
+                <a href="./html/CompSci.php" class="btn btn-md btn-outline-light mt-auto fw-semibold">Program Overview</a>
+              </div>
+            </div>
+
+          </div>
+        <?php endwhile; ?>
+
+      </div> <!-- row -->
+
+    </div> <!-- container-fluid banner -->
+
 </body>
 
 </html>
