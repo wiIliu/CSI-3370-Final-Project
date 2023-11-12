@@ -1,5 +1,6 @@
 <?php
 include("../majorQuery.php");
+$filePaths = array("CompSci.php", "ComputerEngineering.html", "Cybersecurity.html", "AI.php", "IT.html");
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +25,7 @@ include("../majorQuery.php");
 
   <div class="banner">
 
-    <nav class="navbar navbar-expand-md sticky-top" style="background-color: rgb(82, 74, 63);">
+    <nav class="navbar navbar-expand-md sticky-top" style="background-color: #584a4a;">
       <!-- SITE LOGO -->
       <div id="logoContainer my-auto py-auto position-absolute top-0 start-0">
         <a class="ms-3 navbar-brand" href="../index.html">
@@ -38,14 +39,14 @@ include("../majorQuery.php");
       <!-- NAVBAR LINKS -->
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav nav">
-          <li class="nav-item"><a class="nav-link fw-medium" href="#">HOME</a></li>
-          <li class="nav-item"><a class="nav-link fw-medium" href="./html/majorPage.php">MAJOR</a>
+          <li class="nav-item"><a class="nav-link fw-medium" href="../index.html">HOME</a></li>
+          <li class="nav-item"><a class="nav-link fw-medium" href="#">MAJOR</a>
             <ul class="dropdown">
-              <li><a class="mx-0" href="./html/AI.html">Artificial Intelligence</a></li>
-              <li><a class="mx-0" href="./htmlCompSci.html">Computer Science</a></li>
-              <li><a class="mx-0" href="./htmlComputerEngineering.html">Computer Engineering</a></li>
-              <li><a class="mx-0" href="./htmlIT.html">Information Technology</a></li>
-              <li><a class="mx-0" href="./htmlCybersecurity.html">Cybersecurity</a></li>
+              <li><a class="mx-0" href="AI.php">Artificial Intelligence</a></li>
+              <li><a class="mx-0" href="CompSci.php">Computer Science</a></li>
+              <li><a class="mx-0" href="ComputerEngineering.html">Computer Engineering</a></li>
+              <li><a class="mx-0" href="IT.html">Information Technology</a></li>
+              <li><a class="mx-0" href="Cybersecurity.html">Cybersecurity</a></li>
             </ul>
           </li>
           <li class="nav-item"><a class="nav-link" href="career.html">CAREER</a></li>
@@ -66,7 +67,10 @@ include("../majorQuery.php");
       <!--description of each major-->
       <div class="row justify-content-center mt-3">
 
-        <?php while ($row = mysqli_fetch_array($filterResult)) : ?>
+        <?php
+        $n = 0;
+        while ($row = mysqli_fetch_array($filterResult)) :
+        ?>
           <div class="col-11 col-lg-4 col-md-6 my-1">
 
             <div class="card text-evenly bg-light h-100">
@@ -74,11 +78,12 @@ include("../majorQuery.php");
               <div class="card-body d-flex text-center align-items-bottom flex-column mb-3">
                 <h4 class="card-title fw-medium"><?php echo $row[1]; ?></h4>
                 <p class="card-text my-auto"><?php echo $row[3]; ?></p>
-                <a href="./html/CompSci.php" class="btn btn-md btn-outline-light mt-auto fw-semibold">Program Overview</a>
+                <a href="<?php echo $filePaths[$n]; ?>" class="btn btn-md btn-outline-light mt-auto fw-semibold">Program Overview</a>
               </div>
             </div>
 
           </div>
+          <?php $n++; ?>
         <?php endwhile; ?>
 
       </div> <!-- row -->
