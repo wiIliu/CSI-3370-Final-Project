@@ -1,7 +1,7 @@
 <?php
 include("../classQuery.php");
-$classes = getClassData(1);
-$adminData = getAdminData(1);
+$classes = getClassData(4);
+$adminData = getAdminData(4);
 
 $admin = $adminData[0];
 $desc = $adminData[1];
@@ -46,8 +46,8 @@ $desc = $adminData[1];
           <li class="nav-item"><a class="nav-link fw-medium" href="../index.html">HOME</a></li>
           <li class="nav-item"><a class="nav-link fw-medium" href="majorPage.php">MAJOR</a>
             <ul class="dropdown">
-              <li><a class="mx-0" href="AI.php">Artificial Intelligence</a></li>
-              <li><a class="mx-0" href="#">Computer Science</a></li>
+              <li><a class="mx-0" href="#">Artificial Intelligence</a></li>
+              <li><a class="mx-0" href="CompSci.php">Computer Science</a></li>
               <li><a class="mx-0" href="ComputerEngineering.html">Computer Engineering</a></li>
               <li><a class="mx-0" href="IT.html">Information Technology</a></li>
               <li><a class="mx-0" href="Cybersecurity.html">Cybersecurity</a></li>
@@ -63,7 +63,7 @@ $desc = $adminData[1];
     <div class="container-fluid">
 
       <div class="row m-5 p-2">
-        <h1 class="mb-3 pb-1 fw-semibold text-center"> Computer Science, B.S.</h1>
+        <h1 class="mb-3 pb-1 fw-semibold text-center">Artificial Intelligence, B.S.</h1>
         <h5 class="pb-1"><strong>Program description:</strong><br></h5>
         <p style="font-size: 1.15em;"><?php echo $desc; ?></p>
       </div>
@@ -83,7 +83,7 @@ $desc = $adminData[1];
           if ($count == 0) {
             echo "<h5 class='mb-3 mt-4 fw-semibold'>Mathematics and Statistics (20 credits)<br></h5>";
           } else if ($count == 5 and $row[5] == 'Y') {
-            echo "<h5 class='mb-3 mt-4 fw-semibold'>Computer Science Core (18 credits)<br></h5>";
+            echo "<h5 class='mb-3 mt-4 fw-semibold'>Artificial Intelligence Core (18 credits)<br></h5>";
           } else if ($count == 11 and $row[5] == 'Y') {
             echo "<h5 class='mb-3 mt-4 fw-semibold'>Required professional subjects (24 credits)<br></h5>";
           }
