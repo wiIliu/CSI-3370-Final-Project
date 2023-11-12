@@ -47,7 +47,7 @@ $desc = $adminData[1];
           <li class="nav-item"><a class="nav-link fw-medium" href="majorPage.php">MAJOR</a>
             <ul class="dropdown">
               <li><a class="mx-0" href="#">Artificial Intelligence</a></li>
-              <li><a class="mx-0" href="CompSci.html">Computer Science</a></li>
+              <li><a class="mx-0" href="CompSci.php">Computer Science</a></li>
               <li><a class="mx-0" href="ComputerEngineering.html">Computer Engineering</a></li>
               <li><a class="mx-0" href="IT.html">Information Technology</a></li>
               <li><a class="mx-0" href="Cybersecurity.html">Cybersecurity</a></li>
