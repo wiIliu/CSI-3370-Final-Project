@@ -5,26 +5,33 @@
     if(isset($_GET['advisorSelected']) && isset($_GET['class']) && $_GET['class'] != '0') {
         $advisorSelected = $_GET['advisorSelected'];
         $classSelected = $_GET['class'];
-        $query = "SELECT MJR_ID, MJR_NAME, MJR_PIC FROM major WHERE ADVISOR_ID IN ($advisorSelected) AND MJR_ID IN (SELECT MJR_ID FROM BRIDGE WHERE CLASS_ID IN ($classSelected));;";
+        $query = "SELECT MJR_ID, MJR_NAME, MJR_PIC, MJR_DESC FROM major WHERE ADVISOR_ID IN ($advisorSelected) AND MJR_ID IN (SELECT MJR_ID FROM BRIDGE WHERE CLASS_ID IN ($classSelected));;";
         $filterResult = filterTable($query);
         $filterSentence = "Currently showing all majors with class $classSelected and advisor $advisorSelected";
     }
     elseif(isset($_GET['advisorSelected'])){
         $advisorSelected = $_GET['advisorSelected'];
-        $query = "SELECT MJR_ID, MJR_NAME, MJR_PIC FROM major WHERE ADVISOR_ID IN ($advisorSelected);";
+        $query = "SELECT MJR_ID, MJR_NAME, MJR_PIC, MJR_DESC FROM major WHERE ADVISOR_ID IN ($advisorSelected);";
         $filterResult = filterTable($query);
         $filterSentence = "Currently showing all majors with advisor $advisorSelected";
     }
     elseif(isset($_GET['class']) &&  $_GET['class'] != '0'){
         $classSelected = $_GET['class'];
-        $query = "SELECT MJR_ID, MJR_NAME, MJR_PIC FROM major WHERE MJR_ID IN (SELECT MJR_ID FROM BRIDGE WHERE CLASS_ID IN ($classSelected));";
+        $query = "SELECT MJR_ID, MJR_NAME, MJR_PIC, MJR_DESC FROM major WHERE MJR_ID IN (SELECT MJR_ID FROM BRIDGE WHERE CLASS_ID IN ($classSelected));";
         $filterResult = filterTable($query);
         $filterSentence = "Currently showing all majors with class $classSelected";
+    }
+    elseif(isset($_GET['reset'])){
+        $class = '0';
+        // $advisorSelected = 0;
+        $query = "SELECT MJR_ID, MJR_NAME, MJR_PIC, MJR_DESC FROM major;";
+        $filterResult = filterTable($query);
+        $filterSentence = "Currently showing all majors";
     }
     else{
         $class = '0';
         // $advisorSelected = 0;
-        $query = "SELECT MJR_ID, MJR_NAME, MJR_PIC FROM major;";
+        $query = "SELECT MJR_ID, MJR_NAME, MJR_PIC, MJR_DESC FROM major;";
         $filterResult = filterTable($query);
         $filterSentence = "Currently showing all majors";
     }
