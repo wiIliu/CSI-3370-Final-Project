@@ -56,7 +56,6 @@ $filePaths = array("CompSci.php", "ComputerEngineering.html", "Cybersecurity.htm
 
     </nav>
 
-
     <div class="container-fluid">
 
       <div class="row jumbotron text-center">

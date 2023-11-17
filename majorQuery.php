@@ -1,7 +1,4 @@
 <?php
-    // if(isset($_GET['filter'])){
-    
-
     if(isset($_GET['advisorSelected']) && isset($_GET['class']) && $_GET['class'] != '0') {
         $advisorSelected = $_GET['advisorSelected'];
         $classSelected = $_GET['class'];
@@ -28,9 +25,9 @@
         $filterResult = filterTable($query);
         $filterSentence = "Currently showing all majors";
     }
+    
     else{
         $class = '0';
-        // $advisorSelected = 0;
         $query = "SELECT MJR_ID, MJR_NAME, MJR_PIC, MJR_DESC FROM major;";
         $filterResult = filterTable($query);
         $filterSentence = "Currently showing all majors";
