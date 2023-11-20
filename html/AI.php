@@ -28,7 +28,7 @@ $desc = $adminData[1];
 <body class="bg-light">
 
   <div class="banner">
-
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-md sticky-top bg-light">
       <!-- SITE LOGO -->
       <div id="logoContainer my-auto py-auto position-absolute top-0 start-0">
@@ -57,29 +57,29 @@ $desc = $adminData[1];
           <li class="nav-item"><a class="nav-link" href="#">CONTACT</a></li>
         </ul>
       </div>
-
     </nav>
 
     <div class="container-fluid">
-
+      <!-- MAJOR TITLE AND DESC -->
       <div class="row m-5 p-2">
         <h1 class="mb-3 pb-1 fw-semibold text-center">Artificial Intelligence, B.S.</h1>
         <h5 class="pb-1"><strong>Program description:</strong><br></h5>
         <p style="font-size: 1.15em;"><?php echo $desc; ?></p>
       </div>
-
+      <!-- MAJOR REQUIREMNETS -->
       <div class="row m-5 p-2">
         <h3 class="mb-1 pb-1 text-decoration-underline">Major Requirements</h3>
         <h5 class="pb-1 pt-2"><strong>General Education requirements:</strong></h5>
         <p class="" style="font-size: 1.15em;"><?php echo $admin; ?><br></p>
       </div>
 
-
+      <!-- COURSES LIST -->
       <div class="row justify-content-left mt-5 ms-5 ps-4">
         <h3 class="text-decoration-underline">Course list:</h3>
         <?php
         $count = 0;
         while ($row = mysqli_fetch_array($classes)) :
+          // TITLE SENTENCES
           if ($count == 0) {
             echo "<h5 class='mb-3 mt-4 fw-semibold'>Mathematics and Statistics (20 credits)<br></h5>";
           } else if ($count == 5 and $row[5] == 'Y') {
@@ -89,15 +89,43 @@ $desc = $adminData[1];
           }
         ?>
           <div class="mb-3">
+            <!-- CHECK BOX -->
             <input class="form-check-input" type="checkbox" id="class_<?php echo $row[0]; ?>" value="">
             <span class="text-dark">
-              <a class="fs-6 text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $row[0]; ?>" aria-expanded="false" aria-controls="collapseExample">
-                &nbsp;&nbsp;&nbsp;<?php echo $row[1] . " " . $row[0]; ?>&nbsp;&nbsp;<code>&#8212;</code>&nbsp;&nbsp;<span class="text-decoration-underline"><strong><?php echo $row[2]; ?></strong></span>&nbsp;(<?php echo $row[4] ?>)<br>
+              <a class="fs-6 text-dark"
+               type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseExample<?php echo $row[0]; ?>"
+                aria-expanded="false"
+                aria-controls="collapseExample">
+                <!-- COURSE GROUP-NUMBER-NAME -->
+                &nbsp;&nbsp;&nbsp;<?php echo $row[1] . " " . $row[0]; ?>&nbsp;&nbsp;<code>&#8212;</code>&nbsp;&nbsp;
+                  <span class="text-decoration-underline"><strong><?php echo $row[2]; ?></strong></span>
+                &nbsp;(<?php echo $row[4] ?>)<br>
               </a>
             </span>
+            <!-- CLASS INFO -->
             <div class="ms-4 collapse" id="collapseExample<?php echo $row[0]; ?>">
               <div class="mt-3 card card-body bg-secondary text-light" style="width: 600px">
-                <?php echo $row[3] ?>
+                <!-- CLASS DESC -->
+                <?php echo $row[3] ?><br><br>
+                <!-- SECTION LIST -->
+                <?php
+                $sections = getSections($row[0]);
+                if (mysqli_num_rows($sections)) {
+                  while($section = mysqli_fetch_array($sections)): ?>
+                    <p>
+                      <?php  echo $section[0] . " —— ".$section[5]." ".$section[4] ?>
+                    </p>    
+                  <?php endwhile; 
+                }
+                else{
+                  echo "NO SECTIONS FOR THIS COURSE YET";
+                }?>
+                <!-- TEXTBOOK -->
+                <a href="<?php echo $row[6]; ?>" 
+                class="link-light text-decoration-underline link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                target="_blank">Textbook link here.</a>
               </div>
               <br>
             </div>
@@ -111,7 +139,7 @@ $desc = $adminData[1];
       <br>
       <br>
 
-    </div>
+    </div> <!-- End of container-fluid div -->
 
   </div>
 
