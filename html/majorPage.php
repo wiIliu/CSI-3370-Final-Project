@@ -1,6 +1,6 @@
 <?php
 include("../majorQuery.php");
-$filePaths = array("CompSci.php", "ComputerEngineering.html", "Cybersecurity.html", "AI.php", "IT.html");
+$filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php", "AI.php", "IT.php");
 ?>
 
 <!DOCTYPE html>
@@ -44,12 +44,12 @@ $filePaths = array("CompSci.php", "ComputerEngineering.html", "Cybersecurity.htm
             <ul class="dropdown">
               <li><a class="mx-0" href="AI.php">Artificial Intelligence</a></li>
               <li><a class="mx-0" href="CompSci.php">Computer Science</a></li>
-              <li><a class="mx-0" href="ComputerEngineering.html">Computer Engineering</a></li>
-              <li><a class="mx-0" href="IT.html">Information Technology</a></li>
-              <li><a class="mx-0" href="Cybersecurity.html">Cybersecurity</a></li>
+              <li><a class="mx-0" href="ComputerEngineering.php">Computer Engineering</a></li>
+              <li><a class="mx-0" href="IT.php">Information Technology</a></li>
+              <li><a class="mx-0" href="Cybersecurity.php">Cybersecurity</a></li>
             </ul>
           </li>
-          <li class="nav-item"><a class="nav-link" href="career.html">CAREER</a></li>
+          <li class="nav-item"><a class="nav-link" href="appointment.php">ADVISOR</a></li>
           <li class="nav-item"><a class="nav-link" href="#">CONTACT</a></li>
         </ul>
       </div>

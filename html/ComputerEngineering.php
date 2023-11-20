@@ -1,7 +1,7 @@
 <?php
 include("../classQuery.php");
-$classes = getClassData(1);
-$adminData = getAdminData(1);
+$classes = getClassData(2);
+$adminData = getAdminData(2);
 
 $admin = $adminData[0];
 $desc = $adminData[1];
@@ -48,8 +48,8 @@ $desc = $adminData[1];
           <li class="nav-item"><a class="nav-link fw-medium" href="majorPage.php">MAJOR</a>
             <ul class="dropdown">
               <li><a class="mx-0" href="AI.php">Artificial Intelligence</a></li>
-              <li><a class="mx-0" href="#">Computer Science</a></li>
-              <li><a class="mx-0" href="ComputerEngineering.php">Computer Engineering</a></li>
+              <li><a class="mx-0" href="CompSci.php">Computer Science</a></li>
+              <li><a class="mx-0" href="#">Computer Engineering</a></li>
               <li><a class="mx-0" href="IT.php">Information Technology</a></li>
               <li><a class="mx-0" href="Cybersecurity.php">Cybersecurity</a></li>
             </ul>
@@ -64,7 +64,7 @@ $desc = $adminData[1];
     <div class="container-fluid">
 
       <div class="row m-5 p-2">
-        <h1 class="mb-3 pb-1 fw-semibold text-center"> Computer Science, B.S.</h1>
+        <h1 class="mb-3 pb-1 fw-semibold text-center"> Computer Engineering, B.S.</h1>
         <h5 class="pb-1"><strong>Program description:</strong><br></h5>
         <p style="font-size: 1.15em;"><?php echo $desc; ?></p>
       </div>
@@ -84,7 +84,7 @@ $desc = $adminData[1];
           if ($count == 0) {
             echo "<h5 class='mb-3 mt-4 fw-semibold'>Mathematics and Statistics (20 credits)<br></h5>";
           } else if ($count == 5 and $row[5] == 'Y') {
-            echo "<h5 class='mb-3 mt-4 fw-semibold'>Computer Science Core (18 credits)<br></h5>";
+            echo "<h5 class='mb-3 mt-4 fw-semibold'>Computer Engineering Core (18 credits)<br></h5>";
           } else if ($count == 11 and $row[5] == 'Y') {
             echo "<h5 class='mb-3 mt-4 fw-semibold'>Required professional subjects (24 credits)<br></h5>";
           }
@@ -99,7 +99,9 @@ $desc = $adminData[1];
               data-bs-target="#collapseExample<?php echo $row[0];?>" 
               aria-expanded="false" 
               aria-controls="collapseExample">
-                &nbsp;&nbsp;&nbsp;<?php echo $row[1] . " " . $row[0]; ?>&nbsp;&nbsp;<code>&#8212;</code>&nbsp;&nbsp;<span class="text-decoration-underline"><strong><?php echo $row[2]; ?></strong></span>&nbsp;(<?php echo $row[4] ?>)<br>
+                &nbsp;&nbsp;&nbsp;<?php echo $row[1] . " " . $row[0]; ?>&nbsp;&nbsp;<code>&#8212;</code>&nbsp;&nbsp;
+                  <span class="text-decoration-underline"><strong><?php echo $row[2]; ?></strong></span>
+                &nbsp;(<?php echo $row[4] ?>)<br>
               </a>
             </span>
             <div class="ms-4 collapse" id="collapseExample<?php echo $row[0]; ?>">
