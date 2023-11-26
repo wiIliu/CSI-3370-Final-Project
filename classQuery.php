@@ -14,9 +14,15 @@ function getAdminData($major){
     $row = mysqli_fetch_row($data);
     return $row;
 }
+function getProfData($profId){
+    $query = "SELECT * FROM PROFESSOR WHERE PROF_ID IN($profId);";
+    $data = runQuery($query);
+    $row = mysqli_fetch_row($data);
+    return $row;
+}
 
 function getSections($classID){
-    $query = "SELECT CRN, S.PROF_ID, PROF_FNAME, PROF_LNAME, SECTION_TIME,SECTION_SEMESTER FROM SECTION S 
+    $query = "SELECT CRN, S.PROF_ID, PROF_FNAME, PROF_LNAME, DATE_FORMAT(SECTION_TIME, '%Y-%m-%d %H:%i') as SECTION_TIME, SECTION_SEMESTER  FROM SECTION S 
      LEFT JOIN PROFESSOR P ON S.PROF_ID = P.PROF_ID
      WHERE CLASS_ID = $classID
      ORDER BY SECTION_SEMESTER,CRN;";
