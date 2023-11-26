@@ -1,10 +1,9 @@
 <?php
 include("../classQuery.php");
 $classes = getClassData(4);
-$adminData = getAdminData(4);
-
-$admin = $adminData[0];
-$desc = $adminData[1];
+$admissionsData = getAdmissionsData(4);
+$admissions = $admissionsData[0];
+$desc = $admissionsData[1];
 ?>
 
 <!DOCTYPE html>
@@ -24,8 +23,7 @@ $desc = $adminData[1];
 
 </head>
 
-
-<body class="bg-light">
+<body class="bg-light" onload="updateProgress()">
 
   <div class="banner">
     <!-- NAVBAR -->
@@ -63,19 +61,33 @@ $desc = $adminData[1];
       <!-- MAJOR TITLE AND DESC -->
       <div class="row m-5 p-2">
         <h1 class="mb-3 pb-1 fw-semibold text-center">Artificial Intelligence, B.S.</h1>
-        <h5 class="pb-1"><strong>Program description:</strong><br></h5>
+        <h5 class="pb-1"><strong>Program Description:</strong><br></h5>
         <p style="font-size: 1.15em;"><?php echo $desc; ?></p>
       </div>
       <!-- MAJOR REQUIREMNETS -->
-      <div class="row m-5 p-2">
+      <div class="row m-5 mb-3 p-2">
         <h3 class="mb-1 pb-1 text-decoration-underline">Major Requirements</h3>
-        <h5 class="pb-1 pt-2"><strong>General Education requirements:</strong></h5>
-        <p class="" style="font-size: 1.15em;"><?php echo $admin; ?><br></p>
+        <h5 class="pb-1 pt-2"><strong>General Education Requirements:</strong></h5>
+        <p class="" style="font-size: 1.15em;"><?php echo $admissions; ?><br></p>
       </div>
-
+      <!-- PROGRESS BAR -->
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <p class='text-center mb-2 fw-semibold'>Degree Completion</p>
+          <div class="progress" style="height:20px;">
+            <div id="progressBar" class="progress-bar" role="progressbar" style="background:#010161;" aria-label="progress bar fill" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+      <!-- RESET PROGRESS BAR BUTTON -->
+      <div class="row justify-content-center mt-3">
+        <div class="col-1">
+          <button class="btn btn-sm text-light" style="background-color:#010161;" type="button" onclick="reset()">RESET</button>
+        </div>
+      </div>
       <!-- COURSES LIST -->
-      <div class="row justify-content-left mt-5 ms-5 ps-4">
-        <h3 class="text-decoration-underline">Course list:</h3>
+      <div class="row justify-content-left mt-2 ms-5 ps-4">
+        <h3 class="text-decoration-underline">Course List:</h3>
         <?php
         $count = 0;
         while ($row = mysqli_fetch_array($classes)) :
@@ -90,17 +102,14 @@ $desc = $adminData[1];
         ?>
           <div class="mb-3">
             <!-- CHECK BOX -->
-            <input class="form-check-input" type="checkbox" id="class_<?php echo $row[0]; ?>" value="">
+            <span>
+              <input onclick="updateProgress()" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1">
+            </span>
+            <!-- COURSE GROUP-NUMBER-NAME -->
             <span class="text-dark">
-              <a class="fs-6 text-dark"
-               type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseExample<?php echo $row[0]; ?>"
-                aria-expanded="false"
-                aria-controls="collapseExample">
-                <!-- COURSE GROUP-NUMBER-NAME -->
-                &nbsp;&nbsp;&nbsp;<?php echo $row[1] . " " . $row[0]; ?>&nbsp;&nbsp;<code>&#8212;</code>&nbsp;&nbsp;
-                  <span class="text-decoration-underline"><strong><?php echo $row[2]; ?></strong></span>
+              <a class="fs-6 text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $row[0]; ?>" aria-expanded="false" aria-controls="collapseExample">
+                &nbsp;&nbsp;&nbsp;<?php echo $row[1] . "&nbsp;" . $row[0]; ?>&nbsp;&nbsp;<code>&#8212;</code>&nbsp;&nbsp;
+                <span class="text-decoration-underline"><strong><?php echo $row[2]; ?></strong></span>
                 &nbsp;(<?php echo $row[4] ?>)<br>
               </a>
             </span>
@@ -113,19 +122,20 @@ $desc = $adminData[1];
                 <?php
                 $sections = getSections($row[0]);
                 if (mysqli_num_rows($sections)) {
-                  while($section = mysqli_fetch_array($sections)): ?>
+                  while ($section = mysqli_fetch_array($sections)) : ?>
                     <p>
-                      <?php  echo $section[0] . " —— ".$section[5]." ".$section[4] ?>
-                    </p>    
-                  <?php endwhile; 
-                }
-                else{
+                      <?php echo $section[0] . " —— " . $section[5] . " " . $section[4]; // make the date not have seconds
+                      $prof = getProfData($section[1]);
+                      ?>
+                      <!-- PROFESSORS -->
+                      <span><a href="" data-bs-target="#profPopup" data-bs-toggle="modal" data-bs-pID="<?php echo $prof[0]; ?>" data-bs-pFname="<?php echo $prof[1]; ?>" data-bs-pLname="<?php echo $prof[2]; ?>" data-bs-pOffice="<?php echo $prof[3]; ?>" data-bs-pPhone="<?php echo $prof[4]; ?>" data-bs-pEmail="<?php echo $prof[5]; ?>" data-bs-pBackground="<?php echo $prof[6]; ?>" data-bs-pRating="<?php echo $prof[7]; ?>" data-bs-pRLink="<?php echo $prof[8]; ?>">&nbsp;<?php echo $section[2] . "&nbsp;" . $section[3]; ?></a></span>
+                    </p>
+                <?php endwhile;
+                } else {
                   echo "NO SECTIONS FOR THIS COURSE YET";
-                }?>
+                } ?>
                 <!-- TEXTBOOK -->
-                <a href="<?php echo $row[6]; ?>" 
-                class="link-light text-decoration-underline link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                target="_blank">Textbook link here.</a>
+                <a href="<?php echo $row[6]; ?>" class="link-light text-decoration-underline link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" target="_blank">Textbook link here.</a>
               </div>
               <br>
             </div>
@@ -133,16 +143,86 @@ $desc = $adminData[1];
 
           <?php $count++; ?>
         <?php endwhile; ?>
+        <div class="go"></div>
+      </div> <!-- End course row div -->
+
+      <!-- CAREER -->
+      <div class="row m-5 p-2">
+        <h5 class="pb-1 pt-2"><strong>Career Paths:</strong></h5>
+        <!-- <p class="" style="font-size: 1.15em;"><//?php echo $careers; ?><br></p> -->
       </div>
-      <br>
-      <br>
-      <br>
-      <br>
+
+      <!-- PROF POPUP -->
+      <div class="modal fade text-light" id="profPopup" tabindex="-1" data-bs-theme="dark" aria-labelledby="professorPopup" aria-hidden="true" style="white-space: pre-line;">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="">About</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+              <p class="text-light" id="mainSpace"></p>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div> <!-- End prof popup -->
 
     </div> <!-- End of container-fluid div -->
 
   </div>
 
+
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <!-- PROF POPUP SCRIPT -->
+  <script>
+    const profPopup = document.getElementById('profPopup');
+    if (profPopup) {
+      profPopup.addEventListener('show.bs.modal', event => {
+        // link that triggered the modal
+        const link = event.relatedTarget;
+        // Extract info from data-bs-* attributes
+        const profId = link.getAttribute('data-bs-pID');
+        const fName = link.getAttribute('data-bs-pFname');
+        const lName = link.getAttribute('data-bs-pLname');
+        const office = link.getAttribute('data-bs-pOffice');
+        const phone = link.getAttribute('data-bs-pPhone');
+        const email = link.getAttribute('data-bs-pEmail');
+        const background = link.getAttribute('data-bs-pBackground');
+        const rating = link.getAttribute('data-bs-pRating');
+        const ratingLink = link.getAttribute('data-bs-pRLink');
+        // Update the modal's content.
+        const modalTitle = profPopup.querySelector('.modal-title');
+        const modalBody = profPopup.querySelector("#mainSpace");
+
+        modalTitle.textContent = `About Professor ${fName} ${lName}`;
+        modalBody.textContent = `Phone: ${phone}\tEmail: ${email}\tOffice Number:${office}
+           ${background}
+           ${rating} \t ${ratingLink}`;
+      });
+    }
+  </script>
+  <!-- PROGRESS BAR SCRIPT -->
+  <script>
+    function updateProgress() {
+      var numAll = $('input[type="checkbox"]').length;
+      var numChecked = $('input[type="checkbox"]:checked').length;
+      if (numAll > 0) {
+        var perc = (numChecked / numAll) * 100;
+        $('.progress-bar').css('width', perc + '%').attr('aria-valuenow', perc);
+        document.getElementById("progressBar").innerHTML = perc.toFixed(1) + '%';
+      }
+    }
+    function reset() {
+      $('input[type=checkbox]').prop('checked', false);
+      updateProgress();
+    }
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>

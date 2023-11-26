@@ -8,7 +8,7 @@ function getClassData($major){
     return $data;
 }
 
-function getAdminData($major){
+function getAdmissionsData($major){
     $query = "SELECT ADMIN_REQ, MJR_DESC FROM MAJOR WHERE MJR_ID IN ($major);";
     $data = runQuery($query);
     $row = mysqli_fetch_row($data);
