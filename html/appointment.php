@@ -76,7 +76,7 @@ $current = date("H:i:s d.m.y");
                             <li><a class="mx-0" href="Cybersecurity.php">Cybersecurity</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="#">ADIVSOR</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">ADVISOR</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">CONTACT</a></li>
                 </ul>
             </div>
