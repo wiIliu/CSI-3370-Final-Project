@@ -30,6 +30,14 @@ function getSections($classID){
     return $data;
 }
 
+function getAdvisor($major){
+    $query = "SELECT CONCAT(ADVISOR_FNAME, ' ', ADVISOR_LNAME) AS ADVISOR_NAME FROM ADVISOR 
+        WHERE ADVISOR_ID IN (SELECT ADVISOR_ID FROM MAJOR WHERE MJR_ID = $major);";
+    $data = runQuery($query);
+    $row = mysqli_fetch_row($data);
+    return $row[0];
+}
+
 function runQuery($query){
     $server = "localhost";
     $server = "127.0.0.1";
