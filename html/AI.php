@@ -53,7 +53,7 @@ $advisor = getAdvisor(4);
             </ul>
           </li>
           <li class="nav-item"><a class="nav-link" href="appointment.php">ADVISOR</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">CONTACT</a></li>
+          <li class="nav-item"><a class="nav-link" href="career.html">CAREER</a></li>
         </ul>
       </div>
     </nav>
