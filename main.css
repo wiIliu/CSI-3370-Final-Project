@@ -1,0 +1,45 @@
+/* Reset some default browser styles */
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set a background color for the body */
+body {
+  background: #584a4a;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("../pictures/tech\ copy.jpg");
+  background-position: center;
+  background-size: cover;
+  padding-left: 8%;
+  padding-right: 8%;
+  box-sizing: border-box;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+}
+
+/* Style the jumbotron */
+.jumbotron {
+  background: #968989;
+  color: #ffffff;
+  padding: 50px;
+}
+
+/* Style the program overview buttons */
+.btn-md {
+  display: block;
+  margin-top: 15px;
+  background: #584a4a;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.btn-md:hover {
+  background-color: #8a8f94;
+}
