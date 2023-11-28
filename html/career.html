@@ -2,63 +2,168 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MyDegree.com</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="../css/style.css" />
   <link rel="stylesheet" href="../css/Navbar.css">
+  <link rel="stylesheet" type="text/css" href="../css/main.css" />
 
   <link rel="shortcut icon" href="../pictures/mydegreeFavicon.png" type="image/x-icon" />
+
 </head>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+    line-height: 1;
+    color: #333;
+  }
 
-<body>
-  <div class="container-fluid banner">
-    <div class="row">
-      <div class="col-md-12">
-        <nav class="navbar navbar-md">
-          <!-- SITE LOGO -->
-          <div id="logoContainer my-auto py-auto position-absolute top-0 start-0">
-            <a class="navbar-brand" href="../index.html">
-              <img src="../pictures/mydegreeLogo.png" width="200" height="80" alt="mydegree logo" class="d-inline-block">
-            </a>
-          </div>
-          <!-- NAVBAR LINKS -->
-          <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link" href="../index.html">HOME</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../major.php">MAJOR</a>
-              <ul class="dropdown">
-                <li><a href="AI.html">Artificial Intelligence</a></li>
-                <li><a href="CompSci.html">Computer Science</a></li>
-                <li><a href="ComputerEngineering.html">Computer Engineering</a></li>
-                <li><a href="IT.html">Information Technology</a></li>
-                <li><a href="Cybersecurity.html">Cybersecurity</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">CAREER</a>
+  h1 {
+    color: #010e1c;
+  }
 
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">CONTACT</a>
-            </li>
-          </ul>
-        </nav>
+  p {
+    margin-bottom: 20px;
+  }
+
+  ul {
+    list-style-type: square;
+  }
+
+  li {
+    margin-bottom: 8px;
+    color: black;
+  }
+</style>
+
+<body class="bg-light">
+
+  <div class="banner">
+
+    <nav class="navbar navbar-expand-md sticky-top bg-light">
+      <!-- SITE LOGO -->
+      <div id="logoContainer my-auto py-auto position-absolute top-0 start-0">
+        <a class="ms-3 navbar-brand" href="../index.html">
+          <img src="../pictures/mydegreeLogo.png" width="150" height="55" alt="mydegree logo" class="d-inline-block">
+        </a>
       </div>
-    </div> <!--end of row div-->
+      <!-- Collapsed navbar toggler button -->
+      <!-- <button class="navbar-toggler ms-auto" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> -->
+      <!-- NAVBAR LINKS -->
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav nav">
+          <li class="nav-item"><a class="nav-link fw-medium" href="../index.html">HOME</a></li>
+          <li class="nav-item"><a class="nav-link fw-medium" href="majorPage.php">MAJOR</a>
+            <ul class="dropdown">
+              <li><a class="mx-0" href="AI.php">Artificial Intelligence</a></li>
+              <li><a class="mx-0" href="#">Computer Science</a></li>
+              <li><a class="mx-0" href="ComputerEngineering.html">Computer Engineering</a></li>
+              <li><a class="mx-0" href="IT.html">Information Technology</a></li>
+              <li><a class="mx-0" href="Cybersecurity.html">Cybersecurity</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="career.html">CAREER</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">CONTACT</a></li>
+        </ul>
+      </div>
 
+    </nav>
+    <body>
+      <h2>Computer Science Jobs and Careers</h2>
+
+      <p>Computer Science is a broad and dynamic field that offers a wide range of jobs and careers across various industries. Here are some common computer science jobs and career paths:</p>
+    
+      <ul>
+        <ol>
+          <li>Software Engineer</li>
+          <li>Computer Science</li>
+          <li>Software Design and Development</li>
+          <li>Information Security</li>
+          <li>Information Technology</li>
+          <li>Web Development</li>
+          <li>App Development</li>
+          <li>Systems Analysis</li>
+          <li>Data Analysis</li>
+          <li>Front End Development</li>
+        </ol>
+    
+      </ul>
+      <h2>Computer Engineering Jobs and Careers</h2>
+      <p>Our computer engineering program prepares you for a broad range of jobs and career pathways. You may find opportunities in fields such as:</p>
+
+  <ul>
+    <ol>
+    <li>Hardware Engineering</li>
+    <li>Firmware Programming</li>
+    <li>Embedded System Design</li>
+    <li>Computer Circuit Design</li>
+    <li>Computer Programming</li>
+    <li>Energy-Efficient Computing</li>
+    <li>Embedded Controls</li>
+    <li>Autonomous Vehicles</li>
+    <li>Medical Devices</li>
+  </ol>
+  </ul>
+      <h2>Cyber Security Jobs and Careers</h2>
+    
+      <p>Computer Science is a broad and dynamic field that offers a wide range of jobs and careers across various industries. Here are some common computer science jobs and career paths:</p>
+    
+      <ul>
+        <ol>
+        <li>Cybersecurity Analyst</li>
+        <li>Security Consultant</li>
+        <li>Penetration Tester</li>
+        <li>Incident Responder</li>
+        <li>Security Engineer</li>
+        <li>Security Architect</li>
+        <li>Vulnerability Assessor</li>
+        <li>Security Operations Center (SOC) Analyst</li>
+        <li>Cryptographer</li>
+      </ol>
+      </ul>
+      <h2>Artificial Intelligence (AI) Jobs and Careers</h2>
+
+      <p>Artificial Intelligence (AI) has become a rapidly growing field, and there are numerous job opportunities and career paths for individuals interested in AI. The demand for AI talent spans various industries, including technology, healthcare, finance, manufacturing, and more. Here are some common job roles and careers in the field of artificial intelligence:</p>
+
+      <ul>
+        <ol>
+        <li>Machine Learning Engineer</li>
+        <li>Data Scientist</li>
+        <li>AI Research Scientist</li>
+        <li>Computer Vision Engineer</li>
+        <li>Robotics Engineer</li>
+      </ol>
+      </ul>
+      <h2>IT Jobs and IT Careers</h2>
+
+      <p>Graduates of our IT degree program have an excellent hiring record, with many receiving IT job offers before they complete the IT degree. Common IT career pathways include:</p>
+
+      <ul>
+        <ol>
+        <li>System Administration</li>
+        <li>Information Security</li>
+        <li>Network Administration</li>
+        <li>Web Development</li>
+        <li>Programming</li>
+        <li>Database Administration</li>
+      </ol>
+      </ul>
+
+    
+    </body>
+   
+    </div>
 
   </div>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 
 </html>
