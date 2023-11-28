@@ -11,6 +11,7 @@ $desc = $adminData[1];
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MyDegree.com</title>
@@ -73,19 +74,19 @@ $desc = $adminData[1];
         <h5 class="pb-1 pt-2"><strong>General Education requirements:</strong></h5>
         <p class="" style="font-size: 1.15em;"><?php echo $admin; ?><br></p>
       </div>
-
-
       <div class="row justify-content-left mt-5 ms-5 ps-4">
         <h3 class="text-decoration-underline">Course list:</h3>
         <?php
         $count = 0;
         while ($row = mysqli_fetch_array($classes)) :
           if ($count == 0) {
-            echo "<h5 class='mb-3 mt-4 fw-semibold'>Mathematics and Statistics (20 credits)<br></h5>";
+            echo "<h5 class='mb- mt-4 fw-semibold'>Mathematics and Statistics (20 credits)<br></h5>";
           } else if ($count == 5 and $row[5] == 'Y') {
             echo "<h5 class='mb-3 mt-4 fw-semibold'>Artificial Intelligence Core (18 credits)<br></h5>";
           } else if ($count == 11 and $row[5] == 'Y') {
             echo "<h5 class='mb-3 mt-4 fw-semibold'>Required professional subjects (24 credits)<br></h5>";
+          }else if ($count == 11 and $row[5] == 'Y') {
+            echo "<h5 class='mb-3 mt-4 fw-semibold'>professional Elective (24 credits)<br></h5>";
           }
         ?>
           <div class="mb-3">
@@ -102,6 +103,8 @@ $desc = $adminData[1];
               <br>
             </div>
           </div>
+          
+    </div>
 
           <?php $count++; ?>
         <?php endwhile; ?>
@@ -112,7 +115,19 @@ $desc = $adminData[1];
       <br>
 
     </div>
-
+    <div class="row justify-content-left mt-5 ms-5 ps-4">
+              <h2>Artificial Intelligence Job and Careers <br></h2>
+              <p>Artificial Intelligence is a broad and dynamic field that offers a wide range of jobs and careers across various industries.<br> Here are some common computer science jobs and career paths:</p>
+              <ul class="list-group">
+              <ol>
+              <li>Machine learning Engineer</li>
+              <li>Data Scientist</li>
+              <li>Al research Scientist</li>
+              <li>Information Security</li>
+              <li>Computer vision engineer</li>
+              <li>Robotics engineer</li>
+            </ol>
+    </ul>
   </div>
 
 
