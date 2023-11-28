@@ -4,6 +4,7 @@ $classes = getClassData(4);
 $admissionsData = getAdmissionsData(4);
 $admissions = $admissionsData[0];
 $desc = $admissionsData[1];
+$advisor = getAdvisor(4);
 ?>
 
 <!DOCTYPE html>
@@ -59,13 +60,15 @@ $desc = $admissionsData[1];
 
     <div class="container-fluid">
       <!-- MAJOR TITLE AND DESC -->
-      <div class="row m-5 p-2">
+      <div class="row m-5 mb-3 p-2">
         <h1 class="mb-3 pb-1 fw-semibold text-center">Artificial Intelligence, B.S.</h1>
-        <h5 class="pb-1"><strong>Program Description:</strong><br></h5>
-        <p style="font-size: 1.15em;"><?php echo $desc; ?></p>
+        <h5 class="py-1"><strong>Program Description:</strong><br></h5>
+        <p style="font-size: 1.15em;"><?php echo $desc; ?>
+        <span class=><br><br>Advisor for Artificial Intelligence —— <?php echo $advisor; ?></span>
+        </p>
       </div>
       <!-- MAJOR REQUIREMNETS -->
-      <div class="row m-5 mb-3 p-2">
+      <div class="row mx-5 my-3 p-2">
         <h3 class="mb-1 pb-1 text-decoration-underline">Major Requirements</h3>
         <h5 class="pb-1 pt-2"><strong>General Education Requirements:</strong></h5>
         <p class="" style="font-size: 1.15em;"><?php echo $admissions; ?><br></p>
@@ -93,18 +96,28 @@ $desc = $admissionsData[1];
         while ($row = mysqli_fetch_array($classes)) :
           // TITLE SENTENCES
           if ($count == 0) {
-            echo "<h5 class='mb-3 mt-4 fw-semibold'>Mathematics and Statistics (20 credits)<br></h5>";
+            echo "<h5 class='mb-3 mt-4 fw-semibold'>Mathematics and Statistics (20 credits)&nbsp;
+            <span><button class='btn btn-sm text-light' style='background-color:#010161;' type='button' onclick='selectAllMath()'>Select All</button></span></h5><br>";
           } else if ($count == 5 and $row[5] == 'Y') {
-            echo "<h5 class='mb-3 mt-4 fw-semibold'>Artificial Intelligence Core (18 credits)<br></h5>";
+            echo "<h5 class='mb-3 mt-4 fw-semibold'>Artificial Intelligence Core (18 credits)&nbsp;
+            <span><button class='btn btn-sm text-light' style='background-color:#010161;' type='button' onclick='selectAllCore()'>Select All</button></span></h5><br>";
           } else if ($count == 11 and $row[5] == 'Y') {
             echo "<h5 class='mb-3 mt-4 fw-semibold'>Required professional subjects (24 credits)<br></h5>";
           }
         ?>
           <div class="mb-3">
-            <!-- CHECK BOX -->
-            <span>
+            <!-- CHECK BOXES -->
+            <?php if($count < 5){ ?>
+              <span><input onclick="updateProgress()" class="math" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
+            <?php } else if ($count < 11){ ?>
+              <span><input onclick="updateProgress()" class="core" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
+            <?php } else if ($count >= 11) { ?>
+            <span><input onclick="updateProgress()" class="last" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
+            <?php } else { ?>
+              <span>
               <input onclick="updateProgress()" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1">
             </span>
+            <?php } ?>
             <!-- COURSE GROUP-NUMBER-NAME -->
             <span class="text-dark">
               <a class="fs-6 text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $row[0]; ?>" aria-expanded="false" aria-controls="collapseExample">
@@ -124,7 +137,7 @@ $desc = $admissionsData[1];
                 if (mysqli_num_rows($sections)) {
                   while ($section = mysqli_fetch_array($sections)) : ?>
                     <p>
-                      <?php echo $section[0] . " —— " . $section[5] . " " . $section[4]; // make the date not have seconds
+                      <?php echo $section[0] . " —— " . $section[5] . " " . $section[4]; 
                       $prof = getProfData($section[1]);
                       ?>
                       <!-- PROFESSORS -->
@@ -132,7 +145,7 @@ $desc = $admissionsData[1];
                     </p>
                 <?php endwhile;
                 } else {
-                  echo "NO SECTIONS FOR THIS COURSE YET";
+                  echo "NO OFFERED SECTIONS";
                 } ?>
                 <!-- TEXTBOOK -->
                 <a href="<?php echo $row[6]; ?>" class="link-light text-decoration-underline link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" target="_blank">Textbook link here.</a>
@@ -212,12 +225,32 @@ $desc = $admissionsData[1];
     function updateProgress() {
       var numAll = $('input[type="checkbox"]').length;
       var numChecked = $('input[type="checkbox"]:checked').length;
+      var lastBoxes = $('.last:input[type="checkbox"]').length;
+      var lastChecked = $('.last:input[type="checkbox"]:checked').length;
+      numAll -= lastBoxes;
+      numChecked-=lastChecked
       if (numAll > 0) {
         var perc = (numChecked / numAll) * 100;
         $('.progress-bar').css('width', perc + '%').attr('aria-valuenow', perc);
         document.getElementById("progressBar").innerHTML = perc.toFixed(1) + '%';
       }
     }
+
+    function selectAllMath() {
+      $('.math:input[type=checkbox]').prop('checked', true);
+      updateProgress();
+    }
+
+    function selectAllCore() {
+      $('.core:input[type=checkbox]').prop('checked', true);
+      updateProgress();
+    }
+
+    function selectAllProfessional() {
+      $('.professional:input[type=checkbox]').prop('checked', true);
+      updateProgress();
+    }
+
     function reset() {
       $('input[type=checkbox]').prop('checked', false);
       updateProgress();
