@@ -82,9 +82,9 @@ $desc = $adminData[1];
         while ($row = mysqli_fetch_array($classes)) :
           if ($count == 0) {
             echo "<h5 class='mb-3 mt-4 fw-semibold'>Mathematics and Statistics (20 credits)<br></h5>";
-          } else if ($count == 5 and $row[5] == 'Y') {
+          } else if ($count == 5) {
             echo "<h5 class='mb-3 mt-4 fw-semibold'>Computer Science Core (18 credits)<br></h5>";
-          } else if ($count == 11 and $row[5] == 'Y') {
+          } else if ($count == 11) {
             echo "<h5 class='mb-3 mt-4 fw-semibold'>Required professional subjects (24 credits)<br></h5>";
           }
         ?>
@@ -110,7 +110,24 @@ $desc = $adminData[1];
       <br>
       <br>
       <br>
-
+      <div class="row justify-content-left mt-5 ms-5 ps-4">
+    <h2>Computer Science Job and Careers <br></h2>
+    <p>Computer Science is a broad and dynamic field that offers a wide range of jobs and careers across various industries.<br> Here are some common computer science jobs and career paths:</p>
+    <ul class="list-group">
+    <ol>
+    <li>Software Engineer</li>
+    <li>Computer Science</li>
+    <li>Software Design and Development</li>
+    <li>Information Security</li>
+    <li>Information Technology</li>
+    <li>Web Development</li>
+    <li>App Development</li>
+    <li>Systems Analysis</li>
+    <li>Data Analysis</li>
+    <li>Front End Development</li>
+  </ol>
+    </ul>
+  </div>
     </div>
 
   </div>
