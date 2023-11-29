@@ -13,11 +13,25 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/Navbar.css">
   <link rel="stylesheet" type="text/css" href="../css/main.css" />
 
   <link rel="shortcut icon" href="../pictures/mydegreeFavicon.png" type="image/x-icon" />
-
+  <style>
+    .nav li:hover {
+      background-color: white;
+      border-radius: 5px;
+      transition: 0.3s ease;
+    }
+    .dropdown li+li {
+      margin-top: 10px;
+    }
+    .nav-item {
+      position: relative;
+    }
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+  </style>
 </head>
 
 
@@ -25,35 +39,43 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
 
   <div class="banner">
 
-    <nav class="navbar navbar-expand-md sticky-top" style="background-color: #584a4a;">
-      <!-- SITE LOGO -->
-      <div id="logoContainer my-auto py-auto position-absolute top-0 start-0">
-        <a class="ms-3 navbar-brand" href="../index.html">
-          <img src="../pictures/mydegreeLogo.png" width="150" height="55" alt="mydegree logo" class="d-inline-block">
-        </a>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-md sticky-top bg-light">
+      <div class="container-fluid position-relative">
+        <!-- SITE LOGO -->
+        <div id="logoContainer my-auto py-auto position-absolute top-0 start-0">
+          <a class="ms-3 navbar-brand" href="../index.html">
+            <img src="../pictures/mydegreeLogo.png" width="150" height="55" alt="mydegree logo" class="d-inline-block">
+          </a>
+        </div>
+        <!-- COLLAPSED NAVBAR TOGGLER BUTTON -->
+        <button class="navbar-toggler mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- NAVBAR LINKS -->
+        <div class="collapse navbar-collapse justify-content-end pt-2 me-5 pe-5" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link fw-semibold fs-5 pe-2" href="../index.html">HOME</a></li>
+            <!-- DROPDOWN MAJOR -->
+            <li class="nav-item dropdown pe-2">
+              <div class="btn-group">
+                <a class="nav-link fw-semibold fs-5 pe-0 me-0" href="#" id="dropdownMenuLink">MAJOR</a>
+                <button type="button" class="px-1 mx-0 btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                <!-- DROPDOWN LINKS -->
+                <ul class="dropdown-menu" data-bs-theme="dark" style="background-color: #073352;   border-radius: 8px; top: 35px; padding: 1em 0;" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item py-1 mx-0" href="AI.php">Artificial Intelligence</a></li>
+                  <li><a class="dropdown-item pb-1 mx-0" href="CompSci.php">Computer Science</a></li>
+                  <li><a class="dropdown-item pb-1 mx-0" href="ComputerEngineering.php">Computer Engineering</a></li>
+                  <li><a class="dropdown-item pb-1 mx-0" href="IT.php">Information Technology</a></li>
+                  <li><a class="dropdown-item pb-1 mx-0" href="Cybersecurity.php">Cybersecurity</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item"><a class="nav-link fw-semibold fs-5 pe-2" href="appointment.php">ADVISOR</a></li>
+            <li class="nav-item"><a class="nav-link fw-semibold fs-5 pe-3" href="career.html">CAREER</a></li>
+          </ul>
+        </div>
       </div>
-      <!-- Collapsed navbar toggler button -->
-      <!-- <button class="navbar-toggler ms-auto" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button> -->
-      <!-- NAVBAR LINKS -->
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav nav">
-          <li class="nav-item"><a class="nav-link fw-medium" href="../index.html">HOME</a></li>
-          <li class="nav-item"><a class="nav-link fw-medium" href="#">MAJOR</a>
-            <ul class="dropdown">
-              <li><a class="mx-0" href="AI.php">Artificial Intelligence</a></li>
-              <li><a class="mx-0" href="CompSci.php">Computer Science</a></li>
-              <li><a class="mx-0" href="ComputerEngineering.php">Computer Engineering</a></li>
-              <li><a class="mx-0" href="IT.php">Information Technology</a></li>
-              <li><a class="mx-0" href="Cybersecurity.php">Cybersecurity</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="appointment.php">ADVISOR</a></li>
-          <li class="nav-item"><a class="nav-link" href="career.html">CAREER</a></li>
-        </ul>
-      </div>
-
     </nav>
 
     <div class="container-fluid">
@@ -89,6 +111,19 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
 
     </div> <!-- container-fluid banner -->
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+    $(document).ready(function() {
+      $('.dropdown').hover(function() {
+        $(this).addClass('show');
+        $(this).find('.dropdown-menu').addClass('show');
+      }, function() {
+        $(this).removeClass('show');
+        $(this).find('.dropdown-menu').removeClass('show');
+      });
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 
 </html>

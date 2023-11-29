@@ -19,7 +19,22 @@ $advisor = getAdvisor(5);
   <link rel="stylesheet" type="text/css" href="../css/style.css" />
 
   <link rel="shortcut icon" href="../pictures/mydegreeFavicon.png" type="image/x-icon" />
-
+  <style>
+    .nav li:hover {
+      background-color: white;
+      border-radius: 5px;
+      transition: 0.3s ease;
+    }
+    .dropdown li+li {
+      margin-top: 10px;
+    }
+    .nav-item {
+      position: relative;
+    }
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+  </style>
 </head>
 
 
@@ -199,6 +214,17 @@ $advisor = getAdvisor(5);
 
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function() {
+      $('.dropdown').hover(function() {
+        $(this).addClass('show');
+        $(this).find('.dropdown-menu').addClass('show');
+      }, function() {
+        $(this).removeClass('show');
+        $(this).find('.dropdown-menu').removeClass('show');
+      });
+    });
+  </script>
   <!-- PROF POPUP SCRIPT -->
   <script>
     const profPopup = document.getElementById('profPopup');

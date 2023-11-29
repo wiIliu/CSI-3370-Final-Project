@@ -26,16 +26,12 @@ $advisor = getAdvisor(4);
       border-radius: 5px;
       transition: 0.3s ease;
     }
-
     .dropdown li+li {
       margin-top: 10px;
     }
-
     .nav-item {
       position: relative;
     }
-
-
     .dropdown:hover .dropdown-menu {
       display: block;
     }
@@ -221,7 +217,6 @@ $advisor = getAdvisor(4);
 
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-  <!-- PROF POPUP SCRIPT -->
   <script>
     $(document).ready(function() {
       $('.dropdown').hover(function() {
@@ -233,6 +228,7 @@ $advisor = getAdvisor(4);
       });
     });
   </script>
+  <!-- PROF POPUP SCRIPT -->
   <script>
     const profPopup = document.getElementById('profPopup');
     if (profPopup) {

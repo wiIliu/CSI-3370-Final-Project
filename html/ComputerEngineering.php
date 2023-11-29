@@ -15,21 +15,38 @@ $advisor = getAdvisor(2);
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MyDegree.com</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="../css/style.css" />
 
   <link rel="shortcut icon" href="../pictures/mydegreeFavicon.png" type="image/x-icon" />
+  <style>
+    .nav li:hover {
+      background-color: white;
+      border-radius: 5px;
+      transition: 0.3s ease;
+    }
 
+    .dropdown li+li {
+      margin-top: 10px;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+  </style>
 </head>
 
 
 <body class="bg-light" onload="updateProgress()">
 
   <div class="banner">
-   <!-- NAVBAR -->
-   <nav class="navbar navbar-expand-md sticky-top bg-light">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-md sticky-top bg-light">
       <div class="container-fluid position-relative">
         <!-- SITE LOGO -->
         <div id="logoContainer my-auto py-auto position-absolute top-0 start-0">
@@ -67,15 +84,15 @@ $advisor = getAdvisor(2);
       </div>
     </nav>
 
-    
-    
+
+
     <div class="container-fluid">
       <!-- MAJOR TITLE AND DESC -->
       <div class="row m-5 mb-3 p-2">
         <h1 class="mb-3 pb-1 fw-semibold text-center">Computer Engineering, B.S.</h1>
         <h5 class="py-1"><strong>Program Description:</strong><br></h5>
         <p style="font-size: 1.15em;"><?php echo $desc; ?>
-        <span class=><br><br>Advisor for Computer Engineering —— <?php echo $advisor; ?></span>
+          <span class=><br><br>Advisor for Computer Engineering —— <?php echo $advisor; ?></span>
         </p>
       </div>
       <!-- MAJOR REQUIREMNETS -->
@@ -118,16 +135,16 @@ $advisor = getAdvisor(2);
         ?>
           <div class="mb-3">
             <!-- CHECK BOXES -->
-            <?php if($count < 5){ ?>
+            <?php if ($count < 5) { ?>
               <span><input onclick="updateProgress()" class="math" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
-            <?php } else if ($count < 11){ ?>
+            <?php } else if ($count < 11) { ?>
               <span><input onclick="updateProgress()" class="core" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
             <?php } else if ($count >= 11) { ?>
-            <span><input onclick="updateProgress()" class="last" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
+              <span><input onclick="updateProgress()" class="last" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
             <?php } else { ?>
               <span>
-              <input onclick="updateProgress()" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1">
-            </span>
+                <input onclick="updateProgress()" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1">
+              </span>
             <?php } ?>
             <!-- COURSE GROUP-NUMBER-NAME -->
             <span class="text-dark">
@@ -148,7 +165,7 @@ $advisor = getAdvisor(2);
                 if (mysqli_num_rows($sections)) {
                   while ($section = mysqli_fetch_array($sections)) : ?>
                     <p>
-                      <?php echo $section[0] . " —— " . $section[5] . " " . $section[4]; 
+                      <?php echo $section[0] . " —— " . $section[5] . " " . $section[4];
                       $prof = getProfData($section[1]);
                       ?>
                       <!-- PROFESSORS -->
@@ -203,6 +220,17 @@ $advisor = getAdvisor(2);
 
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function() {
+      $('.dropdown').hover(function() {
+        $(this).addClass('show');
+        $(this).find('.dropdown-menu').addClass('show');
+      }, function() {
+        $(this).removeClass('show');
+        $(this).find('.dropdown-menu').removeClass('show');
+      });
+    });
+  </script>
   <!-- PROF POPUP SCRIPT -->
   <script>
     const profPopup = document.getElementById('profPopup');
@@ -239,7 +267,7 @@ $advisor = getAdvisor(2);
       var lastBoxes = $('.last:input[type="checkbox"]').length;
       var lastChecked = $('.last:input[type="checkbox"]:checked').length;
       numAll -= lastBoxes;
-      numChecked-=lastChecked
+      numChecked -= lastChecked
       if (numAll > 0) {
         var perc = (numChecked / numAll) * 100;
         $('.progress-bar').css('width', perc + '%').attr('aria-valuenow', perc);
@@ -269,8 +297,7 @@ $advisor = getAdvisor(2);
   </script>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" 
-  integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 
 </html>
