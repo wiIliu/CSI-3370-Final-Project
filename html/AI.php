@@ -17,11 +17,29 @@ $advisor = getAdvisor(4);
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/Navbar.css">
-  <link rel="stylesheet" type="text/css" href="../css/main.css" />
 
   <link rel="shortcut icon" href="../pictures/mydegreeFavicon.png" type="image/x-icon" />
 
+  <style>
+    .nav li:hover {
+      background-color: white;
+      border-radius: 5px;
+      transition: 0.3s ease;
+    }
+
+    .dropdown li+li {
+      margin-top: 10px;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+  </style>
 </head>
 
 <body class="bg-light" onload="updateProgress()">
@@ -29,34 +47,45 @@ $advisor = getAdvisor(4);
   <div class="banner">
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-md sticky-top bg-light">
-      <!-- SITE LOGO -->
-      <div id="logoContainer my-auto py-auto position-absolute top-0 start-0">
-        <a class="ms-3 navbar-brand" href="../index.html">
-          <img src="../pictures/mydegreeLogo.png" width="150" height="55" alt="mydegree logo" class="d-inline-block">
-        </a>
-      </div>
-      <!-- Collapsed navbar toggler button -->
-      <!-- <button class="navbar-toggler ms-auto" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button> -->
-      <!-- NAVBAR LINKS -->
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav nav">
-          <li class="nav-item"><a class="nav-link fw-medium" href="../index.html">HOME</a></li>
-          <li class="nav-item"><a class="nav-link fw-medium" href="majorPage.php">MAJOR</a>
-            <ul class="dropdown">
-              <li><a class="mx-0" href="#">Artificial Intelligence</a></li>
-              <li><a class="mx-0" href="CompSci.php">Computer Science</a></li>
-              <li><a class="mx-0" href="ComputerEngineering.php">Computer Engineering</a></li>
-              <li><a class="mx-0" href="IT.php">Information Technology</a></li>
-              <li><a class="mx-0" href="Cybersecurity.php">Cybersecurity</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="appointment.php">ADVISOR</a></li>
-          <li class="nav-item"><a class="nav-link" href="career.html">CAREER</a></li>
-        </ul>
+      <div class="container-fluid position-relative">
+        <!-- SITE LOGO -->
+        <div id="logoContainer my-auto py-auto position-absolute top-0 start-0">
+          <a class="ms-3 navbar-brand" href="../index.html">
+            <img src="../pictures/mydegreeLogo.png" width="150" height="55" alt="mydegree logo" class="d-inline-block">
+          </a>
+        </div>
+        <!-- COLLAPSED NAVBAR TOGGLER BUTTON -->
+        <button class="navbar-toggler mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- NAVBAR LINKS -->
+        <div class="collapse navbar-collapse justify-content-end pt-2 me-5 pe-5" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link fw-semibold fs-5 pe-2" href="../index.html">HOME</a></li>
+            <!-- DROPDOWN MAJOR -->
+            <li class="nav-item dropdown pe-2">
+              <div class="btn-group">
+                <a class="nav-link fw-semibold fs-5 pe-0 me-0" href="majorPage.php" id="dropdownMenuLink">MAJOR</a>
+                <button type="button" class="px-1 mx-0 btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                <!-- DROPDOWN LINKS -->
+                <ul class="dropdown-menu" data-bs-theme="dark" style="background-color: #073352;   border-radius: 8px; top: 35px; padding: 1em 0;" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item py-1 mx-0" href="#">Artificial Intelligence</a></li>
+                  <li><a class="dropdown-item pb-1 mx-0" href="CompSci.php">Computer Science</a></li>
+                  <li><a class="dropdown-item pb-1 mx-0" href="ComputerEngineering.php">Computer Engineering</a></li>
+                  <li><a class="dropdown-item pb-1 mx-0" href="IT.php">Information Technology</a></li>
+                  <li><a class="dropdown-item pb-1 mx-0" href="Cybersecurity.php">Cybersecurity</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item"><a class="nav-link fw-semibold fs-5 pe-2" href="appointment.php">ADVISOR</a></li>
+            <li class="nav-item"><a class="nav-link fw-semibold fs-5 pe-3" href="career.html">CAREER</a></li>
+          </ul>
+        </div>
       </div>
     </nav>
+
+
+
 
     <div class="container-fluid">
       <!-- MAJOR TITLE AND DESC -->
@@ -64,7 +93,7 @@ $advisor = getAdvisor(4);
         <h1 class="mb-3 pb-1 fw-semibold text-center">Artificial Intelligence, B.S.</h1>
         <h5 class="py-1"><strong>Program Description:</strong><br></h5>
         <p style="font-size: 1.15em;"><?php echo $desc; ?>
-        <span class=><br><br>Advisor for Artificial Intelligence —— <?php echo $advisor; ?></span>
+          <span class=><br><br>Advisor for Artificial Intelligence —— <?php echo $advisor; ?></span>
         </p>
       </div>
       <!-- MAJOR REQUIREMNETS -->
@@ -78,14 +107,14 @@ $advisor = getAdvisor(4);
         <div class="col-6">
           <p class='text-center mb-2 fw-semibold'>Degree Completion</p>
           <div class="progress" style="height:20px;">
-            <div id="progressBar" class="progress-bar" role="progressbar" style="background:#010161;" aria-label="progress bar fill" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+            <div id="progressBar" class="progress-bar" role="progressbar" style="background:#073352;" aria-label="progress bar fill" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
         </div>
       </div>
       <!-- RESET PROGRESS BAR BUTTON -->
       <div class="row justify-content-center mt-3">
         <div class="col-1">
-          <button class="btn btn-sm text-light" style="background-color:#010161;" type="button" onclick="reset()">RESET</button>
+          <button class="btn btn-sm text-light" style="background-color:#073352;" type="button" onclick="reset()">RESET</button>
         </div>
       </div>
       <!-- COURSES LIST -->
@@ -97,26 +126,26 @@ $advisor = getAdvisor(4);
           // TITLE SENTENCES
           if ($count == 0) {
             echo "<h5 class='mb-3 mt-4 fw-semibold'>Mathematics and Statistics (20 credits)&nbsp;
-            <span><button class='btn btn-sm text-light' style='background-color:#010161;' type='button' onclick='selectAllMath()'>Select All</button></span></h5><br>";
+            <span><button class='btn btn-sm text-light' style='background-color:#073352;' type='button' onclick='selectAllMath()'>Select All</button></span></h5><br>";
           } else if ($count == 5 and $row[5] == 'Y') {
             echo "<h5 class='mb-3 mt-4 fw-semibold'>Artificial Intelligence Core (18 credits)&nbsp;
-            <span><button class='btn btn-sm text-light' style='background-color:#010161;' type='button' onclick='selectAllCore()'>Select All</button></span></h5><br>";
+            <span><button class='btn btn-sm text-light' style='background-color:#073352;' type='button' onclick='selectAllCore()'>Select All</button></span></h5><br>";
           } else if ($count == 11 and $row[5] == 'Y') {
             echo "<h5 class='mb-3 mt-4 fw-semibold'>Required professional subjects (24 credits)<br></h5>";
           }
         ?>
           <div class="mb-3">
             <!-- CHECK BOXES -->
-            <?php if($count < 5){ ?>
+            <?php if ($count < 5) { ?>
               <span><input onclick="updateProgress()" class="math" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
-            <?php } else if ($count < 11){ ?>
+            <?php } else if ($count < 11) { ?>
               <span><input onclick="updateProgress()" class="core" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
             <?php } else if ($count >= 11) { ?>
-            <span><input onclick="updateProgress()" class="last" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
+              <span><input onclick="updateProgress()" class="last" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
             <?php } else { ?>
               <span>
-              <input onclick="updateProgress()" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1">
-            </span>
+                <input onclick="updateProgress()" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1">
+              </span>
             <?php } ?>
             <!-- COURSE GROUP-NUMBER-NAME -->
             <span class="text-dark">
@@ -137,7 +166,7 @@ $advisor = getAdvisor(4);
                 if (mysqli_num_rows($sections)) {
                   while ($section = mysqli_fetch_array($sections)) : ?>
                     <p>
-                      <?php echo $section[0] . " —— " . $section[5] . " " . $section[4]; 
+                      <?php echo $section[0] . " —— " . $section[5] . " " . $section[4];
                       $prof = getProfData($section[1]);
                       ?>
                       <!-- PROFESSORS -->
@@ -194,6 +223,17 @@ $advisor = getAdvisor(4);
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <!-- PROF POPUP SCRIPT -->
   <script>
+    $(document).ready(function() {
+      $('.dropdown').hover(function() {
+        $(this).addClass('show');
+        $(this).find('.dropdown-menu').addClass('show');
+      }, function() {
+        $(this).removeClass('show');
+        $(this).find('.dropdown-menu').removeClass('show');
+      });
+    });
+  </script>
+  <script>
     const profPopup = document.getElementById('profPopup');
     if (profPopup) {
       profPopup.addEventListener('show.bs.modal', event => {
@@ -228,7 +268,7 @@ $advisor = getAdvisor(4);
       var lastBoxes = $('.last:input[type="checkbox"]').length;
       var lastChecked = $('.last:input[type="checkbox"]:checked').length;
       numAll -= lastBoxes;
-      numChecked-=lastChecked
+      numChecked -= lastChecked
       if (numAll > 0) {
         var perc = (numChecked / numAll) * 100;
         $('.progress-bar').css('width', perc + '%').attr('aria-valuenow', perc);
