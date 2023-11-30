@@ -8,7 +8,7 @@
   width: 100%;
   height: 100vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("tech.jpg");
+    url("../pictures/tech\ copy.jpg");
   background-position: center;
   background-size: cover;
   padding-left: 8%;
@@ -26,11 +26,11 @@
   width: 50px;
   cursor: pointer;
 }
-.menu-icon {
+/* .menu-icon {
   width: 30px;
   cursor: pointer;
   margin-left: 40px;
-}
+} */
 
 nav {
   flex: 1;
@@ -70,13 +70,13 @@ h4 {
   font-size: 50px;
 }
 
-button {
-  width: 180px;
+.button {
+  width: 250px;
   color: #000;
   font-size: 12px;
   padding: 12px 0;
   background: #fff;
-  border: 0;
+  border: 10;
   border-radius: 20px;
   outline: none;
   margin-top: 30px;
@@ -97,27 +97,27 @@ button {
 }
 
 .card1 {
-  background-image: url("aiMajor.png");
+  background-image: url("../pictures/aiMajor.png");
   color: white;
 }
 
 .card2 {
-  background-image: url("ceMajor.png");
+  background-image: url("../pictures/ceMajor.png");
   color: white;
 }
 
 .card3 {
-  background-image: url("csMajor.png");
+  background-image: url("../pictures/csMajor.png");
   color: white;
 }
 
 .card4 {
-  background-image: url("ITimage2.jpg");
+  background-image: url("../pictures/ITimage2.jpg");
   color: white;
 }
 
 .card5 {
-  background-image: url("cybersecurityMajor.png");
+  background-image: url("../pictures/cybersecurityMajor.png");
   color: white;
 }
 
