@@ -17,8 +17,6 @@ $current = date("H:i:s d.m.y");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/Navbar.css">
-    <!-- <link rel="stylesheet" type="text/css" href="../css/main.css" /> -->
 
     <link rel="shortcut icon" href="../pictures/mydegreeFavicon.png" type="image/x-icon" />
 
@@ -177,7 +175,7 @@ $current = date("H:i:s d.m.y");
                         </div>
                         <!-- SUBMIT -->
                         <div class="col-4">
-                            <button class="btn btn-primary" type="submit" name="makeAppt" value="submit">Submit form</button>
+                            <button class="btn text-light" style="background-color: #073352;" type="submit" name="makeAppt" value="submit">Submit form</button>
                         </div>
                     </form>
                 </div>
