@@ -47,10 +47,8 @@ CREATE TABLE CLASS(
     CLASS_CREDITS INTEGER DEFAULT 4,
     CLASS_DESC VARCHAR(700),
     TEXTBK_LINK VARCHAR(255),
-    -- ELECTIVE_FLG CHAR(1) DEFAULT 'N',
-    -- CORE_CLASS_FLG CHAR(1) DEFAULT 'N',
     CLASS_PREREQ_FLG CHAR(1) DEFAULT 'N',
-    CLASS_PREREQ VARCHAR(25)
+    CLASS_PREREQ VARCHAR(25) -- will probably get rid of these 2
 );
 
 
@@ -105,8 +103,6 @@ INSERT INTO MAJOR VALUES(4,"Artificial Intelligence", "Artificial Intelligence (
 INSERT INTO MAJOR VALUES(5,"Information Technology", "An Information Technology (IT) major provides students with a versatile skill set for navigating the rapidly evolving tech landscape. Focused on the practical application of technology in various domains, the curriculum covers areas such as computer systems, networks, databases, and programming. Students learn to analyze and solve complex problems, manage IT projects, and implement innovative solutions. Emphasis is placed on acquiring proficiency in programming languages, understanding system architectures, and developing skills in network administration.", "Each candidate for an Oakland University baccalaureate will need to satisfactorily complete approved courses in each of the following areas: Foundation, Exploration, Integration, Writing, U.S. Diversity, and Capstone. GPA requirements vary, often considering overall GPA of 2.5, core course GPA, and prerequisites. For details, refer to the General Education section of the catalog.", "pictures\\itMajor.png", 2);
 
 -- CLASS values --
-
-
 INSERT INTO `class` (`CLASS_ID`, `CLASS_GROUP`, `CLASS_NAME`, `CLASS_CREDITS`, `CLASS_DESC`, `TEXTBK_LINK`, `CLASS_PREREQ_FLG`, `CLASS_PREREQ`) VALUES
 (1200, 'EGR', 'Engineering Graphics and CAD', 1, NULL, NULL, 'N', NULL),
 (1210, 'CSI', 'Problem Solving Using VBA and Excel', 4, 'NULL', NULL, 'N', NULL),
@@ -211,10 +207,7 @@ INSERT INTO `class` (`CLASS_ID`, `CLASS_GROUP`, `CLASS_NAME`, `CLASS_CREDITS`, `
 (5770, 'ECE', 'GPU Accelerated Computing', 4, NULL, NULL, 'N', NULL);
 
 
-
-
 -- BRIDGE --
-
 INSERT INTO `bridge` (`MJR_ID`, `CLASS_ID`, `CORE_CLASS_FLG`, `ELECTIVE_FLG`, `TRACK_CLASS_FLG`, `TRACK_CLASS_NUM`) VALUES
 (1, 1554, 'N', 'N', 'N',NULL),
 (1, 1555, 'N', 'N', 'N',NULL),
