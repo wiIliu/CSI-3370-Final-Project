@@ -21,7 +21,6 @@ $advisor = getAdvisor(1);
   <link rel="shortcut icon" href="../pictures/mydegreeFavicon.png" type="image/x-icon" />
 </head>
 
-
 <body class="bg-light" onload="updateProgress()">
 
   <div class="banner">
@@ -182,19 +181,20 @@ $advisor = getAdvisor(1);
       <!-- CAREER -->
       <div class="row m-5 p-2">
         <h5 class="pb-1 pt-2"><strong>Computer Science Jobs and Careers:</strong></h5>
-        <p>Computer Science is a broad and dynamic field that offers a wide range of jobs and careers across various industries.<br> Here are some common computer science jobs and career paths:</p>
+        <p>Computer Science is a broad and dynamic field that offers a wide range of jobs and careers across various industries.<br>Here are some common computer science job and career paths:</p>
         <ul class="list-group">
           <ol>
             <li>Software Engineer</li>
-            <li>Computer Science</li>
+            <li>Computer Scientist</li>
             <li>Software Design and Development</li>
             <li>Information Security</li>
             <li>Information Technology</li>
             <li>Web Development</li>
             <li>App Development</li>
-            <li>Systems Analysis</li>
-            <li>Data Analysis</li>
-            <li>Front End Development</li>
+            <li>Systems Analyst</li>
+            <li>Data Analyst</li>
+            <li>Front End Developer</li>
+            <li>Back End Developer</li>
           </ol>
         </ul>
       </div>
@@ -270,15 +270,10 @@ $advisor = getAdvisor(1);
     function updateProgress() {
       var numAll = $('input[type="checkbox"]').length;
       var numChecked = $('input[type="checkbox"]:checked').length;
-      // var electiveBoxes = $('.elective:input[type="checkbox"]').length;
-      // var electiveChecked = $('.elective:input[type="checkbox"]:checked').length - 3;
       var trackBoxes = $('.track:input[type="checkbox"]').length;
       var trackChecked = $('.track:input[type="checkbox"]:checked').length - 2;
 
       numAll = numAll - (trackBoxes) + 2;
-      // if (electiveChecked > 0) {
-      //   numChecked -= electiveChecked;
-      // }
       if (trackChecked > 0) {
         numChecked -= trackChecked;
       }

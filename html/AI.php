@@ -19,7 +19,6 @@ $advisor = getAdvisor(4);
   <link href="../css/style.css" rel="stylesheet">
 
   <link rel="shortcut icon" href="../pictures/mydegreeFavicon.png" type="image/x-icon" />
-
 </head>
 
 <body class="bg-light" onload="updateProgress()">
@@ -185,15 +184,15 @@ $advisor = getAdvisor(4);
       <!-- CAREER -->
       <div class="row m-5 p-2">
         <h5 class="pb-1 pt-2"><strong>Artificial Intelligence Jobs and Careers:</strong><br></h5>
-        <p>Artificial Intelligence is a broad and dynamic field that offers a wide range of jobs and careers across various industries.<br> Here are some common computer science jobs and career paths:</p>
+        <p>Artificial Intelligence is a broad and dynamic field that offers a wide range of jobs and careers across various industries.<br>Here are some common artificial intelligence job and career paths:</p>
         <ul class="list-group">
           <ol>
-            <li>Machine learning Engineer</li>
+            <li>Machine Learning Engineer</li>
             <li>Data Scientist</li>
-            <li>Al research Scientist</li>
-            <li>Information Security</li>
-            <li>Computer vision engineer</li>
-            <li>Robotics engineer</li>
+            <li>Al Researcher</li>
+            <li>Information Security Analyst</li>
+            <li>Computer vision Engineer</li>
+            <li>Robotics Engineer</li>
           </ol>
         </ul>
       </div>

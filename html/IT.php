@@ -19,30 +19,13 @@ $advisor = getAdvisor(5);
   <link rel="stylesheet" type="text/css" href="../css/style.css" />
 
   <link rel="shortcut icon" href="../pictures/mydegreeFavicon.png" type="image/x-icon" />
-  <style>
-    .nav li:hover {
-      background-color: white;
-      border-radius: 5px;
-      transition: 0.3s ease;
-    }
-    .dropdown li+li {
-      margin-top: 10px;
-    }
-    .nav-item {
-      position: relative;
-    }
-    .dropdown:hover .dropdown-menu {
-      display: block;
-    }
-  </style>
 </head>
-
 
 <body class="bg-light" onload="updateProgress()">
 
   <div class="banner">
-   <!-- NAVBAR -->
-   <nav class="navbar navbar-expand-md sticky-top bg-light">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-md sticky-top bg-light">
       <div class="container-fluid position-relative">
         <!-- SITE LOGO -->
         <div id="logoContainer my-auto py-auto position-absolute top-0 start-0">
@@ -86,7 +69,7 @@ $advisor = getAdvisor(5);
         <h1 class="mb-3 pb-1 fw-semibold text-center">Information Technology, B.S.</h1>
         <h5 class="py-1"><strong>Program Description:</strong><br></h5>
         <p style="font-size: 1.15em;"><?php echo $desc; ?>
-        <span class=><br><br>Advisor for Information Technology —— <?php echo $advisor; ?></span>
+          <span class=><br><br>Advisor for Information Technology —— <?php echo $advisor; ?></span>
         </p>
       </div>
       <!-- MAJOR REQUIREMNETS -->
@@ -118,27 +101,38 @@ $advisor = getAdvisor(5);
         while ($row = mysqli_fetch_array($classes)) :
           // TITLE SENTENCES
           if ($count == 0) {
-            echo "<h5 class='mb-3 mt-4 fw-semibold'>Mathematics and Statistics (20 credits)&nbsp;
+            echo "<h5 class='mb-3 mt-4 fw-semibold'>Mathematics and Statistics (12 credits)&nbsp;
             <span><button class='btn btn-sm text-light' style='background-color:#073352;' type='button' onclick='selectAllMath()'>Select All</button></span></h5><br>";
-          } else if ($count == 5 and $row[5] == 'Y') {
-            echo "<h5 class='mb-3 mt-4 fw-semibold'>Information Technology Core (18 credits)&nbsp;
+          } else if ($count == 3) {
+            echo "<h5 class='mb-3 mt-4 fw-semibold'>Information Technology Core (22 credits)&nbsp;
             <span><button class='btn btn-sm text-light' style='background-color:#073352;' type='button' onclick='selectAllCore()'>Select All</button></span></h5><br>";
-          } else if ($count == 11 and $row[5] == 'Y') {
-            echo "<h5 class='mb-3 mt-4 fw-semibold'>Required professional subjects (24 credits)<br></h5>";
+          } else if ($count == 9) {
+            echo "<h5 class='mb-3 mt-4 fw-semibold'>Required Professional Subjects (40 credits)&nbsp;
+            <span><button class='btn btn-sm text-light' style='background-color:#073352;' type='button' onclick='selectAllProfessional()'>Select All</button></span></h5><br>";
+          } else if ($count == 19) {
+            echo "<h5 class='mb-3 mt-4 fw-semibold'>Professional Track - Choose 1 Track (8 credits)<br></h5>
+            <span class='fw-semibold pb-2 mb-1' style='font-size: 1.08em;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Systems Adiministration Track:</span>";
+          } else if ($count == 21) {
+            echo "<span class='fw-semibold pb-2 my-1' style='font-size: 1.08em;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bioinformatics Track:</span>";
+          } else if ($count == 23) {
+            echo "<span class='fw-semibold pb-2 my-1' style='font-size: 1.08em;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Game Development Track:</span>";
+          } else if ($count == 25) {
+            echo "<span class='fw-semibold pb-2 my-1' style='font-size: 1.08em;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cybersecurity Track:</span>";
           }
         ?>
           <div class="mb-3">
             <!-- CHECK BOXES -->
-            <?php if($count < 5){ ?>
+            <?php if ($count < 3) { ?>
               <span><input onclick="updateProgress()" class="math" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
-            <?php } else if ($count < 11){ ?>
+
+            <?php } else if ($count < 9) { ?>
               <span><input onclick="updateProgress()" class="core" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
-            <?php } else if ($count >= 11) { ?>
-            <span><input onclick="updateProgress()" class="last" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
+
+            <?php } else if ($count < 19) { ?>
+              <span><input onclick="updateProgress()" class="professional" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
+
             <?php } else { ?>
-              <span>
-              <input onclick="updateProgress()" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1">
-            </span>
+              <span><input onclick="updateProgress()" class="track" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
             <?php } ?>
             <!-- COURSE GROUP-NUMBER-NAME -->
             <span class="text-dark">
@@ -159,7 +153,7 @@ $advisor = getAdvisor(5);
                 if (mysqli_num_rows($sections)) {
                   while ($section = mysqli_fetch_array($sections)) : ?>
                     <p>
-                      <?php echo $section[0] . " —— " . $section[5] . " " . $section[4]; 
+                      <?php echo $section[0] . " —— " . $section[5] . " " . $section[4];
                       $prof = getProfData($section[1]);
                       ?>
                       <!-- PROFESSORS -->
@@ -170,7 +164,7 @@ $advisor = getAdvisor(5);
                   echo "NO OFFERED SECTIONS";
                 } ?>
                 <!-- TEXTBOOK -->
-                <a href="<?php echo $row[6]; ?>" class="link-light text-decoration-underline link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" target="_blank">Textbook link here.</a>
+                <a href="<?php echo $row[5]; ?>" class="link-light text-decoration-underline link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" target="_blank">Textbook link here.</a>
               </div>
               <br>
             </div>
@@ -183,8 +177,16 @@ $advisor = getAdvisor(5);
 
       <!-- CAREER -->
       <div class="row m-5 p-2">
-        <h5 class="pb-1 pt-2"><strong>Career Paths:</strong></h5>
-        <!-- <p class="" style="font-size: 1.15em;"><//?php echo $careers; ?><br></p> -->
+        <h5 class="pb-1 pt-2"><strong>Information Technology Jobs and Careers:</strong></h5>
+        <p>Information technology is a broad and dynamic field that offers a wide range of jobs and careers across various industries.<br>Here are some common information technology job and career paths:</p>
+        <ul class="list-group">
+          <ol>
+            <li>Systems Administrator</li>
+            <li>Information Security Analyst</li>
+            <li>Network Administrator</li>
+            <li>Programmer</li>
+            <li>Database Administrator</li>
+          </ol>
       </div>
 
       <!-- PROF POPUP -->
@@ -258,10 +260,14 @@ $advisor = getAdvisor(5);
     function updateProgress() {
       var numAll = $('input[type="checkbox"]').length;
       var numChecked = $('input[type="checkbox"]:checked').length;
-      var lastBoxes = $('.last:input[type="checkbox"]').length;
-      var lastChecked = $('.last:input[type="checkbox"]:checked').length;
-      numAll -= lastBoxes;
-      numChecked-=lastChecked
+      var trackBoxes = $('.track:input[type="checkbox"]').length;
+      var trackChecked = $('.track:input[type="checkbox"]:checked').length - 2;
+
+      numAll = numAll - (trackBoxes) + 2;
+      if (trackChecked > 0) {
+        numChecked -= trackChecked;
+      }
+
       if (numAll > 0) {
         var perc = (numChecked / numAll) * 100;
         $('.progress-bar').css('width', perc + '%').attr('aria-valuenow', perc);
@@ -291,8 +297,7 @@ $advisor = getAdvisor(5);
   </script>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" 
-  integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 
 </html>
