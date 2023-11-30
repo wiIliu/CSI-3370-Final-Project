@@ -1,41 +1,44 @@
 /* Reset some default browser styles */
 body,h1,h2,h3,p {
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Set a background color for the body */
-  body {
-    background: #584a4a;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-      url("../pictures/techBackground.jpg");
-    background-position: center;
-    background-size: cover;
-    padding-left: 8%;
-    padding-right: 8%;
-    box-sizing: border-box;
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
-  }
-  
-  /* Style the jumbotron */
-  .jumbotron {
-    background: #968989;
-    color: #ffffff;
-    padding: 50px;
-  }
-  
-  /* Style the program overview buttons */
-  .btn-md {
-    display: block;
-    margin-top: 15px;
-    background: #584a4a;
-    color: #ffffff;
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  .btn-md:hover {
-    background-color: #8a8f94;
-  }
+  margin: 0;
+  padding: 0;
+}
+
+body,html {
+  height: 100%;
+  margin: 0;
+}
+.backgroundPic {
+  /* padding-left: 8%;
+  padding-right: 8%; */
+  position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("../pictures/techBackground.jpg");
+  background-position: center;
+  background-repeat: repeat-y;
+  background-size: contain;
+  /* height: 100vh; */
+  width: 100%;
+}
+.blur {
+  width: 100%;
+  backdrop-filter: blur(5px); /* blur effect to the backdrop */
+  background-color: rgba(255, 255, 255, .001);
+  height: 100%;
+}
+
+/* Style the jumbotron */
+.jumbotron {
+  color: #ffffff;
+  padding: 50px;
+}
+
+/* Style the program overview buttons */
+.btn-md {
+  display: block;
+  color:white;
+  background-color: #073352;
+  padding: 10px;
+  border-radius: 8px;
+  width: 225px
+}

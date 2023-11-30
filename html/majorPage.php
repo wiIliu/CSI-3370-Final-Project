@@ -16,114 +16,104 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
   <link rel="stylesheet" type="text/css" href="../css/main.css" />
 
   <link rel="shortcut icon" href="../pictures/mydegreeFavicon.png" type="image/x-icon" />
-  <style>
-    .nav li:hover {
-      background-color: white;
-      border-radius: 5px;
-      transition: 0.3s ease;
-    }
-    .dropdown li+li {
-      margin-top: 10px;
-    }
-    .nav-item {
-      position: relative;
-    }
-    .dropdown:hover .dropdown-menu {
-      display: block;
-    }
-  </style>
+
 </head>
 
+<!-- style="background-color:#073352;" -->
 
-<body>
+<body data-bs-theme="light">
 
-  <div class="banner">
+  <div class="backgroundPic">
+    <div class="blur">
+      <div class="banner">
 
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-md sticky-top bg-light">
-      <div class="container-fluid position-relative">
-        <!-- SITE LOGO -->
-        <div id="logoContainer my-auto py-auto position-absolute top-0 start-0">
-          <a class="ms-3 navbar-brand" href="../index.html">
-            <img src="../pictures/mydegreeLogo.png" width="150" height="55" alt="mydegree logo" class="d-inline-block">
-          </a>
-        </div>
-        <!-- COLLAPSED NAVBAR TOGGLER BUTTON -->
-        <button class="navbar-toggler mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <!-- NAVBAR LINKS -->
-        <div class="collapse navbar-collapse justify-content-end pt-2 me-5 pe-5" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link fw-semibold fs-5 pe-2" href="../index.html">HOME</a></li>
-            <!-- DROPDOWN MAJOR -->
-            <li class="nav-item dropdown pe-2">
-              <div class="btn-group">
-                <a class="nav-link fw-semibold fs-5 pe-0 me-0" href="#" id="dropdownMenuLink">MAJOR</a>
-                <button type="button" class="px-1 mx-0 btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"></button>
-                <!-- DROPDOWN LINKS -->
-                <ul class="dropdown-menu" data-bs-theme="dark" style="background-color: #073352;   border-radius: 8px; top: 35px; padding: 1em 0;" aria-labelledby="dropdownMenuLink">
-                  <li><a class="dropdown-item py-1 mx-0" href="AI.php">Artificial Intelligence</a></li>
-                  <li><a class="dropdown-item pb-1 mx-0" href="CompSci.php">Computer Science</a></li>
-                  <li><a class="dropdown-item pb-1 mx-0" href="ComputerEngineering.php">Computer Engineering</a></li>
-                  <li><a class="dropdown-item pb-1 mx-0" href="IT.php">Information Technology</a></li>
-                  <li><a class="dropdown-item pb-1 mx-0" href="Cybersecurity.php">Cybersecurity</a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item"><a class="nav-link fw-semibold fs-5 pe-2" href="appointment.php">ADVISOR</a></li>
-            <li class="nav-item"><a class="nav-link fw-semibold fs-5 pe-3" href="career.html">CAREER</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <div class="container-fluid">
-
-      <div class="row jumbotron text-center">
-        <h1>Mydegree</h1>
-        <p>Oakland University Engineering Program</p>
-      </div>
-
-      <!--description of each major-->
-      <div class="row justify-content-center mt-3">
-
-        <?php
-        $n = 0;
-        while ($row = mysqli_fetch_array($filterResult)) :
-        ?>
-          <div class="col-11 col-lg-4 col-md-6 my-1">
-
-            <div class="card text-evenly bg-light h-100">
-              <img src="<?php echo "../" . $row[2]; ?>" class="card-img-top img-fluid" alt="...">
-              <div class="card-body d-flex text-center align-items-bottom flex-column mb-3">
-                <h4 class="card-title fw-medium"><?php echo $row[1]; ?></h4>
-                <p class="card-text my-auto"><?php echo $row[3]; ?></p>
-                <a href="<?php echo $filePaths[$n]; ?>" class="btn btn-md btn-outline-light mt-auto fw-semibold">Program Overview</a>
-              </div>
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-md" data-bs-theme="dark">
+          <div class="container-fluid position-relative">
+            <!-- SITE LOGO -->
+            <div id="logoContainer my-auto py-auto position-absolute top-0 start-0">
+              <a class="ms-3 navbar-brand" href="../index.html">
+                <img src="../pictures/mydegreeLogo.png" width="150" height="55" alt="mydegree logo" class="d-inline-block">
+              </a>
             </div>
-
+            <!-- COLLAPSED NAVBAR TOGGLER BUTTON -->
+            <button class="navbar-toggler mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- NAVBAR LINKS -->
+            <div class="collapse navbar-collapse justify-content-end pt-0 me-5 pe-5" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link fw-semibold fs-5 pe-2" href="../index.html">HOME</a></li>
+                <!-- DROPDOWN MAJOR -->
+                <li class="nav-item dropdown pe-2">
+                  <div class="btn-group">
+                    <a class="nav-link fw-semibold fs-5 pe-0 me-0" href="#" id="dropdownMenuLink">MAJOR</a>
+                    <button type="button" class="px-1 mx-0 btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                    <!-- DROPDOWN LINKS -->
+                    <ul class="dropdown-menu" data-bs-theme="dark" style="background-color: #073352;   border-radius: 8px; top: 35px; padding: 1em 0;" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item py-1 mx-0" href="AI.php">Artificial Intelligence</a></li>
+                      <li><a class="dropdown-item pb-1 mx-0" href="CompSci.php">Computer Science</a></li>
+                      <li><a class="dropdown-item pb-1 mx-0" href="ComputerEngineering.php">Computer Engineering</a></li>
+                      <li><a class="dropdown-item pb-1 mx-0" href="IT.php">Information Technology</a></li>
+                      <li><a class="dropdown-item pb-1 mx-0" href="Cybersecurity.php">Cybersecurity</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="nav-item"><a class="nav-link fw-semibold fs-5 pe-2" href="appointment.php">ADVISOR</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold fs-5 pe-3" href="career.html">CAREER</a></li>
+              </ul>
+            </div>
           </div>
-          <?php $n++; ?>
-        <?php endwhile; ?>
+        </nav>
 
-      </div> <!-- row -->
+        <div class="container-fluid">
 
-    </div> <!-- container-fluid banner -->
+          <div class="row jumbotron text-center">
+            <h1>Mydegree</h1>
+            <p>Oakland University Engineering Program</p>
+          </div>
+
+          <!--description of each major-->
+          <div class="row justify-content-center mt-3">
+
+            <?php
+            $n = 0;
+            while ($row = mysqli_fetch_array($filterResult)) :
+            ?>
+              <div class="col-11 col-lg-4 col-md-6 my-1">
+
+                <div class="card text-evenly bg-light h-100">
+                  <img src="<?php echo "../" . $row[2]; ?>" class="card-img-top img-fluid" alt="...">
+                  <div class="card-body d-flex text-center align-items-bottom flex-column mb-3">
+                    <h4 class="card-title fw-medium"><?php echo $row[1]; ?></h4>
+                    <p class="card-text my-auto"><?php echo $row[3]; ?></p>
+                    <a href="<?php echo $filePaths[$n]; ?>" class="btn btn-md btn-outline-light align-self-center mt-2 fw-semibold">Program Overview</a>
+                  </div>
+                </div>
+
+              </div>
+              <?php $n++; ?>
+            <?php endwhile; ?>
+
+          </div> <!-- row -->
+
+        </div> <!-- container-fluid banner -->
+      </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
-    $(document).ready(function() {
-      $('.dropdown').hover(function() {
-        $(this).addClass('show');
-        $(this).find('.dropdown-menu').addClass('show');
-      }, function() {
-        $(this).removeClass('show');
-        $(this).find('.dropdown-menu').removeClass('show');
+      $(document).ready(function() {
+        $('.dropdown').hover(function() {
+          $(this).addClass('show');
+          $(this).find('.dropdown-menu').addClass('show');
+        }, function() {
+          $(this).removeClass('show');
+          $(this).find('.dropdown-menu').removeClass('show');
+        });
       });
-    });
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 
 </html>
