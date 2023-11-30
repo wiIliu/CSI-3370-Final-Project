@@ -20,25 +20,6 @@ $advisor = getAdvisor(2);
   <link rel="stylesheet" type="text/css" href="../css/style.css" />
 
   <link rel="shortcut icon" href="../pictures/mydegreeFavicon.png" type="image/x-icon" />
-  <style>
-    .nav li:hover {
-      background-color: white;
-      border-radius: 5px;
-      transition: 0.3s ease;
-    }
-
-    .dropdown li+li {
-      margin-top: 10px;
-    }
-
-    .nav-item {
-      position: relative;
-    }
-
-    .dropdown:hover .dropdown-menu {
-      display: block;
-    }
-  </style>
 </head>
 
 
@@ -124,27 +105,36 @@ $advisor = getAdvisor(2);
         while ($row = mysqli_fetch_array($classes)) :
           // TITLE SENTENCES
           if ($count == 0) {
-            echo "<h5 class='mb-3 mt-4 fw-semibold'>Mathematics and Statistics (20 credits)&nbsp;
+            echo "<h5 class='mb-3 mt-4 fw-semibold'>Mathematics and Statistics (28 credits)&nbsp;
             <span><button class='btn btn-sm text-light' style='background-color:#073352;' type='button' onclick='selectAllMath()'>Select All</button></span></h5><br>";
-          } else if ($count == 5 and $row[5] == 'Y') {
-            echo "<h5 class='mb-3 mt-4 fw-semibold'>Computer Engineering Core (18 credits)&nbsp;
+          } else if ($count == 7) {
+            echo "<h5 class='mb-3 mt-4 fw-semibold'>Computer Engineering Core (36 credits)&nbsp;
             <span><button class='btn btn-sm text-light' style='background-color:#073352;' type='button' onclick='selectAllCore()'>Select All</button></span></h5><br>";
-          } else if ($count == 11 and $row[5] == 'Y') {
-            echo "<h5 class='mb-3 mt-4 fw-semibold'>Required professional subjects (24 credits)<br></h5>";
+          } else if ($count == 16) {
+            echo "<h5 class='mb-3 mt-4 fw-semibold'>Required Professional Subjects (24 credits)&nbsp;
+            <span><button class='btn btn-sm text-light' style='background-color:#073352;' type='button' onclick='selectAllProfessional()'>Select All</button></span></h5><br>";
+          } else if ($count == 22) {
+            echo "<h5 class='mb-3 mt-4 fw-semibold'>Professional Track - Choose 1 Track (12 credits)<br></h5>
+            <span class='fw-semibold pb-2 mb-1' style='font-size: 1.08em;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;High Performance Computing Area Track:</span>";
+          } else if ($count == 25) {
+            echo "<span class='fw-semibold pb-2 my-1' style='font-size: 1.08em;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Embedded AI Area Track:</span>";
+          } else if ($count == 30) {
+            echo "<span class='fw-semibold pb-2 my-1' style='font-size: 1.08em;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Microelectronics Track:</span>";
           }
         ?>
           <div class="mb-3">
             <!-- CHECK BOXES -->
-            <?php if ($count < 5) { ?>
+            <?php if ($count < 7) { ?>
               <span><input onclick="updateProgress()" class="math" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
-            <?php } else if ($count < 11) { ?>
+
+            <?php } else if ($count < 16) { ?>
               <span><input onclick="updateProgress()" class="core" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
-            <?php } else if ($count >= 11) { ?>
-              <span><input onclick="updateProgress()" class="last" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
+
+            <?php } else if ($count < 22) { ?>
+              <span><input onclick="updateProgress()" class="professional" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
+
             <?php } else { ?>
-              <span>
-                <input onclick="updateProgress()" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1">
-              </span>
+              <span><input onclick="updateProgress()" class="track" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
             <?php } ?>
             <!-- COURSE GROUP-NUMBER-NAME -->
             <span class="text-dark">
@@ -176,7 +166,7 @@ $advisor = getAdvisor(2);
                   echo "NO OFFERED SECTIONS";
                 } ?>
                 <!-- TEXTBOOK -->
-                <a href="<?php echo $row[6]; ?>" class="link-light text-decoration-underline link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" target="_blank">Textbook link here.</a>
+                <a href="<?php echo $row[5]; ?>" class="link-light text-decoration-underline link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" target="_blank">Textbook link here.</a>
               </div>
               <br>
             </div>
@@ -264,10 +254,19 @@ $advisor = getAdvisor(2);
     function updateProgress() {
       var numAll = $('input[type="checkbox"]').length;
       var numChecked = $('input[type="checkbox"]:checked').length;
-      var lastBoxes = $('.last:input[type="checkbox"]').length;
-      var lastChecked = $('.last:input[type="checkbox"]:checked').length;
-      numAll -= lastBoxes;
-      numChecked -= lastChecked
+      // var electiveBoxes = $('.elective:input[type="checkbox"]').length;
+      // var electiveChecked = $('.elective:input[type="checkbox"]:checked').length - 3;
+      var trackBoxes = $('.track:input[type="checkbox"]').length;
+      var trackChecked = $('.track:input[type="checkbox"]:checked').length - 2;
+
+      numAll = numAll - (trackBoxes) + 2;
+      // if (electiveChecked > 0) {
+      //   numChecked -= electiveChecked;
+      // }
+      if (trackChecked > 0) {
+        numChecked -= trackChecked;
+      }
+
       if (numAll > 0) {
         var perc = (numChecked / numAll) * 100;
         $('.progress-bar').css('width', perc + '%').attr('aria-valuenow', perc);

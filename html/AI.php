@@ -16,26 +16,10 @@ $advisor = getAdvisor(4);
   <title>MyDegree.com</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="../css/style.css" />
+  <link href="../css/style.css" rel="stylesheet">
 
   <link rel="shortcut icon" href="../pictures/mydegreeFavicon.png" type="image/x-icon" />
 
-  <style>
-    .nav li:hover {
-      background-color: white;
-      border-radius: 5px;
-      transition: 0.3s ease;
-    }
-    .dropdown li+li {
-      margin-top: 10px;
-    }
-    .nav-item {
-      position: relative;
-    }
-    .dropdown:hover .dropdown-menu {
-      display: block;
-    }
-  </style>
 </head>
 
 <body class="bg-light" onload="updateProgress()">
@@ -123,25 +107,39 @@ $advisor = getAdvisor(4);
           if ($count == 0) {
             echo "<h5 class='mb-3 mt-4 fw-semibold'>Mathematics and Statistics (20 credits)&nbsp;
             <span><button class='btn btn-sm text-light' style='background-color:#073352;' type='button' onclick='selectAllMath()'>Select All</button></span></h5><br>";
-          } else if ($count == 5 and $row[5] == 'Y') {
+          } else if ($count == 5) {
             echo "<h5 class='mb-3 mt-4 fw-semibold'>Artificial Intelligence Core (18 credits)&nbsp;
             <span><button class='btn btn-sm text-light' style='background-color:#073352;' type='button' onclick='selectAllCore()'>Select All</button></span></h5><br>";
-          } else if ($count == 11 and $row[5] == 'Y') {
-            echo "<h5 class='mb-3 mt-4 fw-semibold'>Required professional subjects (24 credits)<br></h5>";
+          } else if ($count == 10) {
+            echo "<h5 class='mb-3 mt-4 fw-semibold'>Required Professional Subjects (44 credits)&nbsp;
+            <span><button class='btn btn-sm text-light' style='background-color:#073352;' type='button' onclick='selectAllProfessional()'>Select All</button></span></h5><br>";
+          } else if ($count == 21) {
+            echo "<h5 class='mb-3 mt-4 fw-semibold'>Professional Track - Choose 1 Track (12 credits)<br></h5>
+            <span class='fw-semibold pb-2 mb-1' style='font-size: 1.08em;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edge AI and IoT Track:</span>";
+          } else if($count == 24) {
+            echo "<span class='fw-semibold pb-2 my-1' style='font-size: 1.08em;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Embedded AI Track:</span>";
+          } else if($count == 27) {
+            echo "<h5 class='mb-3 mt-4 fw-semibold'>Professional Electives (6 credits)<br></h5>";
           }
+          
         ?>
+      
           <div class="mb-3">
             <!-- CHECK BOXES -->
             <?php if ($count < 5) { ?>
               <span><input onclick="updateProgress()" class="math" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
-            <?php } else if ($count < 11) { ?>
+
+            <?php } else if ($count < 10) { ?>
               <span><input onclick="updateProgress()" class="core" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
-            <?php } else if ($count >= 11) { ?>
-              <span><input onclick="updateProgress()" class="last" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
+
+            <?php } else if ($count < 21) { ?>
+              <span><input onclick="updateProgress()" class="professional" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
+
+            <?php } else if ($count < 27) { ?>
+              <span><input onclick="updateProgress()" class="track" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
+
             <?php } else { ?>
-              <span>
-                <input onclick="updateProgress()" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1">
-              </span>
+              <span><input onclick="updateProgress()" class="elective" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
             <?php } ?>
             <!-- COURSE GROUP-NUMBER-NAME -->
             <span class="text-dark">
@@ -173,7 +171,7 @@ $advisor = getAdvisor(4);
                   echo "NO OFFERED SECTIONS";
                 } ?>
                 <!-- TEXTBOOK -->
-                <a href="<?php echo $row[6]; ?>" class="link-light text-decoration-underline link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" target="_blank">Textbook link here.</a>
+                <a href="<?php echo $row[5]; ?>" class="link-light text-decoration-underline link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" target="_blank">Textbook link here.</a>
               </div>
               <br>
             </div>
@@ -186,8 +184,18 @@ $advisor = getAdvisor(4);
 
       <!-- CAREER -->
       <div class="row m-5 p-2">
-        <h5 class="pb-1 pt-2"><strong>Career Paths:</strong></h5>
-        <!-- <p class="" style="font-size: 1.15em;"><//?php echo $careers; ?><br></p> -->
+        <h5 class="pb-1 pt-2"><strong>Artificial Intelligence Jobs and Careers:</strong><br></h5>
+        <p>Artificial Intelligence is a broad and dynamic field that offers a wide range of jobs and careers across various industries.<br> Here are some common computer science jobs and career paths:</p>
+        <ul class="list-group">
+          <ol>
+            <li>Machine learning Engineer</li>
+            <li>Data Scientist</li>
+            <li>Al research Scientist</li>
+            <li>Information Security</li>
+            <li>Computer vision engineer</li>
+            <li>Robotics engineer</li>
+          </ol>
+        </ul>
       </div>
 
       <!-- PROF POPUP -->
@@ -212,7 +220,7 @@ $advisor = getAdvisor(4);
 
     </div> <!-- End of container-fluid div -->
 
-  </div>
+  </div> <!-- End of banner div -->
 
 
 
@@ -261,10 +269,19 @@ $advisor = getAdvisor(4);
     function updateProgress() {
       var numAll = $('input[type="checkbox"]').length;
       var numChecked = $('input[type="checkbox"]:checked').length;
-      var lastBoxes = $('.last:input[type="checkbox"]').length;
-      var lastChecked = $('.last:input[type="checkbox"]:checked').length;
-      numAll -= lastBoxes;
-      numChecked -= lastChecked
+      var electiveBoxes = $('.elective:input[type="checkbox"]').length;
+      var electiveChecked = $('.elective:input[type="checkbox"]:checked').length - 3;
+      var trackBoxes = $('.track:input[type="checkbox"]').length;
+      var trackChecked = $('.track:input[type="checkbox"]:checked').length - 3;
+
+      numAll = numAll - (electiveBoxes + trackBoxes) + 6;
+      if (electiveChecked > 0) {
+        numChecked -= electiveChecked;
+      }
+      if (trackChecked > 0) {
+        numChecked -= trackChecked;
+      }
+      
       if (numAll > 0) {
         var perc = (numChecked / numAll) * 100;
         $('.progress-bar').css('width', perc + '%').attr('aria-valuenow', perc);

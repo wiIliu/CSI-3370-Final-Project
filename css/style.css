@@ -15,9 +15,25 @@ body {
   font-size: 1.2em;
 }
 
-
+a {
+  text-decoration: none;
+}
 nav a {
   color: #ffffff;
   text-decoration: none;
   margin: 0 10px;
+}
+.nav li:hover {
+  background-color: white;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+.dropdown li+li {
+  margin-top: 10px;
+}
+.nav-item {
+  position: relative;
+}
+.dropdown:hover .dropdown-menu {
+  display: block;
 }

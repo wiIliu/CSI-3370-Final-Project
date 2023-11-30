@@ -40,24 +40,6 @@ $current = date("H:i:s d.m.y");
             padding-left: 5px;
             color: #009000;
         }
-
-        .nav li:hover {
-            background-color: white;
-            border-radius: 5px;
-            transition: 0.3s ease;
-        }
-
-        .dropdown li+li {
-            margin-top: 10px;
-        }
-
-        .nav-item {
-            position: relative;
-        }
-
-        .dropdown:hover .dropdown-menu {
-            display: block;
-        }
     </style>
 
 

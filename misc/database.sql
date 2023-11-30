@@ -47,19 +47,25 @@ CREATE TABLE CLASS(
     CLASS_CREDITS INTEGER DEFAULT 4,
     CLASS_DESC VARCHAR(700),
     TEXTBK_LINK VARCHAR(255),
-    ELECTIVE_FLG CHAR(1) DEFAULT 'N',
-    CORE_CLASS_FLG CHAR(1) DEFAULT 'N',
+    -- ELECTIVE_FLG CHAR(1) DEFAULT 'N',
+    -- CORE_CLASS_FLG CHAR(1) DEFAULT 'N',
     CLASS_PREREQ_FLG CHAR(1) DEFAULT 'N',
     CLASS_PREREQ VARCHAR(25)
 );
 
+
 CREATE TABLE BRIDGE(
     MJR_ID INTEGER NOT NULL,
     CLASS_ID INTEGER NOT NULL,
+    CORE_CLASS_FLG CHAR(1) DEFAULT 'N',
+    ELECTIVE_FLG CHAR(1) DEFAULT 'N',
+    TRACK_CLASS_FLG CHAR(1) DEFAULT 'N',
+    TRACK_CLASS_NUM INTEGER,
     PRIMARY KEY(MJR_ID, CLASS_ID),
     FOREIGN KEY (MJR_ID) REFERENCES MAJOR(MJR_ID),
     FOREIGN KEY (CLASS_ID) REFERENCES CLASS(CLASS_ID)
 );
+
 
 CREATE TABLE PROFESSOR(
     PROF_ID INTEGER PRIMARY KEY,
@@ -99,245 +105,433 @@ INSERT INTO MAJOR VALUES(4,"Artificial Intelligence", "Artificial Intelligence (
 INSERT INTO MAJOR VALUES(5,"Information Technology", "An Information Technology (IT) major provides students with a versatile skill set for navigating the rapidly evolving tech landscape. Focused on the practical application of technology in various domains, the curriculum covers areas such as computer systems, networks, databases, and programming. Students learn to analyze and solve complex problems, manage IT projects, and implement innovative solutions. Emphasis is placed on acquiring proficiency in programming languages, understanding system architectures, and developing skills in network administration.", "Each candidate for an Oakland University baccalaureate will need to satisfactorily complete approved courses in each of the following areas: Foundation, Exploration, Integration, Writing, U.S. Diversity, and Capstone. GPA requirements vary, often considering overall GPA of 2.5, core course GPA, and prerequisites. For details, refer to the General Education section of the catalog.", "pictures\\itMajor.png", 2);
 
 -- CLASS values --
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC,CORE_CLASS_FLG,TEXTBK_LINK) VALUES(3450,"CSI", "Database Design and Implementation", "Introduction to the design, implementation and management of database systems. Topics include planning, designing, and implementing a practical database using a relational database server for an application utilizing entity relationship diagrams, normal forms, and understanding relational database schemas. Advanced topics include concurrency control, query optimization, and introduction to database systems administration", 'Y',"https://www.cengage.com/c/database-systems-13e-coronel-morris/9781337627900/");
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC,CORE_CLASS_FLG,TEXTBK_LINK) VALUES(3610, "CSI", "Design and Analysis of Algorithms", "Computer algorithms, their design and analysis. Strategies constructing algorithmic solutions, including divide-and-conquer, dynamic programming and greedy algorithms. Computational complexity as it pertains to time and space is used to evaluate the algorithms. A general overview of complexity classes is given.", 'Y',"https://dahlan.unimal.ac.id/files/ebooks/2009%20Introduction%20to%20Algorithms%20Third%20Ed.pdf");
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC,CORE_CLASS_FLG,TEXTBK_LINK) VALUES(3370, "CSI", "Software Engineering and Practice", "Introduction to software engineering and practice. Topics include software process models, project and software management, requirements analysis, architecture modeling, implementation and system integration, quality assurance, and testing.", 'Y',"https://moodle.oakland.edu/pluginfile.php/8885924/mod_resource/content/0/book.pdf");
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC,CORE_CLASS_FLG,TEXTBK_LINK) VALUES(3430, "APM", "Theory of Computation", "Formal models of computation, ranging from finite state automata to Turing machines. Computational models are used to discuss the languages recognized by these machines and address issues of computability.", 'Y', "https://drive.uqu.edu.sa/_/mskhayat/files/MySubjects/20189FS%20ComputationTheory/Introduction%20to%20the%20theory%20of%20computation_third%20edition%20-%20Michael%20Sipser.pdf");
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (2663,"APM","Discrete Mathematics",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (1554,"MTH", "Calculus I",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (1555,"MTH", "Calculus II", NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (2775,"MTH", "Linear Algebra",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (2226,"STA", "Applied Probability and Statistics",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (2440,"CSI", "Computer System",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (4150,"CSI", "AI for IT Operations",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (4170,"CSI", "Machine Learing",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (4180,"CSI", "Natural Language Processing",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (4810,"CSI", "Information Retrieval and Knowledge Discovery",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (4999,"CSI", "Senior Capstone Project",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (2320,"CSI", "C++ for Programmers",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (2330,"CSI", "Immersive Python",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (2340,"CSI", "Ruby for Web Developers",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (2350,"CSI", "Programming in Visual C# for .NET Technology",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC,CORE_CLASS_FLG) VALUES (1420,"CSI", "Introduction to C Programming and Unix", NULL,'Y');
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC,CORE_CLASS_FLG) VALUES (1320,"CSI", "Introduction to Python Programming and Unix", NULL,'Y');
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC,CORE_CLASS_FLG) VALUES (2300,"CSI", "Object-Oriented Computing", NULL,'Y');
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC,CORE_CLASS_FLG) VALUES (2310,"CSI", "Data Structures", NULL,'Y');
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC,CORE_CLASS_FLG) VALUES (2490,"CSI", "Introduction to Artificial Intelligence: Representation, Concepts, and Problem Solving", NULL,'Y');
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC,CLASS_CREDITS,CORE_CLASS_FLG) VALUES (2999,"CSI", "Sophomore Project", NULL,2,'Y');
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC,CORE_CLASS_FLG) VALUES (4100,"CSI", "Ethics and Bias in AI", NULL,'Y');
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC,CORE_CLASS_FLG) VALUES (4130,"CSI", "Artificial Intelligence", NULL,'Y');
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC,CORE_CLASS_FLG) VALUES (4140,"CSI", "Deep Learning and Applications", NULL,'Y');
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (2460,"CSI", "Foundamentals of Cybersecurity",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (2470,"CSI", "Introduction to Computer Network",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (2555,"APM", "Introduction to Differential Equations with Matrix Algebra",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (1440,"CHM", "General Chemistry I",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (1610,"PHY", "Fundamentals of Physics I",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (1620,"PHY", "Fundamentals of Physics II",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (1200,"EGR", "Engineering Graphics and CAD",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (1400,"EGR", "Computer Problem Solving in Engineering and Computer Science",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (2400,"EGR", "Introduction to Electrical and Computer Engineering",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (2500,"EGR", "Introduction to Thermal Engineering",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (2600,"EGR", "Introduction to Industrial and Systems Engineering",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (2800,"EGR", "Design and Analysis of Electromechanical Systems",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (4240,"CSI", "Cloud Computing",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (4480,"CSI", "Information Security Pratice",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (4600,"CSI", "Network Security",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (4700,"CSI", "Software Security",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (4740,"CSI","Cyber laws and Digital Forensics",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (3341,"CRJ","Cybercrime",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (3660,"CSI","System Administration",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (4560,"CSI", "Mobile Security",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (4880,"CSI", "Reverse Engineering and Malware Analysis",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (2990,"CSI", "Introduction to Data Structure C",NULL);
-INSERT INTO CLASS (CLASS_ID,CLASS_GROUP,CLASS_NAME,CLASS_DESC) VALUES (2005,"ECE", "Electronic Circuit",NULL);
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (2700, "ECE", "Digital Logic Design",NULL);
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (3100, "ECE", "Electronic Circuits and Devices I",NULL);
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (3204, "ECE", "Signals and Systems", NULL);
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (3720, "ECE", "Microprocessors", NULL);
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4710, "ECE", "Computer Hardware Design", NULL);
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4721, "ECE", "Embedded Systems Design", NULL);
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4772, "ECE", "High Performance Embedded Programming", NULL);
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (5760, "ECE", "Embedded System Design with FPGAs", NULL);
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (5770, "ECE", "GPU Accelerated Computing", NULL);
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4160, "CSI", "Integrated Computing Systems", NULL);
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4110, "CSI", "Foundations of Edge AI", NULL);
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4551, "ECE", "Human Robot Interaction", NULL);
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (3105, "ECE", "Electronic Circuits and Devices II", NULL);
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4132, "ECE", "VLSIC Design of Digital Chips", NULL);
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4134, "ECE", "Fundamentals of MEMS", NULL);
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (3480, "CSI", "Security and Privacy in Computing", NULL);
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (3640, "CSI", "Computer Organization", NULL);
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4350, "CSI", "Programming language", NULL);
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4500, "CSI", "Operating System", NULL);
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4650, "CSI", "Paralllel and Distributed Computing", NULL);
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (1210, 'CSI', 'Problem Solving Using VBA and Excel', 'NULL');
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (1663, 'APM', 'Mathematics for Information Technology', 'NULL');
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (3500, 'CSI', 'Human Computer Interaction', 'NULL');
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (3620, 'CSI', 'Human Computer Interaction', 'NULL');
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4430, 'CSI', 'IT Project Management', 'NULL');
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (3680, 'CSI', 'Script Programming', 'NULL');
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (3380, 'CSI', 'Game Design', 'NULL');
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4380, 'CSI', 'Game Programming', 'NULL');
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4230, 'CSI', 'Mobile and Smart Phone Application Development', 'NULL');
--- Computational Intelligence Track -- 
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4550, "CSI", "Visual Computing", "NULL");
--- System Administration Track
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4660, "CSI", "Advanced System Administration", "NULL");
--- Cybersecurity Track
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4460, "CSI", "Information Security", "NULL");
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4347, "APM", "Mathematics of Cryptology", "NULL");
--- Web Development Track --
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (3150, "CSI", "Web and Mobile Systems", "NULL");
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4510, "CSI", "Advanced Web Design Application", "NULL");
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (2221, "STA", "Introduction to Statistical Methods ", "NULL");
--- AI in Cybersecurity Track
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4580, 'CSI', 'AI for Cybersecurity and Privacy', 'NULL');
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4590, 'CSI', 'Multimedia Forensics', 'NULL');
--- Cyber Physical System (CPS) Security Track
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4731, 'ECE', 'Fundamentals of Embedded System Design', 'NULL');
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4520, 'CSI', 'Industrial Control Security', 'NULL');
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4790, 'CSI', 'Automotive Security', 'NULL');
-INSERT INTO CLASS (CLASS_ID, CLASS_GROUP, CLASS_NAME, CLASS_DESC) VALUES (4780, 'ECE', 'Embedded Security', 'NULL');
+
+
+INSERT INTO `class` (`CLASS_ID`, `CLASS_GROUP`, `CLASS_NAME`, `CLASS_CREDITS`, `CLASS_DESC`, `TEXTBK_LINK`, `CLASS_PREREQ_FLG`, `CLASS_PREREQ`) VALUES
+(1200, 'EGR', 'Engineering Graphics and CAD', 1, NULL, NULL, 'N', NULL),
+(1210, 'CSI', 'Problem Solving Using VBA and Excel', 4, 'NULL', NULL, 'N', NULL),
+(1320, 'CSI', 'Introduction to Python Programming and Unix', 4, NULL, NULL, 'N', NULL),
+(1400, 'EGR', 'Computer Problem Solving in Engineering and Computer Science', 4, NULL, NULL, 'N', NULL),
+(1420, 'CSI', 'Introduction to C Programming and Unix', 4, NULL, NULL, 'N', NULL),
+(1440, 'CHM', 'General Chemistry I', 4, NULL, NULL, 'N', NULL),
+(1554, 'MTH', 'Calculus I', 4, NULL, NULL, 'N', NULL),
+(1555, 'MTH', 'Calculus II', 4, NULL, NULL, 'N', NULL),
+(1610, 'PHY', 'Fundamentals of Physics I', 4, NULL, NULL, 'N', NULL),
+(1620, 'PHY', 'Fundamentals of Physics II', 4, NULL, NULL, 'N', NULL),
+(1663, 'APM', 'Mathematics for Information Technology', 4, 'NULL', NULL, 'N', NULL),
+(2005, 'ECE', 'Electric Circuits', 4, NULL, NULL, 'N', NULL),
+(2221, 'STA', 'Introduction to Statistical Methods ', 4, 'NULL', NULL, 'N', NULL),
+(2226, 'STA', 'Applied Probability and Statistics', 4, NULL, NULL, 'N', NULL),
+(2290, 'CSI', 'Introduction to Data Structures in C', 4, NULL, NULL, 'N', NULL),
+(2300, 'CSI', 'Object-Oriented Computing', 4, NULL, NULL, 'N', NULL),
+(2310, 'CSI', 'Data Structures', 4, NULL, NULL, 'N', NULL),
+(2320, 'CSI', 'C++ for Programmers', 2, NULL, NULL, 'N', NULL),
+(2330, 'CSI', 'Immersive Python', 2, NULL, NULL, 'N', NULL),
+(2340, 'CSI', 'Ruby for Web Developers', 2, NULL, NULL, 'N', NULL),
+(2350, 'CSI', 'Programming in Visual C# for .NET Technology', 2, NULL, NULL, 'N', NULL),
+(2400, 'EGR', 'Introduction to Electrical and Computer Engineering', 4, NULL, NULL, 'N', NULL),
+(2440, 'CSI', 'Computer Systems', 4, NULL, NULL, 'N', NULL),
+(2460, 'CSI', 'Fundamentals of Cybersecurity', 4, NULL, NULL, 'N', NULL),
+(2470, 'CSI', 'Introduction to Computer Networks', 4, NULL, NULL, 'N', NULL),
+(2490, 'CSI', 'Introduction to Artificial Intelligence: Representation, Concepts, and Problem Solving', 4, NULL, NULL, 'N', NULL),
+(2500, 'EGR', 'Introduction to Thermal Engineering', 4, NULL, NULL, 'N', NULL),
+(2555, 'APM', 'Introduction to Differential Equations with Matrix Algebra', 4, NULL, NULL, 'N', NULL),
+(2600, 'EGR', 'Introduction to Industrial and Systems Engineering', 4, NULL, NULL, 'N', NULL),
+(2663, 'APM', 'Discrete Mathematics', 4, NULL, NULL, 'N', NULL),
+(2700, 'ECE', 'Digital Logic Design', 4, NULL, NULL, 'N', NULL),
+(2775, 'MTH', 'Linear Algebra', 4, NULL, NULL, 'N', NULL),
+(2800, 'EGR', 'Design and Analysis of Electromechanical Systems', 4, NULL, NULL, 'N', NULL),
+(2990, 'CSI', 'Introduction to Data Structure C', 4, NULL, NULL, 'N', NULL),
+(2999, 'CSI', 'Sophomore Project', 2, NULL, NULL, 'N', NULL),
+(3100, 'ECE', 'Electronic Circuits and Devices I', 4, NULL, NULL, 'N', NULL),
+(3105, 'ECE', 'Electronic Circuits and Devices II', 4, NULL, NULL, 'N', NULL),
+(3150, 'CSI', 'Web and Mobile Systems', 4, 'NULL', NULL, 'N', NULL),
+(3204, 'ECE', 'Signals and Systems', 4, NULL, NULL, 'N', NULL),
+(3341, 'CRJ', 'Cybercrime', 4, NULL, NULL, 'N', NULL),
+(3370, 'CSI', 'Software Engineering and Practice', 4, 'Introduction to software engineering and practice. Topics include software process models, project and software management, requirements analysis, architecture modeling, implementation and system integration, quality assurance, and testing.', 'https://moodle.oakland.edu/pluginfile.php/8885924/mod_resource/content/0/book.pdf', 'N', NULL),
+(3380, 'CSI', 'Game Design', 4, 'NULL', NULL, 'N', NULL),
+(3400, 'BIO', 'Genetics', 4, 'NULL', NULL, 'N', NULL),
+(3430, 'APM', 'Theory of Computation', 4, 'Formal models of computation, ranging from finite state automata to Turing machines. Computational models are used to discuss the languages recognized by these machines and address issues of computability.', 'https://drive.uqu.edu.sa/_/mskhayat/files/MySubjects/20189FS%20ComputationTheory/Introduction%20to%20the%20theory%20of%20computation_third%20edition%20-%20Michael%20Sipser.pdf', 'N', NULL),
+(3450, 'CSI', 'Database Design and Implementation', 4, 'Introduction to the design, implementation and management of database systems. Topics include planning, designing, and implementing a practical database using a relational database server for an application utilizing entity relationship diagrams, normal forms, and understanding relational database schemas. Advanced topics include concurrency control, query optimization, and introduction to database systems administration', 'https://www.cengage.com/c/database-systems-13e-coronel-morris/9781337627900/', 'N', NULL),
+(3480, 'CSI', 'Security and Privacy in Computing', 4, NULL, NULL, 'N', NULL),
+(3500, 'CSI', 'Human Computer Interaction', 4, 'NULL', NULL, 'N', NULL),
+(3610, 'CSI', 'Design and Analysis of Algorithms', 4, 'Computer algorithms, their design and analysis. Strategies constructing algorithmic solutions, including divide-and-conquer, dynamic programming and greedy algorithms. Computational complexity as it pertains to time and space is used to evaluate the algorithms. A general overview of complexity classes is given.', 'https://dahlan.unimal.ac.id/files/ebooks/2009%20Introduction%20to%20Algorithms%20Third%20Ed.pdf', 'N', NULL),
+(3620, 'CSI', 'Data Structures and Alogithms', 4, 'NULL', NULL, 'N', NULL),
+(3640, 'CSI', 'Computer Organization', 4, NULL, NULL, 'N', NULL),
+(3660, 'CSI', 'System Administration', 4, NULL, NULL, 'N', NULL),
+(3680, 'CSI', 'Script Programming', 4, 'NULL', NULL, 'N', NULL),
+(3720, 'ECE', 'Microprocessors', 4, NULL, NULL, 'N', NULL),
+(4100, 'CSI', 'Ethics and Bias in AI', 4, NULL, NULL, 'N', NULL),
+(4110, 'CSI', 'Foundations of Edge AI', 4, NULL, NULL, 'N', NULL),
+(4130, 'CSI', 'Artificial Intelligence', 4, NULL, NULL, 'N', NULL),
+(4131, 'ECE', 'Electronic Materials and Devices', 4, NULL, NULL, 'N', NULL),
+(4132, 'ECE', 'VLSIC Design of Digital Chips', 4, NULL, NULL, 'N', NULL),
+(4134, 'ECE', 'Fundamentals of MEMS', 4, NULL, NULL, 'N', NULL),
+(4140, 'CSI', 'Deep Learning and Applications', 4, NULL, NULL, 'N', NULL),
+(4150, 'CSI', 'AI for IT Operations', 4, NULL, NULL, 'N', NULL),
+(4160, 'CSI', 'Integrated Computing Systems', 4, NULL, NULL, 'N', NULL),
+(4170, 'CSI', 'Machine Learing', 4, NULL, NULL, 'N', NULL),
+(4180, 'CSI', 'Natural Language Processing', 4, NULL, NULL, 'N', NULL),
+(4181, 'MIS', 'IS Risk Analysis and Security Controls Development', 3, NULL, NULL, 'N', NULL),
+(4230, 'CSI', 'Mobile and Smart Phone Application Development', 4, 'NULL', NULL, 'N', NULL),
+(4240, 'CSI', 'Cloud Computing', 4, NULL, NULL, 'N', NULL),
+(4347, 'APM', 'Mathematics of Cryptology', 4, 'NULL', NULL, 'N', NULL),
+(4350, 'CSI', 'Programming language', 4, NULL, NULL, 'N', NULL),
+(4380, 'CSI', 'Game Programming', 4, 'NULL', NULL, 'N', NULL),
+(4430, 'CSI', 'IT Project Management', 4, 'NULL', NULL, 'N', NULL),
+(4460, 'CSI', 'Information Security', 4, 'NULL', NULL, 'N', NULL),
+(4480, 'CSI', 'Information Security Pratice', 4, NULL, NULL, 'N', NULL),
+(4500, 'CSI', 'Operating System', 4, NULL, NULL, 'N', NULL),
+(4510, 'CSI', 'Advanced Web Design Application', 4, 'NULL', NULL, 'N', NULL),
+(4520, 'CSI', 'Industrial Control Security', 4, 'NULL', NULL, 'N', NULL),
+(4521, 'ECE', 'Automotive Mechatronics I', 4, 'NULL', NULL, 'N', NULL),
+(4550, 'CSI', 'Visual Computing', 4, 'NULL', NULL, 'N', NULL),
+(4551, 'ECE', 'Human Robot Interaction', 4, NULL, NULL, 'N', NULL),
+(4560, 'CSI', 'Mobile Security', 4, NULL, NULL, 'N', NULL),
+(4580, 'CSI', 'AI for Cybersecurity and Privacy', 4, 'NULL', NULL, 'N', NULL),
+(4590, 'CSI', 'Multimedia Forensics', 4, 'NULL', NULL, 'N', NULL),
+(4600, 'CSI', 'Network Security', 4, NULL, NULL, 'N', NULL),
+(4650, 'CSI', 'Paralllel and Distributed Computing', 4, NULL, NULL, 'N', NULL),
+(4660, 'CSI', 'Advanced System Administration', 4, 'NULL', NULL, 'N', NULL),
+(4700, 'CSI', 'Software Security', 4, NULL, NULL, 'N', NULL),
+(4710, 'ECE', 'Computer Hardware Design', 4, NULL, NULL, 'N', NULL),
+(4721, 'ECE', 'Embedded Systems Design', 4, NULL, NULL, 'N', NULL),
+(4731, 'ECE', 'Fundamentals of Embedded System Design', 4, 'NULL', NULL, 'N', NULL),
+(4740, 'CSI', 'Cyber Laws and Digital Forensics', 4, NULL, NULL, 'N', NULL),
+(4772, 'ECE', 'High Performance Embedded Programming', 4, NULL, NULL, 'N', NULL),
+(4780, 'ECE', 'Embedded Security', 4, 'NULL', NULL, 'N', NULL),
+(4781, 'CSI', 'Bioinformatics', 4, 'NULL', NULL, 'N', NULL),
+(4790, 'CSI', 'Automotive Security', 4, 'NULL', NULL, 'N', NULL),
+(4810, 'CSI', 'Information Retrieval and Knowledge Discovery', 4, NULL, NULL, 'N', NULL),
+(4880, 'CSI', 'Reverse Engineering and Malware Analysis', 4, NULL, NULL, 'N', NULL),
+(4900, 'ECE', 'ST: Embedded Artificial Intelligence', 4, NULL, NULL, 'N', NULL),
+(4999, 'CSI', 'Senior Capstone Project', 4, NULL, NULL, 'N', NULL),
+(5760, 'ECE', 'Embedded System Design with FPGAs', 4, NULL, NULL, 'N', NULL),
+(5770, 'ECE', 'GPU Accelerated Computing', 4, NULL, NULL, 'N', NULL);
+
+
+
 
 -- BRIDGE --
-INSERT INTO BRIDGE VALUES(1,3450);
-INSERT INTO BRIDGE VALUES(1,3610);
-INSERT INTO BRIDGE VALUES(1,3370);
-INSERT INTO BRIDGE VALUES(1,3430);
-INSERT INTO BRIDGE VALUES(1,1420);
-INSERT INTO BRIDGE VALUES(1,2300);
-INSERT INTO BRIDGE VALUES(1,2310);
-INSERT INTO BRIDGE VALUES(1,2470);
-INSERT INTO BRIDGE VALUES(1,2999);
-INSERT INTO BRIDGE VALUES(1,3480);
-INSERT INTO BRIDGE VALUES(1,3640);
-INSERT INTO BRIDGE VALUES(1,4350);
-INSERT INTO BRIDGE VALUES(1,4500);
-INSERT INTO BRIDGE VALUES(1,4650);
-INSERT INTO BRIDGE VALUES(1,4999);
-INSERT INTO BRIDGE VALUES(1,4130);
-INSERT INTO BRIDGE VALUES(1,4140);
-INSERT INTO BRIDGE VALUES(1,4170);
-INSERT INTO BRIDGE VALUES(1,4180);
-INSERT INTO BRIDGE VALUES(1,4550);
-INSERT INTO BRIDGE VALUES(1,4810);
-INSERT INTO BRIDGE VALUES(1,3660);
-INSERT INTO BRIDGE VALUES(1,4660);
-INSERT INTO BRIDGE VALUES(1,4460);
-INSERT INTO BRIDGE VALUES(1,4480);
-INSERT INTO BRIDGE VALUES(1,4700);
-INSERT INTO BRIDGE VALUES(1,4347);
-INSERT INTO BRIDGE VALUES(1,3150);
-INSERT INTO BRIDGE VALUES(1,4160);
-INSERT INTO BRIDGE VALUES(1,4510);
-INSERT INTO BRIDGE VALUES(4,2663);
-INSERT INTO BRIDGE VALUES(4,1554);
-INSERT INTO BRIDGE VALUES(4,1555);
-INSERT INTO BRIDGE VALUES(4,2775);
-INSERT INTO BRIDGE VALUES(4,2226);
-INSERT INTO BRIDGE VALUES(4,1420);
-INSERT INTO BRIDGE VALUES(4,1320);
-INSERT INTO BRIDGE VALUES(4,2300);
-INSERT INTO BRIDGE VALUES(4,2310);
-INSERT INTO BRIDGE VALUES(4,2490);
-INSERT INTO BRIDGE VALUES(4,2999);
-INSERT INTO BRIDGE VALUES(4,3370);
-INSERT INTO BRIDGE VALUES(4,3430);
-INSERT INTO BRIDGE VALUES(4,3610);
-INSERT INTO BRIDGE VALUES(4,4100);
-INSERT INTO BRIDGE VALUES(4,4130);
-INSERT INTO BRIDGE VALUES(4,4140);
-INSERT INTO BRIDGE VALUES(4,4230);
-INSERT INTO BRIDGE VALUES(4,4240);
-INSERT INTO BRIDGE VALUES(4,4110);
-INSERT INTO BRIDGE VALUES(4,4731);
-INSERT INTO BRIDGE VALUES(4,4520);
-INSERT INTO BRIDGE VALUES(3,1554);
-INSERT INTO BRIDGE VALUES(3,1555);
-INSERT INTO BRIDGE VALUES(3,2226);
-INSERT INTO BRIDGE VALUES(3,2663);
-INSERT INTO BRIDGE VALUES(3,2999);
-INSERT INTO BRIDGE VALUES(3,1420);
-INSERT INTO BRIDGE VALUES(3,2300);
-INSERT INTO BRIDGE VALUES(3,2440);
-INSERT INTO BRIDGE VALUES(3,2460);
-INSERT INTO BRIDGE VALUES(3,2470);
-INSERT INTO BRIDGE VALUES(3,3370);
-INSERT INTO BRIDGE VALUES(3,3450);
-INSERT INTO BRIDGE VALUES(3,3660);
-INSERT INTO BRIDGE VALUES(3,4240);
-INSERT INTO BRIDGE VALUES(3,4480);
-INSERT INTO BRIDGE VALUES(3,4600);
-INSERT INTO BRIDGE VALUES(3,4700);
-INSERT INTO BRIDGE VALUES(3,4740);
-INSERT INTO BRIDGE VALUES(3,4999);
-INSERT INTO BRIDGE VALUES(3,3341);
-INSERT INTO BRIDGE VALUES(3,4560);
-INSERT INTO BRIDGE VALUES(3,4880);
-INSERT INTO BRIDGE VALUES(3,4130);
-INSERT INTO BRIDGE VALUES(3,4580);
-INSERT INTO BRIDGE VALUES(3,4590);
-INSERT INTO BRIDGE VALUES(3,4731);
-INSERT INTO BRIDGE VALUES(3,4520);
-INSERT INTO BRIDGE VALUES(3,4790);
-INSERT INTO BRIDGE VALUES(3,4780);
-INSERT INTO BRIDGE VALUES(2,2555);
-INSERT INTO BRIDGE VALUES(2,2663);
-INSERT INTO BRIDGE VALUES(2,1440);
-INSERT INTO BRIDGE VALUES(2,1554);
-INSERT INTO BRIDGE VALUES(2,1555);
-INSERT INTO BRIDGE VALUES(2,1610);
-INSERT INTO BRIDGE VALUES(2,1620);
-INSERT INTO BRIDGE VALUES(2,1200);
-INSERT INTO BRIDGE VALUES(2,1400);
-INSERT INTO BRIDGE VALUES(2,2400);
-INSERT INTO BRIDGE VALUES(2,2500);
-INSERT INTO BRIDGE VALUES(2,2600);
-INSERT INTO BRIDGE VALUES(2,2800);
-INSERT INTO BRIDGE VALUES(2,2005);
-INSERT INTO BRIDGE VALUES(2,2700);
-INSERT INTO BRIDGE VALUES(2,3100);
-INSERT INTO BRIDGE VALUES(2,3204);
-INSERT INTO BRIDGE VALUES(2,3720);
-INSERT INTO BRIDGE VALUES(2,4721);
-INSERT INTO BRIDGE VALUES(2,4999);
-INSERT INTO BRIDGE VALUES(2,4772);
-INSERT INTO BRIDGE VALUES(2,5760);
-INSERT INTO BRIDGE VALUES(2,5770);
-INSERT INTO BRIDGE VALUES(2,4130);
-INSERT INTO BRIDGE VALUES(2,4160);
-INSERT INTO BRIDGE VALUES(2,4110);
-INSERT INTO BRIDGE VALUES(2,4551);
-INSERT INTO BRIDGE VALUES(2,4740);
-INSERT INTO BRIDGE VALUES(2,3105);
-INSERT INTO BRIDGE VALUES(2,4132);
-INSERT INTO BRIDGE VALUES(2,4134);
-INSERT INTO BRIDGE VALUES(5,1554);
-INSERT INTO BRIDGE VALUES(5,2221);
-INSERT INTO BRIDGE VALUES(5,1663);
-INSERT INTO BRIDGE VALUES(5,1210);
-INSERT INTO BRIDGE VALUES(5,1320);
-INSERT INTO BRIDGE VALUES(5,2300);
-INSERT INTO BRIDGE VALUES(5,2440);
-INSERT INTO BRIDGE VALUES(5,2470);
-INSERT INTO BRIDGE VALUES(5,2999);
-INSERT INTO BRIDGE VALUES(5,3150);
-INSERT INTO BRIDGE VALUES(5,3370);
-INSERT INTO BRIDGE VALUES(5,3450);
-INSERT INTO BRIDGE VALUES(5,3480);
-INSERT INTO BRIDGE VALUES(5,3500);
-INSERT INTO BRIDGE VALUES(5,3620);
-INSERT INTO BRIDGE VALUES(5,3660);
-INSERT INTO BRIDGE VALUES(5,4160);
-INSERT INTO BRIDGE VALUES(5,4430);
-INSERT INTO BRIDGE VALUES(5,4999);
-INSERT INTO BRIDGE VALUES(5,4660);
-INSERT INTO BRIDGE VALUES(5,3680);
-INSERT INTO BRIDGE VALUES(5,3380);
-INSERT INTO BRIDGE VALUES(5,4380);
-INSERT INTO BRIDGE VALUES(5,4460);
-INSERT INTO BRIDGE VALUES(5,4480);
-INSERT INTO BRIDGE VALUES(5,4700);
+
+INSERT INTO `bridge` (`MJR_ID`, `CLASS_ID`, `CORE_CLASS_FLG`, `ELECTIVE_FLG`, `TRACK_CLASS_FLG`, `TRACK_CLASS_NUM`) VALUES
+(1, 1554, 'N', 'N', 'N',NULL),
+(1, 1555, 'N', 'N', 'N',NULL),
+(1, 2226, 'N', 'N', 'N',NULL),
+(1, 2663, 'N', 'N', 'N',NULL),
+(1, 2775, 'N', 'N', 'N',NULL),
+(1, 1420, 'Y', 'N', 'N',NULL),
+(1, 2300, 'Y', 'N', 'N',NULL),
+(1, 2310, 'Y', 'N', 'N',NULL),
+(1, 2470, 'Y', 'N', 'N',NULL),
+(1, 2999, 'Y', 'N', 'N',NULL),
+(1, 3150, 'N', 'N', 'Y',4),
+(1, 3370, 'Y', 'N', 'N',NULL),
+(1, 3430, 'Y', 'N', 'N',NULL),
+(1, 3450, 'Y', 'N', 'N',NULL),
+(1, 3480, 'Y', 'N', 'N',NULL),
+(1, 3610, 'Y', 'N', 'N',NULL),
+(1, 3640, 'Y', 'N', 'N',NULL),
+(1, 3660, 'N', 'N', 'Y',2),
+(1, 4130, 'N', 'N', 'Y',1),
+(1, 4140, 'N', 'N', 'Y',1),
+(1, 4160, 'N', 'N', 'Y',4),
+(1, 4170, 'N', 'N', 'Y',1),
+(1, 4180, 'N', 'N', 'Y',1),
+(1, 4347, 'N', 'N', 'Y',3),
+(1, 4350, 'Y', 'N', 'N',NULL),
+(1, 4460, 'N', 'N', 'Y',3),
+(1, 4480, 'N', 'N', 'Y',3),
+(1, 4500, 'Y', 'N', 'N',NULL),
+(1, 4510, 'N', 'N', 'Y',4),
+(1, 4550, 'N', 'N', 'Y',1),
+(1, 4650, 'Y', 'N', 'N',NULL),
+(1, 4660, 'N', 'N', 'Y',2),
+(1, 4700, 'N', 'N', 'Y',3),
+(1, 4810, 'N', 'N', 'Y',1),
+(1, 4999, 'Y', 'N', 'N',NULL),
+(2, 1200, 'Y', 'N', 'N',NULL),
+(2, 1400, 'Y', 'N', 'N',NULL),
+(2, 1440, 'N', 'N', 'N',NULL),
+(2, 1554, 'N', 'N', 'N',NULL),
+(2, 1555, 'N', 'N', 'N',NULL),
+(2, 1610, 'N', 'N', 'N',NULL),
+(2, 1620, 'N', 'N', 'N',NULL),
+(2, 2005, 'Y', 'N', 'N',NULL),
+(2, 2400, 'Y', 'N', 'N',NULL),
+(2, 2500, 'Y', 'N', 'N',NULL),
+(2, 2555, 'N', 'N', 'N',NULL),
+(2, 2600, 'Y', 'N', 'N',NULL),
+(2, 2290, 'Y', 'N', 'N',NULL),
+(2, 2663, 'N', 'N', 'N',NULL),
+(2, 2700, 'Y', 'N', 'N',NULL),
+(2, 2800, 'Y', 'N', 'N',NULL),
+(2, 3100, 'Y', 'N', 'N',NULL),
+(2, 3105, 'N', 'N', 'Y',3),
+(2, 3204, 'Y', 'N', 'N',NULL),
+(2, 3720, 'Y', 'N', 'N',NULL),
+(2, 4110, 'N', 'N', 'Y',2),
+(2, 4130, 'N', 'N', 'Y',2),
+(2, 4131, 'N', 'N', 'Y',3),
+(2, 4132, 'N', 'N', 'Y',3),
+(2, 4134, 'N', 'N', 'Y',3),
+(2, 4160, 'N', 'N', 'Y',2),
+(2, 4551, 'N', 'N', 'Y',2),
+(2, 4710, 'Y', 'N', 'N',NULL),
+(2, 4721, 'Y', 'N', 'N',NULL),
+(2, 4740, 'N', 'N', 'Y',2),
+(2, 4772, 'N', 'N', 'Y',1),
+(2, 4999, 'Y', 'N', 'N',NULL),
+(2, 5760, 'N', 'N', 'Y',1),
+(2, 5770, 'N', 'N', 'Y',1),
+(3, 1420, 'Y', 'N', 'N',NULL),
+(3, 1554, 'N', 'N', 'N',NULL),
+(3, 1555, 'N', 'N', 'N',NULL),
+(3, 2226, 'N', 'N', 'N',NULL),
+(3, 2300, 'Y', 'N', 'N',NULL),
+(3, 2440, 'Y', 'N', 'N',NULL),
+(3, 2460, 'Y', 'N', 'N',NULL),
+(3, 2470, 'Y', 'N', 'N',NULL),
+(3, 2663, 'N', 'N', 'N',NULL),
+(3, 2999, 'Y', 'N', 'N',NULL),
+(3, 3341, 'Y', 'N', 'N',NULL),
+(3, 3370, 'Y', 'N', 'N',NULL),
+(3, 3450, 'Y', 'N', 'N',NULL),
+(3, 3660, 'Y', 'N', 'N',NULL),
+(3, 4130, 'N', 'N', 'Y',2),
+(3, 4181, 'Y', 'N', 'N',NULL),
+(3, 4240, 'Y', 'N', 'N',NULL),
+(3, 4480, 'Y', 'N', 'N',NULL),
+(3, 4520, 'N', 'N', 'Y',3),
+(3, 4560, 'N', 'N', 'Y',1),
+(3, 4580, 'N', 'N', 'Y',2),
+(3, 4590, 'N', 'N', 'Y',2),
+(3, 4600, 'Y', 'N', 'N',NULL),
+(3, 4700, 'Y', 'N', 'N',NULL),
+(3, 4731, 'N', 'N', 'Y',3),
+(3, 4740, 'Y', 'N', 'N',NULL),
+(3, 4780, 'N', 'N', 'Y',3),
+(3, 4790, 'N', 'N', 'Y ',3),
+(3, 4880, 'N', 'N', 'Y',1),
+(3, 4999, 'Y', 'N', 'N',NULL),
+(4, 1420, 'Y', 'N', 'N',NULL),
+(4, 1554, 'N', 'N', 'N',NULL),
+(4, 1555, 'N', 'N', 'N',NULL),
+(4, 2226, 'N', 'N', 'N',NULL),
+(4, 2300, 'Y', 'N', 'N',NULL),
+(4, 2310, 'Y', 'N', 'N',NULL),
+(4, 2490, 'Y', 'N', 'N',NULL),
+(4, 2663, 'N', 'N', 'N',NULL),
+(4, 2775, 'N', 'N', 'N',NULL),
+(4, 2999, 'Y', 'N', 'N',NULL),
+(4, 3370, 'Y', 'N', 'N',NULL),
+(4, 3430, 'Y', 'N', 'N',NULL),
+(4, 3610, 'Y', 'N', 'N',NULL),
+(4, 4100, 'Y', 'N', 'N',NULL),
+(4, 4110, 'N', 'N', 'Y', 1),
+(4, 4130, 'Y', 'N', 'N',NULL),
+(4, 4140, 'Y', 'N', 'N',NULL),
+(4, 4150, 'Y', 'N', 'N',NULL),
+(4, 4170, 'Y', 'N', 'N',NULL),
+(4, 4180, 'Y', 'N', 'N',NULL),
+(4, 4230, 'N', 'N', 'Y', 1),
+(4, 4240, 'N', 'N', 'Y', 1),
+(4, 4521, 'N', 'N', 'Y', 2),
+(4, 4731, 'N', 'N', 'Y', 2),
+(4, 4900, 'N', 'N', 'Y', 2),
+(4, 4810, 'Y', 'N', 'N',NULL),
+(4, 4999, 'Y', 'N', 'N', NULL),
+(4, 2320, 'N', 'Y', 'N',NULL),
+(4, 2330, 'N', 'Y', 'N',NULL),
+(4, 2340, 'N', 'Y', 'N',NULL),
+(4, 2350, 'N', 'Y', 'N',NULL),
+(5, 1210, 'Y', 'N', 'N',NULL),
+(5, 1320, 'Y', 'N', 'N',NULL),
+(5, 1554, 'N', 'N', 'N',NULL),
+(5, 1663, 'N', 'N', 'N',NULL),
+(5, 2221, 'N', 'N', 'N',NULL),
+(5, 2300, 'Y', 'N', 'N',NULL),
+(5, 2440, 'Y', 'N', 'N',NULL),
+(5, 2470, 'Y', 'N', 'N',NULL),
+(5, 2999, 'Y', 'N', 'N',NULL),
+(5, 3150, 'Y', 'N', 'N',NULL),
+(5, 3370, 'Y', 'N', 'N',NULL),
+(5, 3380, 'N', 'N', 'Y',3),
+(5, 3400, 'N', 'N', 'Y',2),
+(5, 3450, 'Y', 'N', 'N',NULL),
+(5, 3480, 'Y', 'N', 'N',NULL),
+(5, 3500, 'Y', 'N', 'N',NULL),
+(5, 3620, 'Y', 'N', 'N',NULL),
+(5, 3660, 'Y', 'N', 'N',NULL),
+(5, 3680, 'N', 'N', 'Y',1),
+(5, 4160, 'Y', 'N', 'N',NULL),
+(5, 4380, 'N', 'N', 'Y',3),
+(5, 4430, 'Y', 'N', 'N',NULL),
+(5, 4460, 'N', 'N', 'Y',4),
+(5, 4480, 'N', 'N', 'Y',4),
+(5, 4660, 'N', 'N', 'Y',1),
+(5, 4700, 'N', 'N', 'Y',4),
+(5, 4781, 'N', 'N', 'Y',2),
+(5, 4999, 'Y', 'N', 'N',NULL);
+
+
+-- INSERT INTO `bridge` (`MJR_ID`, `CLASS_ID`, `CORE_CLASS_FLG`, `ELECTIVE_FLG`, `TRACK_CLASS_FLG`, `TRACK_CLASS_NUM`) VALUES
+-- (1, 1554, 'N', 'N', 'N',NULL),
+-- (1, 1555, 'N', 'N', 'N',NULL),
+-- (1, 2226, 'N', 'N', 'N',NULL),
+-- (1, 2663, 'N', 'N', 'N',NULL),
+-- (1, 2775, 'N', 'N', 'N',NULL),
+-- (1, 1420, 'Y', 'N', 'N',NULL),
+-- (1, 2300, 'Y', 'N', 'N',NULL),
+-- (1, 2310, 'Y', 'N', 'N',NULL),
+-- (1, 2470, 'Y', 'N', 'N',NULL),
+-- (1, 2999, 'Y', 'N', 'N',NULL),
+-- (1, 3150, 'N', 'N', 'Y',4),
+-- (1, 3370, 'Y', 'N', 'N',NULL),
+-- (1, 3430, 'Y', 'N', 'N',NULL),
+-- (1, 3450, 'Y', 'N', 'N',NULL),
+-- (1, 3480, 'Y', 'N', 'N',NULL),
+-- (1, 3610, 'Y', 'N', 'N',NULL),
+-- (1, 3640, 'Y', 'N', 'N',NULL),
+-- (1, 3660, 'N', 'N', 'Y',2),
+-- (1, 4130, 'N', 'N', 'Y',1),
+-- (1, 4140, 'N', 'N', 'Y',1),
+-- (1, 4160, 'N', 'N', 'Y',4),
+-- (1, 4170, 'N', 'N', 'Y',1),
+-- (1, 4180, 'N', 'N', 'Y',1),
+-- (1, 4347, 'N', 'N', 'Y',3),
+-- (1, 4350, 'Y', 'N', 'N',NULL),
+-- (1, 4460, 'N', 'N', 'Y',3),
+-- (1, 4480, 'N', 'N', 'Y',3),
+-- (1, 4500, 'Y', 'N', 'N',NULL),
+-- (1, 4510, 'N', 'N', 'Y',4),
+-- (1, 4550, 'N', 'N', 'Y',1),
+-- (1, 4650, 'Y', 'N', 'N',NULL),
+-- (1, 4660, 'N', 'N', 'Y',2),
+-- (1, 4700, 'N', 'N', 'Y',3),
+-- (1, 4810, 'N', 'N', 'Y',1),
+-- (1, 4999, 'Y', 'N', 'N',NULL),    -- CE --
+-- (2, 1200, 'Y', 'N', 'N',NULL),
+-- (2, 1400, 'Y', 'N', 'N',NULL),
+-- (2, 1440, 'N', 'N', 'N',NULL),
+-- (2, 1554, 'N', 'N', 'N',NULL),
+-- (2, 1555, 'N', 'N', 'N',NULL),
+-- (2, 1610, 'N', 'N', 'N',NULL),
+-- (2, 1620, 'N', 'N', 'N',NULL),
+-- (2, 2005, 'Y', 'N', 'N',NULL),
+-- (2, 2400, 'Y', 'N', 'N',NULL),
+-- (2, 2500, 'Y', 'N', 'N',NULL),
+-- (2, 2555, 'N', 'N', 'N',NULL),
+-- (2, 2600, 'Y', 'N', 'N',NULL),
+-- (2, 2290, 'Y', 'N', 'N',NULL),
+-- (2, 2663, 'N', 'N', 'N',NULL),
+-- (2, 2700, 'Y', 'N', 'N',NULL),
+-- (2, 2800, 'Y', 'N', 'N',NULL),
+-- (2, 3100, 'Y', 'N', 'N',NULL),
+-- (2, 3105, 'N', 'N', 'Y',3),
+-- (2, 3204, 'Y', 'N', 'N',NULL),
+-- (2, 3720, 'Y', 'N', 'N',NULL),
+-- (2, 4110, 'N', 'N', 'Y',2),
+-- (2, 4130, 'N', 'N', 'Y',2),
+-- (2, 4131, 'N', 'N', 'Y',3),
+-- (2, 4132, 'N', 'N', 'Y',3),
+-- (2, 4134, 'N', 'N', 'Y',3),
+-- (2, 4160, 'N', 'N', 'Y',2),
+-- (2, 4551, 'N', 'N', 'Y',2),
+-- (2, 4710, 'Y', 'N', 'N',NULL),
+-- (2, 4721, 'Y', 'N', 'N',NULL),
+-- (2, 4740, 'N', 'N', 'Y',2),
+-- (2, 4772, 'N', 'N', 'Y',1),
+-- (2, 4999, 'Y', 'N', 'N',NULL),
+-- (2, 5760, 'N', 'N', 'Y',1),
+-- (2, 5770, 'N', 'N', 'Y',1),
+-- (3, 1420, 'Y', 'N', 'N',NULL),
+-- (3, 1554, 'N', 'N', 'N',NULL),
+-- (3, 1555, 'N', 'N', 'N',NULL),
+-- (3, 2226, 'N', 'N', 'N',NULL),
+-- (3, 2300, 'Y', 'N', 'N',NULL),
+-- (3, 2440, 'Y', 'N', 'N',NULL),
+-- (3, 2460, 'Y', 'N', 'N',NULL),
+-- (3, 2470, 'Y', 'N', 'N',NULL),
+-- (3, 2663, 'N', 'N', 'N',NULL),
+-- (3, 2999, 'Y', 'N', 'N',NULL),
+-- (3, 3341, 'Y', 'N', 'N',NULL),
+-- (3, 3370, 'Y', 'N', 'N',NULL),
+-- (3, 3450, 'Y', 'N', 'N',NULL),
+-- (3, 3660, 'Y', 'N', 'N',NULL),
+-- (3, 4130, 'N', 'N', 'Y',2),
+-- (3, 4181, 'Y', 'N', 'N',NULL),
+-- (3, 4240, 'Y', 'N', 'N',NULL),
+-- (3, 4480, 'Y', 'N', 'N',NULL),
+-- (3, 4520, 'N', 'N', 'Y',3),
+-- (3, 4560, 'N', 'N', 'Y',1),
+-- (3, 4580, 'N', 'N', 'Y',2),
+-- (3, 4590, 'N', 'N', 'Y',2),
+-- (3, 4600, 'Y', 'N', 'N',NULL),
+-- (3, 4700, 'Y', 'N', 'N',NULL),
+-- (3, 4731, 'N', 'N', 'Y',3),
+-- (3, 4740, 'Y', 'N', 'N',NULL),
+-- (3, 4780, 'N', 'N', 'Y',3),
+-- (3, 4790, 'N', 'N', 'Y ',3),
+-- (3, 4880, 'N', 'N', 'Y',1),
+-- (3, 4999, 'Y', 'N', 'N',NULL),-- AI ---------------------- (4, 1320, 'Y', 'N', 'N',NULL), --ADD NOTE INSTEAD
+-- (4, 1420, 'Y', 'N', 'N',NULL),
+-- (4, 1554, 'N', 'N', 'N',NULL),
+-- (4, 1555, 'N', 'N', 'N',NULL),
+-- (4, 2226, 'N', 'N', 'N',NULL),
+-- (4, 2300, 'Y', 'N', 'N',NULL),
+-- (4, 2310, 'Y', 'N', 'N',NULL),
+-- (4, 2490, 'Y', 'N', 'N',NULL),
+-- (4, 2663, 'N', 'N', 'N',NULL),
+-- (4, 2775, 'N', 'N', 'N',NULL),
+-- (4, 2999, 'Y', 'N', 'N',NULL),
+-- (4, 3370, 'Y', 'N', 'N',NULL),
+-- (4, 3430, 'Y', 'N', 'N',NULL),
+-- (4, 3610, 'Y', 'N', 'N',NULL),
+-- (4, 4100, 'Y', 'N', 'N',NULL),
+-- (4, 4110, 'N', 'N', 'Y', 1),-- (4, 4110, 'N', 'N', 'Y', 2), -- ADD NOTE INSTEAD
+-- (4, 4130, 'Y', 'N', 'N',NULL),
+-- (4, 4140, 'Y', 'N', 'N',NULL),
+-- (4, 4150, 'Y', 'N', 'N',NULL),
+-- (4, 4170, 'Y', 'N', 'N',NULL),
+-- (4, 4180, 'Y', 'N', 'N',NULL),
+-- (4, 4230, 'N', 'N', 'Y', 1),
+-- (4, 4240, 'N', 'N', 'Y', 1),
+-- (4, 4521, 'N', 'N', 'Y', 2),
+-- (4, 4731, 'N', 'N', 'Y', 2),
+-- (4, 4900, 'N', 'N', 'Y', 2),
+-- (4, 2320, 'N', 'Y', 'N',NULL),
+-- (4, 2330, 'N', 'Y', 'N',NULL),
+-- (4, 2340, 'N', 'Y', 'N',NULL),
+-- (4, 2350, 'N', 'Y', 'N',NULL),
+-- (5, 1210, 'Y', 'N', 'N',NULL),
+-- (5, 1320, 'Y', 'N', 'N',NULL),
+-- (5, 1554, 'N', 'N', 'N',NULL),
+-- (5, 1663, 'N', 'N', 'N',NULL),
+-- (5, 2221, 'N', 'N', 'N',NULL),
+-- (5, 2300, 'Y', 'N', 'N',NULL),
+-- (5, 2440, 'Y', 'N', 'N',NULL),
+-- (5, 2470, 'Y', 'N', 'N',NULL),
+-- (5, 2999, 'Y', 'N', 'N',NULL),
+-- (5, 3150, 'Y', 'N', 'N',NULL),
+-- (5, 3370, 'Y', 'N', 'N',NULL),
+-- (5, 3380, 'N', 'N', 'Y',3),
+-- (5, 3400, 'N', 'N', 'Y',2),
+-- (5, 3450, 'Y', 'N', 'N',NULL),
+-- (5, 3480, 'Y', 'N', 'N',NULL),
+-- (5, 3500, 'Y', 'N', 'N',NULL),
+-- (5, 3620, 'Y', 'N', 'N',NULL),
+-- (5, 3660, 'Y', 'N', 'N',NULL),
+-- (5, 3680, 'N', 'N', 'Y',1),
+-- (5, 4160, 'Y', 'N', 'N',NULL),
+-- (5, 4380, 'N', 'N', 'Y',3),
+-- (5, 4430, 'Y', 'N', 'N',NULL),
+-- (5, 4460, 'N', 'N', 'Y',4),
+-- (5, 4480, 'N', 'N', 'Y',4),
+-- (5, 4660, 'N', 'N', 'Y',1),
+-- (5, 4700, 'N', 'N', 'Y',4),
+-- (5, 4781, 'N', 'N', 'Y',2),
+-- (5, 4999, 'Y', 'N', 'N',NULL);
 
 -- PROFESSOR values --
 INSERT INTO `professor` VALUES(11, 'Angel', 'Bravo', 129, '248-654-4321', 'angelbravo@school.edu', NULL, 2.3, 'https://www.ratemyprofessors.com/professor/612864');
