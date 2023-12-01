@@ -17,11 +17,6 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
   <link rel="stylesheet" type="text/css" href="../css/main.css" />
 
   <link rel="shortcut icon" href="../pictures/mydegreeFavicon.png" type="image/x-icon" />
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-  <script>
-    var sessionValue = "<?php echo $a; ?>";
-    alert(sessionValue);
-  </script>
 </head>
 
 <body data-bs-theme="light">
