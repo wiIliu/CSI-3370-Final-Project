@@ -97,7 +97,7 @@ $advisor = getAdvisor(2);
       </div>
       <!-- COURSES LIST -->
       <div class="row justify-content-left mt-2 ms-5 ps-4">
-        <h3 class="text-decoration-underline">Course List:</h3>
+        <h3 class="text-decoration-underline">Course List (100 Credits):</h3>
         <?php
         $count = 0;
         while ($row = mysqli_fetch_array($classes)) :
