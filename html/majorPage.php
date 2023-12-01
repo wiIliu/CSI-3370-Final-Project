@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("../majorQuery.php");
 $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php", "AI.php", "IT.php");
 ?>
@@ -16,10 +17,12 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
   <link rel="stylesheet" type="text/css" href="../css/main.css" />
 
   <link rel="shortcut icon" href="../pictures/mydegreeFavicon.png" type="image/x-icon" />
-
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script>
+    var sessionValue = "<?php echo $a; ?>";
+    alert(sessionValue);
+  </script>
 </head>
-
-<!-- style="background-color:#073352;" -->
 
 <body data-bs-theme="light">
 
@@ -66,27 +69,66 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
           </div>
         </nav>
 
-        <div class="container-fluid">
 
-          <div class="row jumbotron text-center">
+        <div class="container-fluid">
+          <!-- TITLE -->
+          <div class="row jumbotron text-center mt-3">
             <h1>Mydegree</h1>
-            <p>Oakland University Engineering Program</p>
+            <p class="my-2">Oakland University Engineering Program</p>
           </div>
 
-          <!--description of each major-->
-          <div class="row justify-content-center mt-3">
+          <!-- FILTERS -->
+          <div class="row justify-content-center m-5 gb-3">
+            <div class="col-9">
+              <form action="" method="GET" class="row justify-content-center align-items-center mb-3">
+                <!-- ADVISOR FILTER -->
+                <div class="col-3">
+                  <label for="advisor" class="form-label text-light">Advisor</label>
+                  <select class="form-select" aria-label="Advisor select" title="Select an adivosr" name="advisor">
+                    <option value="" id="defaultA" disabled hidden>Filter for an Advisor</option>
+                    <option id='1' value="1">Kate - Artificial Intelligence</option>
+                    <option id='2' value="2">Will - Information Technology</option>
+                    <option id='3' value="3">Charles - Computer Science</option>
+                    <option id='4' value="4">Michael - Cybersecurity</option>
+                    <option id='5' value="5">Jasmine - Computer Engineering</option>
+                  </select>
+                </div>
+                <!-- CLASS FILTER -->
+                <div class="col-4">
+                  <label for="class" class="form-label text-light">Class (multiselect?)</label>
+                  <select class="form-select" aria-label="Class select" title="Select a Class" name="class">
+                    <option value="" id='defaultC' selected disabled hidden>Filter for a specific class</option>
+                    <?php while ($class = mysqli_fetch_array($listResult)) : ?>
+                      <option id="<?php echo $class[1]; ?>" value='<?php echo $class[1]; ?>'><?php echo $class[0]; ?>&nbsp;<?php echo $class[1]; ?>&nbsp;<?php echo $class[2]; ?></option>";
+                    <?php endwhile; ?>
+                  </select>
+                </div>
+                <!-- SUBMIT --> <!-- RESET -->
+                <div class="col-3">
+                  <button class="btn text-light me-2 btn-outline-light" style="background-color: #073352;" type="submit" name="submit" value="submit">Submit</button>
+                  <button class="btn text-light ms-2 btn-outline-light" style="background-color: #073352;" type="submit" name="reset" value="reset">Reset</button>
+                </div>
 
+              </form>
+            </div>
+          </div>
+
+          <!-- CLASS CARDS -->
+          <div class="row justify-content-center mt-3 blur2">
             <?php
             $n = 0;
             while ($row = mysqli_fetch_array($filterResult)) :
             ?>
               <div class="col-11 col-lg-4 col-md-6 my-1">
-
+                <!-- INDIVIDUAL CARD -->
                 <div class="card text-evenly bg-light h-100">
+                  <!-- MAJOR PIC -->
                   <img src="<?php echo "../" . $row[2]; ?>" class="card-img-top img-fluid" alt="...">
+                  <!-- MAJOR TEXT -->
                   <div class="card-body d-flex text-center align-items-bottom flex-column mb-3">
                     <h4 class="card-title fw-medium"><?php echo $row[1]; ?></h4>
                     <p class="card-text my-auto"><?php echo $row[3]; ?></p>
+                    <!-- PROGRAM BUTTON -->
                     <a href="<?php echo $filePaths[$n]; ?>" class="btn btn-md btn-outline-light align-self-center mt-2 fw-semibold">Program Overview</a>
                   </div>
                 </div>
@@ -94,26 +136,28 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
               </div>
               <?php $n++; ?>
             <?php endwhile; ?>
-
           </div> <!-- row -->
 
         </div> <!-- container-fluid banner -->
       </div>
     </div>
+  </div>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script>
-      $(document).ready(function() {
-        $('.dropdown').hover(function() {
-          $(this).addClass('show');
-          $(this).find('.dropdown-menu').addClass('show');
-        }, function() {
-          $(this).removeClass('show');
-          $(this).find('.dropdown-menu').removeClass('show');
-        });
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function() {
+      $('.dropdown').hover(function() {
+        $(this).addClass('show');
+        $(this).find('.dropdown-menu').addClass('show');
+      }, function() {
+        $(this).removeClass('show');
+        $(this).find('.dropdown-menu').removeClass('show');
       });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+      var advis = "<?php echo $a; ?>";
+      $("#" + advis).attr({"selected": true});
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 
 </html>

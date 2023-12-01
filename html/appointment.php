@@ -20,29 +20,6 @@ $current = date("H:i:s d.m.y");
 
     <link rel="shortcut icon" href="../pictures/mydegreeFavicon.png" type="image/x-icon" />
 
-    <style>
-        input+span {
-            padding-right: 30px;
-            padding-top: 5px;
-            padding-left: 5px;
-        }
-
-        input:invalid+span::after {
-            position: absolute;
-            content: "✖";
-            padding-left: 5px;
-            color: #8b0000;
-        }
-
-        input:valid+span::after {
-            position: absolute;
-            content: "✓";
-            padding-left: 5px;
-            color: #009000;
-        }
-    </style>
-
-
 </head>
 
 <!-- ^\d{3}?[-]\d{3}[-]\d{4}$ -->
@@ -113,7 +90,6 @@ $current = date("H:i:s d.m.y");
                             <div class="input-group">
                                 <div class="input-group-text">G</div>
                                 <input type="number" class="form-control" id="student_gid" title="Enter the 8 digits following the 'G' in your Grizz ID" name="student_gid" pattern="[0-9]{8}" maxlength="8" minlength="8" placeholder="xxxxxxxx" required>
-                                <span class="validity"></span>
                             </div>
                         </div>
                         <br>
@@ -121,7 +97,6 @@ $current = date("H:i:s d.m.y");
                         <div class="col-md-3 position-relative">
                             <label for="student_phone" class="form-label">Phone Number</label>
                             <input type="tel" class="form-control" title="Enter 10-digit phone number in the form of xxx-xxx-xxxx" id="student_phone" name="student_phone" pattern="[0-9]{3}[-][0-9]{3}[-][0-9]{4}" placeholder="xxx-xxx-xxxx" required>
-                            <!-- <span class="validity"></span> -->
                             <div class="valid-tooltip">
                                 Looks good!
                             </div>
