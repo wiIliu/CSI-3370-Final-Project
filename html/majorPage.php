@@ -12,11 +12,17 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MyDegree.com</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" /> -->
   <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="../css/style.css" />
   <link rel="stylesheet" type="text/css" href="../css/main.css" />
 
   <link rel="shortcut icon" href="../pictures/mydegreeFavicon.png" type="image/x-icon" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
 </head>
 
 <body data-bs-theme="light">
@@ -90,13 +96,16 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
                 </div>
                 <!-- CLASS FILTER -->
                 <div class="col-4">
-                  <label for="class" class="form-label text-light">Class (multiselect?)</label>
-                  <select class="form-select" aria-label="Class select" title="Select a Class" name="class">
-                    <option value="" id='defaultC' selected disabled hidden>Filter for a specific class</option>
-                    <?php while ($class = mysqli_fetch_array($listResult)) : ?>
-                      <option id="<?php echo $class[1]; ?>" value='<?php echo $class[1]; ?>'><?php echo $class[0]; ?>&nbsp;<?php echo $class[1]; ?>&nbsp;<?php echo $class[2]; ?></option>";
-                    <?php endwhile; ?>
-                  </select>
+
+                    <label for="class" class="form-label text-light">Class (multiselect?)</label>
+                    <select class="form-select" name="class" data-placeholder="Choose one thing" id="diffSelect">
+                      <option value="" id='defaultC' disabled hidden selected></option>
+                      <option></option>
+                      <?php while ($class = mysqli_fetch_array($listResult)) : ?>
+                        <option id="<?php echo $class[1]; ?>" value='<?php echo $class[1]; ?>'><?php echo $class[0]; ?>&nbsp;<?php echo $class[1]; ?>&nbsp;<?php echo $class[2]; ?></option>";
+                      <?php endwhile; ?>
+                    </select>
+
                 </div>
                 <!-- SUBMIT --> <!-- RESET -->
                 <div class="col-3">
@@ -138,7 +147,9 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
     </div>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script>
     $(document).ready(function() {
       $('.dropdown').hover(function() {
@@ -148,11 +159,18 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
         $(this).removeClass('show');
         $(this).find('.dropdown-menu').removeClass('show');
       });
+        $('#diffSelect').select2({
+        theme: "bootstrap-5",
+        width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+        placeholder: $(this).data('placeholder'),
+      });
+      // $('#diffSelect').select2({theme: "bootstrap-5"});
       var advis = "<?php echo $a; ?>";
-      $("#" + advis).attr({"selected": true});
+      $("#" + advis).attr({
+        "selected": true
+      });
     });
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 
 </html>

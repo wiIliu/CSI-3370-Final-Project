@@ -13,8 +13,7 @@ if (isset($_GET['reset'])) {
     $classSelected = $_GET['class'];
     $query = "SELECT MJR_ID, MJR_NAME, MJR_PIC, MJR_DESC FROM major 
         WHERE ADVISOR_ID IN ($advisorSelected) AND MJR_ID IN (
-            SELECT MJR_ID FROM BRIDGE WHERE CLASS_ID IN ($classSelected))
-        ORDER BY MJR_NAME;";
+            SELECT MJR_ID FROM BRIDGE WHERE CLASS_ID IN ($classSelected));";
     $filterResult = runQuery($query);
 // JUST ADVISOR
 } elseif (isset($_GET['advisor']) && $_GET['advisor'] != '0') {
@@ -42,7 +41,6 @@ if (isset($_GET['reset'])) {
 
 // ADVISOR SESSION VARIABLE
 if (isset($_SESSION['advisor'])){
-    // $_SESSION['oldA'] = 
     $a = $_SESSION['advisor'];
 } else {
     $a = 'defaultA';
