@@ -115,30 +115,30 @@ $advisor = getAdvisor(4);
           } else if ($count == 21) {
             echo "<h5 class='mb-3 mt-4 fw-semibold'>Professional Track - Choose 1 Track (12 credits)<br></h5>
             <span class='fw-semibold pb-2 mb-1' style='font-size: 1.08em;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edge AI and IoT Track:</span>";
-          } else if($count == 24) {
+          } else if ($count == 24) {
             echo "<span class='fw-semibold pb-2 my-1' style='font-size: 1.08em;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Embedded AI Track:</span>";
-          } else if($count == 27) {
+          } else if ($count == 27) {
             echo "<h5 class='mb-3 mt-4 fw-semibold'>Professional Electives (6 credits)<br></h5>";
           }
-          
+
         ?>
-      
+
           <div class="mb-3">
             <!-- CHECK BOXES -->
             <?php if ($count < 5) { ?>
-              <span><input onclick="updateProgress()" class="math" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
+              <span><input onclick="updateProgress(); addToStorage('class_<?php echo $row[0]; ?>')" class="math" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
 
             <?php } else if ($count < 10) { ?>
-              <span><input onclick="updateProgress()" class="core" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
+              <span><input onclick="updateProgress(); addToStorage('class_<?php echo $row[0]; ?>')" class="core" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
 
             <?php } else if ($count < 21) { ?>
-              <span><input onclick="updateProgress()" class="professional" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
+              <span><input onclick="updateProgress(); addToStorage('class_<?php echo $row[0]; ?>')" class="professional" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
 
             <?php } else if ($count < 27) { ?>
-              <span><input onclick="updateProgress()" class="track" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
+              <span><input onclick="updateProgress(); addToStorage('class_<?php echo $row[0]; ?>')" class="track" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
 
             <?php } else { ?>
-              <span><input onclick="updateProgress()" class="elective" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
+              <span><input onclick="updateProgress(); addToStorage('class_<?php echo $row[0]; ?>')" class="elective" type="checkbox" id="class_<?php echo $row[0]; ?>" value="1"></span>
             <?php } ?>
             <!-- COURSE GROUP-NUMBER-NAME -->
             <span class="text-dark">
@@ -222,6 +222,28 @@ $advisor = getAdvisor(4);
   </div> <!-- End of banner div -->
 
 
+  <script>
+    window.onload = function() {
+      var keys = allStorage();
+      for (var key of keys) {
+        box = document.getElementById(key)
+        if (box != null) {
+          box.checked = true;
+        }
+      }
+      updateProgress()
+    }
+
+    function allStorage() {
+      var values = [],
+        keys = Object.keys(localStorage),
+        i = keys.length;
+      while (i--) {
+        values.push(localStorage.getItem(keys[i]));
+      }
+      return values;
+    }
+  </script>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script>
@@ -280,7 +302,7 @@ $advisor = getAdvisor(4);
       if (trackChecked > 0) {
         numChecked -= trackChecked;
       }
-      
+
       if (numAll > 0) {
         var perc = (numChecked / numAll) * 100;
         $('.progress-bar').css('width', perc + '%').attr('aria-valuenow', perc);
@@ -288,24 +310,55 @@ $advisor = getAdvisor(4);
       }
     }
 
+    function addToStorage(id) {
+      if (document.getElementById(id).checked) {
+        localStorage.setItem(id, id);
+      } else {
+        localStorage.removeItem(id);
+      }
+    }
+
     function selectAllMath() {
       $('.math:input[type=checkbox]').prop('checked', true);
+      vals = document.getElementsByClassName('math');
+      for (var val of vals) {
+        id = val.getAttribute('id');
+        if (localStorage.getItem(id) === null) {
+          localStorage.setItem(id, id);
+        }
+      }
       updateProgress();
     }
 
     function selectAllCore() {
       $('.core:input[type=checkbox]').prop('checked', true);
+      vals = document.getElementsByClassName('core');
+      for (var val of vals) {
+        id = val.getAttribute('id');
+        if (localStorage.getItem(id) === null) {
+          localStorage.setItem(id, id);
+        }
+      }
       updateProgress();
     }
 
     function selectAllProfessional() {
       $('.professional:input[type=checkbox]').prop('checked', true);
+      vals = document.getElementsByClassName('professional');
+      for (var val of vals) {
+        id = val.getAttribute('id');
+        if (localStorage.getItem(id) === null) {
+          localStorage.setItem(id, id);
+        }
+      }
       updateProgress();
     }
 
     function reset() {
       $('input[type=checkbox]').prop('checked', false);
+      localStorage.clear();
       updateProgress();
+
     }
   </script>
 
