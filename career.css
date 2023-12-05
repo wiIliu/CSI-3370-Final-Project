@@ -1,0 +1,65 @@
+body {
+  /* font-family: "Raleway", sans-serif;
+} */
+
+.banner {
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand img {
+  max-height: 55px;
+}
+
+.navbar-toggler-icon {
+  background-color: #073352;
+}
+
+.navbar-nav .nav-link {
+  color: #073352;
+}
+
+.container-fluid {
+  margin-top: 20px;
+}
+
+h2 {
+  color: #063d64;
+  margin-top: 20px;
+}
+
+p {
+  color: #6c757d;
+}
+
+ul {
+  list-style-type: none;
+  text-decoration: underline;
+}
+
+/* Optional: Add padding between list items */
+ol {
+  padding-left: 20px;
+}
+
+/* Optional: Add spacing between form elements */
+.g-3.row {
+  row-gap: 1rem;
+}
+
+/* Optional: Center the form on larger screens */
+.col-9 {
+  margin: 0 auto;
+}
+
+/* Optional: Increase the width of the form on larger screens */
+@media (min-width: 768px) {
+  .col-9 {
+    max-width: 800px;
+  }
+}
