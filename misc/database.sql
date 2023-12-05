@@ -39,7 +39,6 @@ CREATE TABLE APPOINTMENT(
     CONSTRAINT APPOINTMENT_ADVISOR_ID_FK FOREIGN KEY (ADVISOR_ID) REFERENCES ADVISOR(ADVISOR_ID)
 );
 
-
 CREATE TABLE CLASS(
     `CLASS_ID` int(11) PRIMARY KEY,
     `CLASS_GROUP` char(3) NOT NULL,
@@ -48,7 +47,6 @@ CREATE TABLE CLASS(
     `CLASS_DESC` varchar(700) DEFAULT NULL,
     `TEXTBK_LINK` varchar(255) DEFAULT NULL
 );
-
 
 CREATE TABLE BRIDGE(
     MJR_ID INTEGER NOT NULL,
@@ -61,7 +59,6 @@ CREATE TABLE BRIDGE(
     FOREIGN KEY (MJR_ID) REFERENCES MAJOR(MJR_ID),
     FOREIGN KEY (CLASS_ID) REFERENCES CLASS(CLASS_ID)
 );
-
 
 CREATE TABLE PROFESSOR(
     `PROF_ID` int(11) PRIMARY KEY,
@@ -100,7 +97,6 @@ INSERT INTO MAJOR VALUES(4,"Artificial Intelligence", "Artificial Intelligence (
 INSERT INTO MAJOR VALUES(5,"Information Technology", "An Information Technology (IT) major provides students with a versatile skill set for navigating the rapidly evolving tech landscape. Focused on the practical application of technology in various domains, the curriculum covers areas such as computer systems, networks, databases, and programming. Students learn to analyze and solve complex problems, manage IT projects, and implement innovative solutions. Emphasis is placed on acquiring proficiency in programming languages, understanding system architectures, and developing skills in network administration.", "Each candidate for an Oakland University baccalaureate will need to satisfactorily complete approved courses in each of the following areas: Foundation, Exploration, Integration, Writing, U.S. Diversity, and Capstone. GPA requirements vary, often considering overall GPA of 2.5, core course GPA, and prerequisites. For details, refer to the General Education section of the catalog.", "pictures\\itMajor.png", 2);
 
 -- CLASS values --
-
 INSERT INTO `class` (`CLASS_ID`, `CLASS_GROUP`, `CLASS_NAME`, `CLASS_CREDITS`, `CLASS_DESC`, `TEXTBK_LINK`, `CLASS_PREREQ_FLG`, `CLASS_PREREQ`) VALUES
 (1200, 'EGR', 'Engineering Graphics and CAD', 1, "An introduction to the techniques for creating solid models of engineering designs. Topics include three-dimensional modeling of parts and assemblies, visualization, orthographic project views and layouts, auxiliary, sectional, and cutout views, exploded views, dimensioning and tolerancing, bill of materials and computer-generated design documentation", "https://ptgmedia.pearsoncmg.com/images/9780138065720/samplepages/9780138065720_Sample.pdf"),
 (1210, 'CSI', 'Problem Solving Using VBA and Excel', 4, "Introduction to problem solving and programming using Excel and VBA. Students will be able to demonstrate knowledge of common Excel functions, and tools like charts and tables, in addition to writing VBA for Excel and one other MS Office application. Automation of tasks will be accomplished through the use of Excel macros, VBA code, and an understanding of programming structures such as loops and decisions, variables and event driven procedures", "https://zlib.pub/book/microsoft-excel-2019-vba-and-macros-236am4s67ld0"),
@@ -207,113 +203,6 @@ INSERT INTO `class` (`CLASS_ID`, `CLASS_GROUP`, `CLASS_NAME`, `CLASS_CREDITS`, `
 General Education Requirement(s): Satisfies the university general education requirement for the capstone experience. Satisfies the university general education requirement for a writing intensive course in the major. Prerequisite for writing intensive: completion of the university writing foundation requirement.", NULL),
 (5760, 'ECE', 'Embedded System Design with FPGAs', 4, "Real-time embedded system programming, analysis, and optimization using advanced processors such as the Intel Atom. Topics covered include real-time programming, multi-threaded systems, multi-core software development, as well as optimization of processor utilization, speed, and memory requirements", "https://www2.deloitte.com/content/dam/Deloitte/us/Documents/alliances/us-nvidia_gpu-accelerated_computing.pdf"),
 (5770, 'ECE', 'GPU Accelerated Computing', 4, "CMOS Very Large Scale Integrated Circuits design methodology for rapid implementation and evaluation. From digital systems level to circuit, device, and processing layout. Combinational and sequential circuit characterization and performance estimation. Inverters, logic, and transmission gates switching characteristics. Reliability and yield. Application Specific ICs design projects using professional CAD tool-suites. With laboratory.", "https://www2.deloitte.com/content/dam/Deloitte/us/Documents/alliances/us-nvidia_gpu-accelerated_computing.pdf");
-
-
--- INSERT INTO `class` (`CLASS_ID`, `CLASS_GROUP`, `CLASS_NAME`, `CLASS_CREDITS`, `CLASS_DESC`, `TEXTBK_LINK`) VALUES
--- (1200, 'EGR', 'Engineering Graphics and CAD', 1, NULL, NULL),
--- (1210, 'CSI', 'Problem Solving Using VBA and Excel', 4, 'NULL', NULL),
--- (1320, 'CSI', 'Introduction to Python Programming and Unix', 4, NULL, NULL),
--- (1400, 'EGR', 'Computer Problem Solving in Engineering and Computer Science', 4, NULL, NULL),
--- (1420, 'CSI', 'Introduction to C Programming and Unix', 4, NULL, NULL),
--- (1440, 'CHM', 'General Chemistry I', 4, NULL, NULL),
--- (1554, 'MTH', 'Calculus I', 4, NULL, NULL),
--- (1555, 'MTH', 'Calculus II', 4, NULL, NULL),
--- (1610, 'PHY', 'Fundamentals of Physics I', 4, NULL, NULL),
--- (1620, 'PHY', 'Fundamentals of Physics II', 4, NULL, NULL),
--- (1663, 'APM', 'Mathematics for Information Technology', 4, 'NULL', NULL),
--- (2005, 'ECE', 'Electric Circuits', 4, NULL, NULL),
--- (2221, 'STA', 'Introduction to Statistical Methods ', 4, 'NULL', NULL),
--- (2226, 'STA', 'Applied Probability and Statistics', 4, NULL, NULL),
--- (2290, 'CSI', 'Introduction to Data Structures in C', 4, NULL, NULL),
--- (2300, 'CSI', 'Object-Oriented Computing', 4, NULL, NULL),
--- (2310, 'CSI', 'Data Structures', 4, NULL, NULL),
--- (2320, 'CSI', 'C++ for Programmers', 2, NULL, NULL),
--- (2330, 'CSI', 'Immersive Python', 2, NULL, NULL),
--- (2340, 'CSI', 'Ruby for Web Developers', 2, NULL, NULL),
--- (2350, 'CSI', 'Programming in Visual C# for .NET Technology', 2, NULL, NULL),
--- (2400, 'EGR', 'Introduction to Electrical and Computer Engineering', 4, NULL, NULL),
--- (2440, 'CSI', 'Computer Systems', 4, NULL, NULL),
--- (2460, 'CSI', 'Fundamentals of Cybersecurity', 4, NULL, NULL),
--- (2470, 'CSI', 'Introduction to Computer Networks', 4, NULL, NULL),
--- (2490, 'CSI', 'Introduction to Artificial Intelligence: Representation, Concepts, and Problem Solving', 4, NULL, NULL),
--- (2500, 'EGR', 'Introduction to Thermal Engineering', 4, NULL, NULL),
--- (2555, 'APM', 'Introduction to Differential Equations with Matrix Algebra', 4, NULL, NULL),
--- (2600, 'EGR', 'Introduction to Industrial and Systems Engineering', 4, NULL, NULL),
--- (2663, 'APM', 'Discrete Mathematics', 4, NULL, NULL),
--- (2700, 'ECE', 'Digital Logic Design', 4, NULL, NULL),
--- (2775, 'MTH', 'Linear Algebra', 4, NULL, NULL),
--- (2800, 'EGR', 'Design and Analysis of Electromechanical Systems', 4, NULL, NULL),
--- (2990, 'CSI', 'Introduction to Data Structure C', 4, NULL, NULL),
--- (2999, 'CSI', 'Sophomore Project', 2, NULL, NULL),
--- (3100, 'ECE', 'Electronic Circuits and Devices I', 4, NULL, NULL),
--- (3105, 'ECE', 'Electronic Circuits and Devices II', 4, NULL, NULL),
--- (3150, 'CSI', 'Web and Mobile Systems', 4, 'NULL', NULL),
--- (3204, 'ECE', 'Signals and Systems', 4, NULL, NULL),
--- (3341, 'CRJ', 'Cybercrime', 4, NULL, NULL),
--- (3370, 'CSI', 'Software Engineering and Practice', 4, 'Introduction to software engineering and practice. Topics include software process models, project and software management, requirements analysis, architecture modeling, implementation and system integration, quality assurance, and testing.', 'https://moodle.oakland.edu/pluginfile.php/8885924/mod_resource/content/0/book.pdf'),
--- (3380, 'CSI', 'Game Design', 4, 'NULL', NULL),
--- (3400, 'BIO', 'Genetics', 4, 'NULL', NULL),
--- (3430, 'APM', 'Theory of Computation', 4, 'Formal models of computation, ranging from finite state automata to Turing machines. Computational models are used to discuss the languages recognized by these machines and address issues of computability.', 'https://drive.uqu.edu.sa/_/mskhayat/files/MySubjects/20189FS%20ComputationTheory/Introduction%20to%20the%20theory%20of%20computation_third%20edition%20-%20Michael%20Sipser.pdf'),
--- (3450, 'CSI', 'Database Design and Implementation', 4, 'Introduction to the design, implementation and management of database systems. Topics include planning, designing, and implementing a practical database using a relational database server for an application utilizing entity relationship diagrams, normal forms, and understanding relational database schemas. Advanced topics include concurrency control, query optimization, and introduction to database systems administration', 'https://www.cengage.com/c/database-systems-13e-coronel-morris/9781337627900/'),
--- (3480, 'CSI', 'Security and Privacy in Computing', 4, NULL, NULL),
--- (3500, 'CSI', 'Human Computer Interaction', 4, 'NULL', NULL),
--- (3610, 'CSI', 'Design and Analysis of Algorithms', 4, 'Computer algorithms, their design and analysis. Strategies constructing algorithmic solutions, including divide-and-conquer, dynamic programming and greedy algorithms. Computational complexity as it pertains to time and space is used to evaluate the algorithms. A general overview of complexity classes is given.', 'https://dahlan.unimal.ac.id/files/ebooks/2009%20Introduction%20to%20Algorithms%20Third%20Ed.pdf'),
--- (3620, 'CSI', 'Data Structures and Alogithms', 4, 'NULL', NULL),
--- (3640, 'CSI', 'Computer Organization', 4, NULL, NULL),
--- (3660, 'CSI', 'System Administration', 4, NULL, NULL),
--- (3680, 'CSI', 'Script Programming', 4, 'NULL', NULL),
--- (3720, 'ECE', 'Microprocessors', 4, NULL, NULL),
--- (4100, 'CSI', 'Ethics and Bias in AI', 4, NULL, NULL),
--- (4110, 'CSI', 'Foundations of Edge AI', 4, NULL, NULL),
--- (4130, 'CSI', 'Artificial Intelligence', 4, NULL, NULL),
--- (4131, 'ECE', 'Electronic Materials and Devices', 4, NULL, NULL),
--- (4132, 'ECE', 'VLSIC Design of Digital Chips', 4, NULL, NULL),
--- (4134, 'ECE', 'Fundamentals of MEMS', 4, NULL, NULL),
--- (4140, 'CSI', 'Deep Learning and Applications', 4, NULL, NULL),
--- (4150, 'CSI', 'AI for IT Operations', 4, NULL, NULL),
--- (4160, 'CSI', 'Integrated Computing Systems', 4, NULL, NULL),
--- (4170, 'CSI', 'Machine Learing', 4, NULL, NULL),
--- (4180, 'CSI', 'Natural Language Processing', 4, NULL, NULL),
--- (4181, 'MIS', 'IS Risk Analysis and Security Controls Development', 3, NULL, NULL),
--- (4230, 'CSI', 'Mobile and Smart Phone Application Development', 4, 'NULL', NULL),
--- (4240, 'CSI', 'Cloud Computing', 4, NULL, NULL),
--- (4347, 'APM', 'Mathematics of Cryptology', 4, 'NULL', NULL),
--- (4350, 'CSI', 'Programming language', 4, NULL, NULL),
--- (4380, 'CSI', 'Game Programming', 4, 'NULL', NULL),
--- (4430, 'CSI', 'IT Project Management', 4, 'NULL', NULL),
--- (4460, 'CSI', 'Information Security', 4, 'NULL', NULL),
--- (4480, 'CSI', 'Information Security Pratice', 4, NULL, NULL),
--- (4500, 'CSI', 'Operating System', 4, NULL, NULL),
--- (4510, 'CSI', 'Advanced Web Design Application', 4, 'NULL', NULL),
--- (4520, 'CSI', 'Industrial Control Security', 4, 'NULL', NULL),
--- (4521, 'ECE', 'Automotive Mechatronics I', 4, 'NULL', NULL),
--- (4550, 'CSI', 'Visual Computing', 4, 'NULL', NULL),
--- (4551, 'ECE', 'Human Robot Interaction', 4, NULL, NULL),
--- (4560, 'CSI', 'Mobile Security', 4, NULL, NULL),
--- (4580, 'CSI', 'AI for Cybersecurity and Privacy', 4, 'NULL', NULL),
--- (4590, 'CSI', 'Multimedia Forensics', 4, 'NULL', NULL),
--- (4600, 'CSI', 'Network Security', 4, NULL, NULL),
--- (4650, 'CSI', 'Paralllel and Distributed Computing', 4, NULL, NULL),
--- (4660, 'CSI', 'Advanced System Administration', 4, 'NULL', NULL),
--- (4700, 'CSI', 'Software Security', 4, NULL, NULL),
--- (4710, 'ECE', 'Computer Hardware Design', 4, NULL, NULL),
--- (4721, 'ECE', 'Embedded Systems Design', 4, NULL, NULL),
--- (4731, 'ECE', 'Fundamentals of Embedded System Design', 4, 'NULL', NULL),
--- (4740, 'CSI', 'Cyber Laws and Digital Forensics', 4, NULL, NULL),
-
--- (4741, 'ECE', 'Embedded Artificial Intelligence', 4, NULL, NULL),
-
--- (4772, 'ECE', 'High Performance Embedded Programming', 4, NULL, NULL),
--- (4780, 'ECE', 'Embedded Security', 4, 'NULL', NULL),
--- (4781, 'CSI', 'Bioinformatics', 4, 'NULL', NULL),
--- (4790, 'CSI', 'Automotive Security', 4, 'NULL', NULL),
--- (4810, 'CSI', 'Information Retrieval and Knowledge Discovery', 4, NULL, NULL),
--- (4880, 'CSI', 'Reverse Engineering and Malware Analysis', 4, NULL, NULL),
--- (4900, 'ECE', 'ST: Embedded Artificial Intelligence', 4, NULL, NULL),
--- (4999, 'CSI', 'Senior Capstone Project', 4, NULL, NULL),
--- (5760, 'ECE', 'Embedded System Design with FPGAs', 4, NULL, NULL),
--- (5770, 'ECE', 'GPU Accelerated Computing', 4, NULL, NULL);
-
 
 -- BRIDGE --
 INSERT INTO `bridge` (`MJR_ID`, `CLASS_ID`, `CORE_CLASS_FLG`, `ELECTIVE_FLG`, `TRACK_CLASS_FLG`, `TRACK_CLASS_NUM`) VALUES
@@ -476,10 +365,7 @@ INSERT INTO `bridge` (`MJR_ID`, `CLASS_ID`, `CORE_CLASS_FLG`, `ELECTIVE_FLG`, `T
 (5, 4781, 'N', 'N', 'Y',2),
 (5, 4999, 'Y', 'N', 'N',NULL);
 
-
-
 -- PROFESSOR values --
-
 INSERT INTO `professor` (`PROF_ID`, `PROF_FNAME`, `PROF_LNAME`, `PROF_OFFICE_NUM`, `PROF_EMAIL`, `PROF_BACKGROUND`, `PROF_RATING`, `PROF_RATING_LINK`) VALUES
 (11, 'Angel', 'Bravo', 129, 'angelbravo@school.edu', NULL, 2.3, 'https://www.ratemyprofessors.com/professor/612864'),
 (14, 'Julian', 'Rrushi', 609, 'rrushi@oakland.edu', 'Dr. Julian Rrushi teaches computer science and engineering courses at both undergraduate and graduate levels at Oakland University. His research focus is foundational data science, with an application domain of cyber security exploring cyber-physical systems, computer hardware, operating systems, defensive cyber deception engineering, human cognition and serious games. Dr. Rrushi was awarded the DARPA Young Faculty Award, class of 2020.', 5.0, 'https://www.ratemyprofessors.com/professor/2418364'),
@@ -502,5 +388,115 @@ INSERT INTO `professor` (`PROF_ID`, `PROF_FNAME`, `PROF_LNAME`, `PROF_OFFICE_NUM
 
 -- SECTION values --
 INSERT INTO SECTION VALUES(43025,3450,11,'2023-09-07 01:00:00','W24');
-
-
+INSERT INTO SECTION VALUES(43213,1555,14,'2023-09-07 03:00:00','W24');
+-- Professor Xuemei Li
+INSERT INTO SECTION VALUES(45093,1200,38, '2024-01-06 10:00:00', 'W24');
+INSERT INTO SECTION VALUES(45123,1210,38, '2024-01-06 8:00:00', 'W24');
+INSERT INTO SECTION VALUES(45122,1320,38, '2024-01-06 10:00:00', 'W24');
+INSERT INTO SECTION VALUES(45111,1400,38, '2024-01-06 2:00:00', 'W24');
+INSERT INTO SECTION VALUES(45132,1420,38, '2024-01-06 10:00:00', 'W24');
+-- Professor Tony Shaska
+INSERT INTO SECTION VALUES(45461,1440,71,'2024-01-08 10:00:00','W24');
+INSERT INTO SECTION VALUES(45462,1554,71,'2024-01-08 05:00:00','W24');
+INSERT INTO SECTION VALUES(45463,1610,71,'2024-01-08 06:00:00','W24');
+INSERT INTO SECTION VALUES(45464,1620,71,'2024-01-08 08:00:00','W24');
+INSERT INTO SECTION VALUES(45465,1663,71,'2024-01-08 03:00:00','W24');
+INSERT INTO SECTION VALUES(45466,2005,71,'2024-01-06 1:00:00','W24');
+INSERT INTO SECTION VALUES(45467,2226,71,'2024-01-06 09:00:00','W24');
+INSERT INTO SECTION VALUES(45468,2221,71,'2024-01-06 07:00:00','W24');
+INSERT INTO SECTION VALUES(45469,2290,71,'2024-01-06 04:00:00','W24');
+-- Professor Nghia Tran
+INSERT INTO SECTION VALUES(46221,2300,80,'2024-01-06 1:00:00','W24');
+INSERT INTO SECTION VALUES(46222,2310,80,'2024-01-06 2:00:00','W24');
+INSERT INTO SECTION VALUES(46223,2320,80,'2024-01-06 3:00:00','W24');
+INSERT INTO SECTION VALUES(46224,2330,80,'2024-01-06 4:00:00','W24');
+INSERT INTO SECTION VALUES(46225,2340,80,'2024-01-06 5:00:00','W24');
+INSERT INTO SECTION VALUES(46226,2350,80,'2024-01-06 6:00:00','W24');
+INSERT INTO SECTION VALUES(46227,2400,80,'2024-01-06 7:00:00','W24');
+INSERT INTO SECTION VALUES(46228,2440,80,'2024-01-06 8:00:00','W24');
+INSERT INTO SECTION VALUES(46229,2460,80,'2024-01-06 9:00:00','W24');
+INSERT INTO SECTION VALUES(46210,2470,80,'2024-01-06 10:00:00','W24');
+-- Professor Julian Rrushi
+INSERT INTO SECTION VALUES(43211,2490,14,'2024-01-06 01:00:00','W24');
+INSERT INTO SECTION VALUES(43212,2500,14,'2024-01-06 02:00:00','W24');
+INSERT INTO SECTION VALUES(43298,2663,14,'2024-01-06 03:00:00','W24');
+INSERT INTO SECTION VALUES(43214,2700,14,'2024-01-06 04:00:00','W24');
+INSERT INTO SECTION VALUES(43215,2775,14,'2024-01-06 05:00:00','W24');
+INSERT INTO SECTION VALUES(43216,2800,14,'2024-01-06 06:00:00','W24');
+INSERT INTO SECTION VALUES(43217,2990,14,'2024-01-06 07:00:00','W24');
+INSERT INTO SECTION VALUES(43218,2999,14,'2024-01-06 08:00:00','W24');
+INSERT INTO SECTION VALUES(43219,3100,14,'2024-01-06 09:00:00','W24');
+INSERT INTO SECTION VALUES(43210,3105,14,'2024-01-06 10:00:00','W24');
+-- Professor Eddie Cheng
+INSERT INTO SECTION VALUES(43401,3150,15,'2024-01-07 01:00:00','W24');
+INSERT INTO SECTION VALUES(43402,3204,15,'2024-01-07 02:00:00','W24');
+INSERT INTO SECTION VALUES(43403,3341,15,'2024-01-07 03:00:00','W24');
+INSERT INTO SECTION VALUES(43404,3370,15,'2024-01-07 04:00:00','W24');
+INSERT INTO SECTION VALUES(43405,3380,15,'2024-01-07 05:00:00','W24');
+INSERT INTO SECTION VALUES(43406,3400,15,'2024-01-07 06:00:00','W24');
+INSERT INTO SECTION VALUES(43407,3430,15,'2024-01-07 07:00:00','W24');
+INSERT INTO SECTION VALUES(43408,3610,15,'2024-01-07 08:00:00','W24');
+INSERT INTO SECTION VALUES(43409,3480,15,'2024-01-07 09:00:00','W24');
+INSERT INTO SECTION VALUES(43410,3500,15,'2024-01-07 10:00:00','W24');
+INSERT INTO SECTION VALUES(43411,3620,15,'2024-01-07 12:00:00','W24');
+-- Professor Anyi Liu
+INSERT INTO SECTION VALUES(43581,3640,17,'2024-01-07 01:00:00','W24');
+INSERT INTO SECTION VALUES(43582,3660,17,'2024-01-07 02:00:00','W24');
+INSERT INTO SECTION VALUES(43583,3680,17,'2024-01-07 03:00:00','W24');
+INSERT INTO SECTION VALUES(43584,3720,17,'2024-01-07 04:00:00','W24');
+INSERT INTO SECTION VALUES(43585,4100,17,'2024-01-07 05:00:00','W24');
+INSERT INTO SECTION VALUES(43586,4110,17,'2024-01-07 06:00:00','W24');
+INSERT INTO SECTION VALUES(43587,4130,17,'2024-01-07 07:00:00','W24');
+INSERT INTO SECTION VALUES(43588,4131,17,'2024-01-07 08:00:00','W24');
+INSERT INTO SECTION VALUES(43589,4132,17,'2024-01-07 09:00:00','W24');
+INSERT INTO SECTION VALUES(43510,4134,17,'2024-01-07 10:00:00','W24');
+INSERT INTO SECTION VALUES(43511,4140,17,'2024-01-07 12:00:00','W24');
+-- Professor Hua Ming
+INSERT INTO SECTION VALUES(43771,4150,18,'2024-01-06 01:00:00','W24');
+INSERT INTO SECTION VALUES(43772,4160,18,'2024-01-06 02:00:00','W24');
+INSERT INTO SECTION VALUES(43773,4170,18,'2024-01-06 03:00:00','W24');
+INSERT INTO SECTION VALUES(43774,4180,18,'2024-01-06 04:00:00','W24');
+INSERT INTO SECTION VALUES(43775,4181,18,'2024-01-06 05:00:00','W24');
+INSERT INTO SECTION VALUES(43776,4230,18,'2024-01-06 06:00:00','W24');
+INSERT INTO SECTION VALUES(43777,4240,18,'2024-01-06 07:00:00','W24');
+INSERT INTO SECTION VALUES(43778,4347,18,'2024-01-06 08:00:00','W24');
+INSERT INTO SECTION VALUES(43779,4350,18,'2024-01-06 10:00:00','W24');
+-- Professor Tianle Ma
+INSERT INTO SECTION VALUES(43965,4380,21,'2024-01-07 1:00:00','W24');
+INSERT INTO SECTION VALUES(43961,4430,21,'2024-01-07 2:00:00','W24');
+INSERT INTO SECTION VALUES(43962,4460,21,'2024-01-07 3:00:00','W24');
+INSERT INTO SECTION VALUES(43963,4480,21,'2024-01-07 4:00:00','W24');
+INSERT INTO SECTION VALUES(43964,4500,21,'2024-01-07 5:00:00','W24');
+-- Professor Matthew Toeniskoetter
+INSERT INTO SECTION VALUES(44153,4510,22,'2024-01-07 3:00:00','W24');
+INSERT INTO SECTION VALUES(44151,4520,22,'2024-01-07 3:00:00','W24');
+INSERT INTO SECTION VALUES(44152,4521,22,'2024-01-07 3:00:00','W24');
+INSERT INTO SECTION VALUES(44155,4550,22,'2024-01-07 3:00:00','W24');
+INSERT INTO SECTION VALUES(44154,4551,22,'2024-01-07 3:00:00','W24');
+-- Professor Guangzhi Qu
+INSERT INTO SECTION VALUES(44341, 4560, 27, '2024-01-07 1:00:00', 'W24');
+INSERT INTO SECTION VALUES(44343, 4780, 27, '2024-01-07 3:00:00', 'W24');
+INSERT INTO SECTION VALUES(44344, 4781, 27, '2024-01-07 4:00:00', 'W24');
+INSERT INTO SECTION VALUES(44347, 4790, 27, '2024-01-07 6:00:00', 'W24');
+-- Professor Ishwar Sethi
+INSERT INTO SECTION VALUES(44529, 4580, 29, '2024-01-07 1:00:00', 'W24');
+INSERT INTO SECTION VALUES(44521, 4810, 29, '2024-01-07 3:00:00', 'W24');
+INSERT INTO SECTION VALUES(44522, 4880, 29, '2024-01-07 4:00:00', 'W24');
+INSERT INTO SECTION VALUES(44549, 4900, 29, '2024-01-07 5:00:00', 'W24');
+-- Professor Mohammad-Reza Siadat
+INSERT INTO SECTION VALUES(44717, 4590, 34, '2024-09-07 2:00:00', 'W24');
+INSERT INTO SECTION VALUES(44711, 4999, 34, '2024-09-07 8:00:00', 'W24');
+INSERT INTO SECTION VALUES(44712, 5760, 34, '2024-09-07 1:00:00', 'W24');
+INSERT INTO SECTION VALUES(44713, 5770, 34, '2024-09-07 9:00:00', 'W24');
+-- Professor Hadeel Mohammed Jawad
+INSERT INTO SECTION VALUES(44905, 4660, 36, '2024-09-07 21:00:00', 'W24');
+-- Professor Wajdi Aljedaani
+INSERT INTO SECTION VALUES(45281, 4700, 41, '2024-09-08 01:00:00', 'W24');
+-- Professor Jorge Mello
+INSERT INTO SECTION VALUES(45657, 4710, 72, '2024-09-08 05:00:00', 'W24');
+-- Professor Harvey Qu
+INSERT INTO SECTION VALUES(45845, 4721, 77, '2024-09-08 07:00:00', 'W24');
+-- Professor JD Nir
+INSERT INTO SECTION VALUES(46033, 4731, 79, '2024-09-08 09:00:00', 'W24');
+INSERT INTO SECTION VALUES(46031, 4740, 79, '2024-09-08 08:00:00', 'W24');
+INSERT INTO SECTION VALUES(46032, 4772, 79, '2024-09-08 05:00:00', 'W24');

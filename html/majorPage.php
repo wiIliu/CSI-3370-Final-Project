@@ -12,7 +12,6 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MyDegree.com</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" /> -->
   <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="../css/style.css" />
   <link rel="stylesheet" type="text/css" href="../css/main.css" />
@@ -96,7 +95,6 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
                 </div>
                 <!-- CLASS FILTER -->
                 <div class="col-4">
-
                     <label for="class" class="form-label text-light">Class (multiselect?)</label>
                     <select class="form-select" name="class" data-placeholder="Choose one thing" id="diffSelect">
                       <option value="" id='defaultC' disabled hidden selected></option>
@@ -105,7 +103,6 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
                         <option id="<?php echo $class[1]; ?>" value='<?php echo $class[1]; ?>'><?php echo $class[0]; ?>&nbsp;<?php echo $class[1]; ?>&nbsp;<?php echo $class[2]; ?></option>";
                       <?php endwhile; ?>
                     </select>
-
                 </div>
                 <!-- SUBMIT --> <!-- RESET -->
                 <div class="col-3">
@@ -115,7 +112,7 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
 
               </form>
             </div>
-          </div>
+          </div> <!-- end of filters div -->
 
           <!-- CLASS CARDS -->
           <div class="row justify-content-center mt-3 blur2">
@@ -130,7 +127,7 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
                   <img src="<?php echo "../" . $row[2]; ?>" class="card-img-top img-fluid" alt="...">
                   <!-- MAJOR TEXT -->
                   <div class="card-body d-flex text-center align-items-bottom flex-column mb-3">
-                    <h4 class="card-title fw-medium"><?php echo $row[1]; ?></h4>
+                    <h4 class="card-title fw-medium me-5"><?php echo $row[1]; ?></h4>
                     <p class="card-text my-auto"><?php echo $row[3]; ?></p>
                     <!-- PROGRAM BUTTON -->
                     <a href="<?php echo $filePaths[$n]; ?>" class="btn btn-md btn-outline-light align-self-center mt-2 fw-semibold">Program Overview</a>
@@ -142,10 +139,10 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
             <?php endwhile; ?>
           </div> <!-- row -->
 
-        </div> <!-- container-fluid banner -->
-      </div>
-    </div>
-  </div>
+        </div> <!-- end of container-fluid div -->
+      </div> <!-- end of banner div -->
+    </div> <!-- end of blur div -->
+  </div> <!-- end of backgroundPic div -->
 
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
@@ -164,7 +161,6 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
         width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
         placeholder: $(this).data('placeholder'),
       });
-      // $('#diffSelect').select2({theme: "bootstrap-5"});
       var advis = "<?php echo $a; ?>";
       $("#" + advis).attr({
         "selected": true

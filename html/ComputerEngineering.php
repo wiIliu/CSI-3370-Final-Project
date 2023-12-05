@@ -144,27 +144,43 @@ $advisor = getAdvisor(2);
             </span>
             <!-- CLASS INFO -->
             <div class="ms-4 collapse" id="collapseExample<?php echo $row[0]; ?>">
-              <div class="mt-3 card card-body bg-secondary text-light" style="width: 600px">
+            <div class="mt-3 card card-body text-dark border border-light" style="width: 600px; background-color: #d6d8de;">
                 <!-- CLASS DESC -->
+                <span class="fw-semibold">Class Description: <br></span>
                 <?php echo $row[3] ?><br><br>
+                <!-- TEXTBOOK -->
+                <?php if($row[5] != null){
+                  echo "<a href='$row[5]' class='text-decoration-underline link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover' style='color:#073352;' target='_blank'>Textbook Link</a>";
+                } ?>
+                
                 <!-- SECTION LIST -->
                 <?php
                 $sections = getSections($row[0]);
                 if (mysqli_num_rows($sections)) {
                   while ($section = mysqli_fetch_array($sections)) : ?>
-                    <p>
-                      <?php echo $section[0] . " —— " . $section[5] . " " . $section[4];
+                    <p><span class="fw-semibold"><br>Class Sections: <br></span>
+                      <?php echo $section[0] . "&nbsp;&nbsp;&nbsp; —— " . "&nbsp;&nbsp;&nbsp;Start Date:&nbsp;&nbsp;" . $section[4]."&nbsp;&nbsp;&nbsp;Professor:";
                       $prof = getProfData($section[1]);
                       ?>
                       <!-- PROFESSORS -->
-                      <span><a href="" data-bs-target="#profPopup" data-bs-toggle="modal" data-bs-pID="<?php echo $prof[0]; ?>" data-bs-pFname="<?php echo $prof[1]; ?>" data-bs-pLname="<?php echo $prof[2]; ?>" data-bs-pOffice="<?php echo $prof[3]; ?>" data-bs-pPhone="<?php echo $prof[4]; ?>" data-bs-pEmail="<?php echo $prof[5]; ?>" data-bs-pBackground="<?php echo $prof[6]; ?>" data-bs-pRating="<?php echo $prof[7]; ?>" data-bs-pRLink="<?php echo $prof[8]; ?>">&nbsp;<?php echo $section[2] . "&nbsp;" . $section[3]; ?></a></span>
+                      <span >&nbsp;<a style="color:#073352" href="" class="text-decoration-underline"
+                          data-bs-target="#profPopup" 
+                          data-bs-toggle="modal" 
+                          data-bs-pID="<?php echo $prof[0]; ?>" 
+                          data-bs-pFname="<?php echo $prof[1]; ?>" 
+                          data-bs-pLname="<?php echo $prof[2]; ?>" 
+                          data-bs-pOffice="<?php echo $prof[3]; ?>" 
+                          data-bs-pEmail="<?php echo $prof[4]; ?>" 
+                          data-bs-pBackground="<?php echo $prof[5]; ?>" 
+                          data-bs-pRating="<?php echo $prof[6]; ?>" 
+                          data-bs-pRLink="<?php echo $prof[7]; ?>"><?php echo $section[2] . "&nbsp;" . $section[3]; ?></a>
+                      </span>
                     </p>
                 <?php endwhile;
                 } else {
                   echo "NO OFFERED SECTIONS";
                 } ?>
-                <!-- TEXTBOOK -->
-                <a href="<?php echo $row[5]; ?>" class="link-light text-decoration-underline link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" target="_blank">Textbook link here.</a>
+
               </div>
               <br>
             </div>
@@ -193,21 +209,27 @@ $advisor = getAdvisor(2);
           </ol>
       </div>
 
-      <!-- PROF POPUP -->
-      <div class="modal fade text-light" id="profPopup" tabindex="-1" data-bs-theme="dark" aria-labelledby="professorPopup" aria-hidden="true" style="white-space: pre-line;">
+       <!-- PROF POPUP -->
+       <div class="modal fade text-dark" id="profPopup" tabindex="-1" data-bs-theme="dark" 
+          aria-labelledby="professorPopup" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div class="modal-content">
-            <div class="modal-header">
+          <div class="modal-content bg-light">
+            <div class="modal-header justify-content-center">
               <h1 class="modal-title fs-5" id="">About</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
             <div class="modal-body">
-              <p class="text-light" id="mainSpace"></p>
+              <p class="text-dark">Email:&nbsp;&nbsp;<span id="mainSpace-email"></span>
+                <br>Office Number:&nbsp;&nbsp;<span id="mainSpace-office"></span>
+              </p>
+              <p class="text-dark" id="mainSpace-background" style="text-indent: 7%;"></p>
+              <p class="text-dark">Overall Rating:&nbsp;&nbsp;<span id="mainSpace-rating"></span><br>
+                <a href="" id="modalLink" class="text-decoration-underline" target="_blank" style="color:#073352;"></a>
+              </p>
             </div>
 
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-outline-dark text-light" style="background-color:#073352;" data-bs-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
@@ -264,19 +286,25 @@ $advisor = getAdvisor(2);
         const fName = link.getAttribute('data-bs-pFname');
         const lName = link.getAttribute('data-bs-pLname');
         const office = link.getAttribute('data-bs-pOffice');
-        const phone = link.getAttribute('data-bs-pPhone');
         const email = link.getAttribute('data-bs-pEmail');
         const background = link.getAttribute('data-bs-pBackground');
         const rating = link.getAttribute('data-bs-pRating');
         const ratingLink = link.getAttribute('data-bs-pRLink');
         // Update the modal's content.
         const modalTitle = profPopup.querySelector('.modal-title');
-        const modalBody = profPopup.querySelector("#mainSpace");
+        const modalBody_email = profPopup.querySelector("#mainSpace-email");
+        const modalBody_office = profPopup.querySelector("#mainSpace-office");
+        const modalBody_background = profPopup.querySelector("#mainSpace-background");
+        const modalBody_rating = profPopup.querySelector("#mainSpace-rating");
+        const modalLink = profPopup.querySelector('#modalLink');
 
         modalTitle.textContent = `About Professor ${fName} ${lName}`;
-        modalBody.textContent = `Phone: ${phone}\tEmail: ${email}\tOffice Number:${office}
-           ${background}
-           ${rating} \t ${ratingLink}`;
+        modalBody_email.textContent = `${email}`;
+        modalBody_office.textContent = `${office}`;
+        modalBody_background.textContent = `${background}`;
+        modalBody_rating.textContent = `${rating} / 5`;
+        modalLink.href = ratingLink;
+        modalLink.textContent = `See more about ${fName} ${lName}'s rating`;
       });
     }
   </script>
