@@ -14,7 +14,6 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-# start = timeit.default_timer()
 query = ("SELECT CONCAT(PROF_FNAME, ' ', PROF_LNAME) AS PROF_NAME, PROF_ID FROM PROFESSOR;")
 mycursor.execute(query)
 
@@ -30,11 +29,8 @@ for PROF_NAME, PROF_ID in results:
       mycursor.execute(sql,vals)
       print(f"prof {prof.name} has a rating of {prof.rating} is added")
     else:
-      # sql = (f"UPDATE professor SET PROF_RATING = NULL WHERE professor.PROF_ID = {PROF_ID};")
-      # mycursor.execute(sql)
       print(f"Professor {PROF_NAME} is not rated yet")
       
-# print(f"time: {timeit.default_timer()-start:.6} s")
 print(f"{mycursor.rowcount} rows affected")
 mydb.commit()
 mycursor.close()
