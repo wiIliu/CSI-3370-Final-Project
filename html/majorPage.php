@@ -95,7 +95,7 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
                 </div>
                 <!-- CLASS FILTER -->
                 <div class="col-4">
-                    <label for="class" class="form-label text-light">Class (multiselect?)</label>
+                    <label for="class" class="form-label text-light">Class</label>
                     <select class="form-select" name="class" data-placeholder="Choose one thing" id="diffSelect">
                       <option value="" id='defaultC' disabled hidden selected></option>
                       <option></option>
@@ -105,9 +105,9 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
                     </select>
                 </div>
                 <!-- SUBMIT --> <!-- RESET -->
-                <div class="col-3">
-                  <button class="btn text-light me-2 btn-outline-light" style="background-color: #073352;" type="submit" name="submit" value="submit">Submit</button>
-                  <button class="btn text-light ms-2 btn-outline-light" style="background-color: #073352;" type="submit" name="reset" value="reset">Reset</button>
+                <div class="col-3 mt-2">
+                  <button class="btn text-light me-2 mt-4 btn-outline-light" style="background-color: #073352;" type="submit" name="submit" value="submit">Submit</button>
+                  <button class="btn text-light ms-2 mt-4 btn-outline-light" style="background-color: #073352;" type="submit" name="reset" value="reset">Reset</button>
                 </div>
 
               </form>
