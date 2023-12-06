@@ -1,0 +1,33 @@
+h2 {
+    color: #063d64;
+    margin-top: 20px;
+  }
+  
+  p {
+    color: #6c757d;
+  }
+  
+  /* Optional: Add padding between list items */
+  ol {
+    padding-left: 20px;
+    list-style-type: none;
+    text-decoration: underline;
+  }
+  
+  /* Optional: Add spacing between form elements */
+  .g-3.row {
+    row-gap: 1rem;
+  }
+  
+  /* Optional: Center the form on larger screens */
+  .col-9 {
+    margin: 0 auto;
+  }
+  
+  /* Optional: Increase the width of the form on larger screens */
+  @media (min-width: 768px) {
+      .col-9 {
+        max-width: 800px;
+      }
+    }
+  

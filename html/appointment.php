@@ -67,8 +67,26 @@ $current = date("H:i:s d.m.y");
         </nav>
 
         <div class="container-fluid">
+            <div class="mx-5">
+                <div class="mt-5">
 
-            <div class="row justify-content-center mt-5 pt-5">
+                    <!-- <p class="fw-bolder">How can I contact my Academic Adviser?</p> -->
+                    <h4>How can I contact my Academic Adviser?</h4>
+                    <p class="text-start lh-lg">Connect with us during an appointment, chat, or email:
+                        Schedule an in-person appointment : https://oakland.trac.cloud
+                        Connect with us through SECS Chat! Our academic advisers will be available to answer your questions
+                        on the Google Chat from 11 a.m. - 12:00 p.m. and 2:30 p.m. - 3:30 p.m. You might be wondering when
+                        classes begin for the next semester, or the last day to withdraw from a class, or how to find a tutor.
+                        Any question is a good question.</p>
+
+                </div>
+
+
+
+            </div>
+
+
+            <div class="row justify-content-center mt-3 pt-5">
                 <div class="col-9">
 
                     <form onsubmit="alert('Appointment Scheduled');" action="#" id="makeAppt" method="post" class="g-3 row needs-validation m-5 justify-content-center">

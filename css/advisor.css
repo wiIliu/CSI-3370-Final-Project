@@ -1,0 +1,62 @@
+d img {
+    max-height: 55px;
+  }
+  
+  .navbar-toggler-icon {
+    background-color: #073352;
+  }
+  
+  .navbar-nav .nav-link {
+    color: #073352;
+  }
+  
+  /* Banner Styles */
+  .banner {
+    background-color: #f8f9fa;
+  }
+  
+  /* Form Styles */
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    margin-bottom: 10px;
+  }
+  
+  /* Button Styles */
+  .btn {
+    cursor: pointer;
+  }
+  
+  /* Hover Styles for Dropdown */
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
+  /* Additional Padding for Dropdown Links */
+  .dropdown-menu {
+    padding: 1em 0;
+  }
+  
+  /* Optional: Add spacing between form elements */
+  .g-3.row {
+    row-gap: 1rem;
+  }
+  
+  /* Optional: Center the form on larger screens */
+  .col-9 {
+    margin: 0 auto;
+  }
+  
+  /* Optional: Increase the width of the form on larger screens */
+  @media (min-width: 768px) {
+    .col-9 {
+      max-width: 800px;
+    }
+  }
+  
+  .advintro {
+    color: red;
+    font-style: italic;
+  }
