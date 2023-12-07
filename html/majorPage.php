@@ -86,11 +86,11 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
                   <label for="advisor" class="form-label text-light">Advisor</label>
                   <select class="form-select" aria-label="Advisor select" title="Select an adivosr" name="advisor">
                     <option value="" id="defaultA" disabled hidden>Filter for an Advisor</option>
-                    <option id='1' value="1">Kate - Artificial Intelligence</option>
-                    <option id='2' value="2">Will - Information Technology</option>
-                    <option id='3' value="3">Charles - Computer Science</option>
-                    <option id='4' value="4">Michael - Cybersecurity</option>
-                    <option id='5' value="5">Jasmine - Computer Engineering</option>
+                    <option id='1' value="1">Kate Smith</option>
+                    <option id='2' value="2">Will Woodz</option>
+                    <option id='3' value="3">Charles Harry</option>
+                    <option id='4' value="4">Michael Kim</option>
+                    <option id='5' value="5">Jasmine Farmer</option>
                   </select>
                 </div>
                 <!-- CLASS FILTER -->
