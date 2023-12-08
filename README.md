@@ -1,21 +1,3 @@
-# NEED TO RUN ENTIRE PROJECT IN XAMPP/HTDOCS
-
----
-
-# MyDegree.com
-
---- 
-<h2>USEFUL LINKS</h2>
-
-https://mermaid.js.org/syntax/entityRelationshipDiagram.html - ERD documentation<br>
-https://www.w3schools.com/git/default.asp - git and github tutorial that helped me a lot if you want to look at it.<br>
-https://getbootstrap.com/docs/5.3/getting-started/introduction/ - Bootstrap documentation<br>
-https://www.w3schools.com/bootstrap/bootstrap_ver.asp - bootstrap basic tutorial<br>
-https://www.codecademy.com/catalog/language/php - php tutorial<br>
-
-
----
-
 <div>
 <h3>Project Description:</h3>
 <p>
