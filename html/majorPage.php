@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("../majorQuery.php");
-$filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php", "AI.php", "IT.php");
+$filePaths = array("1"=>"CompSci.php", "2"=>"ComputerEngineering.php", "3"=>"Cybersecurity.php", "4"=>"AI.php", "5"=>"IT.php");
 ?>
 
 <!DOCTYPE html>
@@ -117,8 +117,8 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
           <!-- CLASS CARDS -->
           <div class="row justify-content-center mt-3 blur2">
             <?php
-            $n = 0;
             while ($row = mysqli_fetch_array($filterResult)) :
+              $n = $row[0];
             ?>
               <div class="col-11 col-lg-4 col-md-6 my-1">
                 <!-- INDIVIDUAL CARD -->
@@ -130,12 +130,12 @@ $filePaths = array("CompSci.php", "ComputerEngineering.php", "Cybersecurity.php"
                     <h4 class="card-title fw-medium me-5"><?php echo $row[1]; ?></h4>
                     <p class="card-text my-auto"><?php echo $row[3]; ?></p>
                     <!-- PROGRAM BUTTON -->
-                    <a href="<?php echo $filePaths[$n]; ?>" class="btn btn-md btn-outline-light align-self-center mt-2 fw-semibold">Program Overview</a>
+                    <a href="<?php echo $filePaths[$n]; ?>" 
+                      class="btn btn-md btn-outline-light align-self-center mt-2 fw-semibold">Program Overview</a>
                   </div>
                 </div>
 
               </div>
-              <?php $n++; ?>
             <?php endwhile; ?>
           </div> <!-- row -->
 
